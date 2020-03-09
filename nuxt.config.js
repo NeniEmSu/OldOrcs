@@ -10,17 +10,20 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/png', href: '/favicon.png' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap&subset=cyrillic' }
     ]
   },
 
   loading: { color: '#fff' },
 
   css: [
+    '~/assets/css/normalize.css',
     '~/assets/css/home.css'
   ],
 
   plugins: [
+    '~/plugins/vue-scrollto'
   ],
 
   buildModules: [
@@ -33,6 +36,7 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    'vue-scrollto/nuxt',
     '@nuxtjs/dotenv'
   ],
 

@@ -7,6 +7,8 @@
         viewBox="0 0 520 158"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        data-scroll-to="hero"
+        @click="scrollTo"
       >
         <path
           d="M227.476 107.267C227.476 120.103 221.133 126.538 208.456 126.569C195.803 126.569 189.48 120.131 189.48 107.267V51.185C189.48 38.349 195.803 31.928 208.456 31.928C221.133 31.928 227.476 38.348 227.476 51.185V107.267ZM214.249 51.185C214.249 47.069 212.334 44.997 208.501 44.969H208.405C204.604 44.969 202.708 47.038 202.708 51.185V107.267C202.708 111.41 204.622 113.483 208.455 113.483C212.316 113.483 214.248 111.409 214.248 107.267V51.185H214.249Z"
@@ -132,22 +134,31 @@
 
       <div class="nav">
         <a
-          href="#hero"
-          class="active"
+          data-scroll-to="hero"
+          @click="scrollTo"
         >
 
           Головна
 
         </a>
 
-        <a href="#services">
+        <a
+          data-scroll-to="services"
+          @click="scrollTo"
+        >
           Послуги
         </a>
 
-        <a href="#works">
+        <a
+          data-scroll-to="works"
+          @click="scrollTo"
+        >
           Портфоліо
         </a>
-        <a href="#contact">
+        <a
+          data-scroll-to="contact"
+          @click="scrollTo"
+        >
           Контакти
         </a>
       </div>
@@ -166,6 +177,91 @@
 
 <script>
 export default {
+  data () {
+    return {
+      lastScrollPosition: 0
+    }
+  },
+
+  beforeDestroy () {
+    window.removeEventListener('scroll', this.onScroll)
+  },
+
+  mounted () {
+    window.addEventListener('scroll', this.onScroll)
+    this.$nextTick(function () {
+      window.addEventListener('scroll', function () {
+        const navbar = document.getElementById('myHeader')
+        const navClasses = navbar.classList
+        if (document.documentElement.scrollTop >= 500) {
+          if (navClasses.contains('menu_fixed') === false) {
+            navClasses.toggle('menu_fixed')
+            navClasses.toggle('animated')
+            navClasses.toggle('fadeInDown')
+          }
+        } else if (navClasses.contains('menu_fixed') === true) {
+          navClasses.toggle('menu_fixed')
+          navClasses.toggle('animated')
+          navClasses.toggle('fadeInDown')
+        }
+      })
+    })
+  },
+
+  methods: {
+    scrollTo (e) {
+      const scrollTo = e.target.dataset.scrollTo
+      const target = document.getElementById(scrollTo)
+
+      if (target) {
+        target.scrollIntoView(true)
+
+        this.$scrollTo(target, 300, { easing: 'ease-in-out' })
+
+        // this.toggleNavbar()
+      }
+    }
+  }
 
 }
 </script>
+
+<style lang="scss" scoped>
+svg,
+a {
+  cursor: pointer;
+}
+
+.menu_fixed {
+  position: fixed;
+  z-index: 9999 !important;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+  top: 0;
+}
+
+.animated {
+  -webkit-animation-duration: 1s !important;
+  animation-duration: 1s !important;
+  -webkit-animation-fill-mode: both !important;
+  animation-fill-mode: both !important;
+}
+
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}
+
+@keyframes #{fadeInDown} {
+  0% {
+    -webkit-transform: translate3d(0, -40px, 0);
+    transform: translate3d(0, -40px, 0);
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+</style>

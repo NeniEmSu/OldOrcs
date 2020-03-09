@@ -15,15 +15,52 @@
     </div>
     <a
       class="scrolldown_container"
-      href="#services"
+      data-scroll-to="services"
+      @click="scrollTo"
     >
-      <div class="scroll text-inner">
+      <div
+        class="scroll text-inner"
+        data-scroll-to="services"
+        @click="scrollTo"
+      >
         Горни вниз
       </div>
 
-      <div class="scrolldown text-inner">
+      <div
+        class="scrolldown text-inner"
+        data-scroll-to="services"
+        @click="scrollTo"
+      >
         <div class="line" />
       </div>
     </a>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    scrollTo (e) {
+      const scrollTo = e.target.dataset.scrollTo
+      const target = document.getElementById(scrollTo)
+
+      if (target) {
+        target.scrollIntoView(true)
+
+        this.$scrollTo(target, 300, { easing: 'ease-in-out' })
+
+        // this.toggleNavbar()
+      }
+    }
+  }
+
+}
+</script>
+
+<style lang="scss" scoped>
+a,
+.scrolldown_container,
+.scroll {
+  cursor: pointer;
+}
+</style>
