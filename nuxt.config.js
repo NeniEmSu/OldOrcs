@@ -44,6 +44,9 @@ export default {
   },
 
   build: {
+    transpile: [
+      'gsap'
+    ],
 
     extend (config, ctx) {
     }

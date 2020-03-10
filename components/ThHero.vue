@@ -38,7 +38,9 @@
 </template>
 
 <script>
+
 export default {
+
   methods: {
     scrollTo (e) {
       const scrollTo = e.target.dataset.scrollTo

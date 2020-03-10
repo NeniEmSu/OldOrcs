@@ -176,6 +176,7 @@
 </template>
 
 <script>
+
 export default {
   data () {
     return {
@@ -216,6 +217,9 @@ export default {
       if (target) {
         target.scrollIntoView(true)
 
+        // eslint-disable-next-line no-console
+        console.log(e)
+
         this.$scrollTo(target, 300, { easing: 'ease-in-out' })
 
         // this.toggleNavbar()
@@ -227,6 +231,98 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+header {
+  width: 100vw;
+  height: 100px;
+
+  display: flex;
+  position: relative;
+
+  z-index: 1;
+}
+
+header .container {
+  display: flex;
+}
+
+header svg {
+  width: auto;
+  height: 65px;
+  margin: auto 0;
+}
+
+header .nav {
+  display: flex;
+  margin-left: auto;
+}
+
+header .nav a {
+  list-style: none;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+
+  color: #666666;
+  border-bottom: 0px #0084a1 solid;
+  text-decoration: none;
+
+  padding: 45px 0;
+  margin: 0 0 0 50px;
+
+  transition: border-bottom 300ms linear, font-weight 300ms linear;
+  -webkit-transition: border-bottom 300ms linear, font-weight 300ms linear;
+  -moz-transition: border-bottom 300ms linear, font-weight 300ms linear;
+  -ms-transition: border-bottom 300ms linear, font-weight 300ms linear;
+  -o-transition: border-bottom 300ms linear, font-weight 300ms linear;
+}
+
+header .nav a:hover,
+header .nav a.active {
+  content: "";
+  display: block;
+
+  color: #0084a1;
+  border-bottom: 5px #0084a1 solid;
+}
+
+header .nav a.active {
+  font-weight: 600;
+}
+
+header ul.lang {
+  display: flex;
+  margin-right: auto;
+}
+
+header ul.lang li {
+  list-style: none;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+
+  color: #666666;
+
+  padding: 45px 0;
+  margin: 0 0 0 20px;
+
+  transition: all 300ms ease;
+  -webkit-transition: all 300ms ease;
+  -moz-transition: all 300ms ease;
+  -ms-transition: all 300ms ease;
+  -o-transition: all 300ms ease;
+}
+
+header ul.lang li:hover,
+header ul.lang li.active {
+  color: #0084a1;
+}
+
+header ul.lang li.active {
+  font-weight: 600;
+}
+
 svg,
 a {
   cursor: pointer;
