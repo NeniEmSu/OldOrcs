@@ -1,3 +1,24 @@
+<i18n>
+{
+  "uk": {
+    "links": {
+        "home": "Головна",
+        "services": "Послуги",
+        "portfolio": "Портфоліо",
+        "contact": "Контакти"
+      }
+  },
+  "ru": {
+    "links": {
+        "home": "Главная",
+        "services": "услуги",
+        "portfolio": "Портфолио",
+        "contact": "Контакты"
+      }
+  }
+}
+</i18n>
+
 <template>
   <header id="myHeader">
     <div class="container">
@@ -138,7 +159,7 @@
           @click="scrollTo"
         >
 
-          Головна
+          {{ $t('links.home') }}
 
         </a>
 
@@ -146,32 +167,32 @@
           data-scroll-to="services"
           @click="scrollTo"
         >
-          Послуги
+          {{ $t('links.services') }}
         </a>
 
         <a
           data-scroll-to="works"
           @click="scrollTo"
         >
-          Портфоліо
+          {{ $t('links.portfolio') }}
         </a>
         <a
           data-scroll-to="contact"
           @click="scrollTo"
         >
-          Контакти
+          {{ $t('links.contact') }}
         </a>
       </div>
     </div>
 
-    <ul class="lang">
-      <li class="active">
-        УКР
-      </li>
-      <li>
-        РУС
-      </li>
-    </ul>
+    <div class="lang">
+      <nuxt-link :to="switchLocalePath('uk')">
+        Укр
+      </nuxt-link>
+      <nuxt-link :to="switchLocalePath('ru')">
+        Рус
+      </nuxt-link>
+    </div>
   </header>
 </template>
 
@@ -263,6 +284,9 @@ header .nav a {
   font-size: 16px;
   line-height: 20px;
 
+  text-decoration: none;
+  text-transform: capitalize;
+
   color: #666666;
   border-bottom: 0px #0084a1 solid;
   text-decoration: none;
@@ -290,17 +314,19 @@ header .nav a.active {
   font-weight: 600;
 }
 
-header ul.lang {
+header .lang {
   display: flex;
   margin-right: auto;
 }
 
-header ul.lang li {
+header .lang a {
   list-style: none;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
+  text-decoration: none;
+  text-transform: capitalize;
 
   color: #666666;
 
@@ -314,12 +340,12 @@ header ul.lang li {
   -o-transition: all 300ms ease;
 }
 
-header ul.lang li:hover,
-header ul.lang li.active {
+header .lang a:hover,
+header .lang a.nuxt-link-exact-active {
   color: #0084a1;
 }
 
-header ul.lang li.active {
+header .lang a.nuxt-link-exact-active {
   font-weight: 600;
 }
 

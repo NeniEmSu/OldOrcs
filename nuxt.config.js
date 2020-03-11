@@ -37,10 +37,40 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     'vue-scrollto/nuxt',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    ['nuxt-i18n', {
+      seo: true,
+      baseUrl: 'https://barbaresco.netlify.com',
+      locales: [{
+        iso: 'uk-Uk',
+        code: 'uk',
+        name: 'Укр'
+      },
+      {
+        iso: 'ru-RU',
+        code: 'ru',
+        name: 'Рус'
+      }
+      ]
+    }]
   ],
 
   axios: {
+  },
+
+  i18n: {
+    defaultLocale: 'uk',
+    vueI18nLoader: true,
+    lazy: false,
+    langDir: null,
+    strategy: 'prefix_except_default',
+    parsePages: true,
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      alwaysRedirect: false,
+      fallbackLocale: 'uk'
+    }
   },
 
   build: {

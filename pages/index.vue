@@ -248,26 +248,41 @@ export default {
     TheHero
   },
 
+  mounted () {
+    window.addEventListener('scroll', this.moveBackground)
+  },
+
+  beforeDestroy () {
+    window.removeEventListener('scroll', this.moveBackground)
+  },
+
   methods: {
+    moveBackground (e) {
+      const bgPattern = document.getElementById('bg')
+
+      bgPattern.style.backgroundPosition = 1020 - window.pageYOffset + 'px'
+    },
     showModal () {
       const p = document.getElementById('card')
       const c = document.getElementById('content')
 
       p.style.visibility = 'visible'
-      p.style.opacity = '1'
+      p.style.zIndex = '1'
+      p.style.opacity = '3'
       c.style.opacity = '1'
+    },
+
+    hideModal () {
+      const p = document.getElementById('card')
+      const c = document.getElementById('content')
+
+      p.style.opacity = '0'
+      p.style.zIndex = '-1'
+
+      c.style.opacity = '0'
     }
-  },
-
-  hideModal () {
-    const p = document.getElementById('card')
-    const c = document.getElementById('content')
-
-    p.style.opacity = '0'
-    p.style.zIndex = '-1'
-
-    c.style.opacity = '0'
   }
+
 }
 </script>
 
