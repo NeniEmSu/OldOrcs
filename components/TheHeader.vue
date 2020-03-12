@@ -2,19 +2,19 @@
 {
   "uk": {
     "links": {
-        "home": "Головна",
-        "services": "Послуги",
-        "portfolio": "Портфоліо",
-        "contact": "Контакти"
-      }
+      "home": "Головна",
+      "services": "Послуги",
+      "portfolio": "Портфоліо",
+      "contact": "Контакти"
+    }
   },
   "ru": {
     "links": {
-        "home": "Главная",
-        "services": "услуги",
-        "portfolio": "Портфолио",
-        "contact": "Контакты"
-      }
+      "home": "Главная",
+      "services": "услуги",
+      "portfolio": "Портфолио",
+      "contact": "Контакты"
+    }
   }
 }
 </i18n>
@@ -218,15 +218,6 @@ export default {
     }
   },
 
-  computed: {
-    path () { return this.$route.path.slice(-1) === '/' ? this.$route.path.slice(0, -1) : this.$route.path },
-    menu () { return '/' + this.$route.params.section }
-  },
-
-  beforeDestroy () {
-    window.removeEventListener('scroll', this.onScroll)
-  },
-
   mounted () {
     window.addEventListener('scroll', this.onScroll)
     this.$nextTick(function () {
@@ -246,6 +237,10 @@ export default {
         }
       })
     })
+  },
+
+  beforeDestroy () {
+    window.removeEventListener('scroll', this.onScroll)
   },
 
   methods: {
