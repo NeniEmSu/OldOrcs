@@ -5,7 +5,7 @@
       <div id="bg" />
       <section
         id="services"
-        class="services offset"
+        class="services "
       >
         <h2>
           Послуги
@@ -104,7 +104,7 @@
 
       <section
         id="works"
-        class="works offset-2"
+        class="works "
       >
         <h2>
           Наші роботи

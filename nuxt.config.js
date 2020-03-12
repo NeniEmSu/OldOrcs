@@ -23,6 +23,10 @@ export default {
   ],
 
   plugins: [
+    {
+      src: '~/plugins/vue-scroll-active'
+      // mode: 'client'
+    },
     '~/plugins/vue-scrollto'
   ],
 

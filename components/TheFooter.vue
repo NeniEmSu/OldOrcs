@@ -1,3 +1,20 @@
+<i18n>
+{
+  "uk": {
+    "title": "Наші контакти",
+    "address": "Адреса",
+    "phone": "Телефон",
+    "location": "м. Тернопіль, вул. Тарнавського, 36"
+  },
+  "ru": {
+    "title": "Наши контакты",
+    "address": "Адрес",
+    "phone": "Телефон",
+    "location": "Г. Тернополь, ул. Тарнавського, 36"
+  }
+}
+</i18n>
+
 <template>
   <footer>
     <section
@@ -5,11 +22,15 @@
       class="container footer_container"
     >
       <h2>
-        Наші контакти
+        {{ $t('title') }}
       </h2>
 
       <div class="contacts">
-        <div class="contact_item">
+        <a
+          href="https://www.google.com/maps/place/Henerala+Myrona+Tarnavs'koho+St,+36,+Ternopil,+Ternopil's'ka+oblast,+46024/@49.566604,25.6356834,17z/data=!3m1!4b1!4m5!3m4!1s0x473033dfc7ec2fb5:0x5eb16a8fb79c4e7e!8m2!3d49.566604!4d25.6378721"
+          target="_blank"
+          class="contact_detail"
+        >
           <div class="contact_items_header">
             <svg
               width="15"
@@ -24,17 +45,20 @@
               />
             </svg>
             <h5>
-              Адреса
+              {{ $t('address') }}
             </h5>
           </div>
           <div class="contact_items_body">
             <p>
-              м. Тернопіль, вул. Тарнавського, 36
+              {{ $t('location') }}
             </p>
           </div>
-        </div>
+        </a>
 
-        <div class="contact_item">
+        <a
+          href="mailto:office@oldorcs.com"
+          class="contact_item"
+        >
           <div class="contact_items_header">
             <svg
               width="15"
@@ -81,9 +105,13 @@
               office@oldorcs.com
             </p>
           </div>
-        </div>
+        </a>
 
-        <div class="contact_item">
+        <a
+          href="tel:+38-097-207-30-30"
+          class="contact_item"
+        >
+
           <div class="contact_items_header">
             <svg
               width="15"
@@ -99,7 +127,7 @@
             </svg>
 
             <h5>
-              Телефон
+              {{ $t('phone') }}
             </h5>
           </div>
           <div class="contact_items_body">
@@ -107,7 +135,7 @@
               +38 097 207 30 30
             </p>
           </div>
-        </div>
+        </a>
 
         <div class="contact_item">
           <div class="contact_items_header">

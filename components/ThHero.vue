@@ -28,9 +28,13 @@
         {{ $t('create') }}
       </span>
     </div>
-    <a
+    <nuxt-link
+      v-scroll-to="{
+        el: '#services',
+        offset: -220
+      }"
       class="scrolldown_container"
-      data-scroll-to="services"
+      to="#services"
       @click="scrollTo"
     >
       <div
@@ -48,7 +52,7 @@
       >
         <div class="line" />
       </div>
-    </a>
+    </nuxt-link>
   </div>
 </template>
 
@@ -65,8 +69,6 @@ export default {
         target.scrollIntoView(true)
 
         this.$scrollTo(target, 300, { easing: 'ease-in-out' })
-
-        // this.toggleNavbar()
       }
     }
   }
