@@ -1,3 +1,4 @@
-import { gsap } from 'gsap/dist/gsap'
-import { PixiPlugin } from 'gsap/dist/PixiPlugin.js'
-gsap.registerPlugin(PixiPlugin)
+import Vue from 'vue'
+import { gsap } from 'gsap'
+
+Vue.use(gsap)

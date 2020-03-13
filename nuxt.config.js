@@ -23,7 +23,12 @@ export default {
   ],
 
   plugins: [
-    '~/plugins/vue-scrollto'
+    '~/plugins/vue-scrollto',
+    '~/plugins/gsap',
+    {
+      src: '~plugins/vue-scrollmagic.js',
+      ssr: false
+    }
   ],
 
   buildModules: [

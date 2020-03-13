@@ -18,10 +18,11 @@
           >
             <img
               src="~/assets/img/modal-demo-img.jpg"
+              class="modalImg"
               alt="modal-demo-img"
             >
             <div
-              id="content"
+              id="modal-content"
               class="modal-content"
             >
               <h3>Брендинг</h3>
@@ -242,7 +243,12 @@
 </template>
 
 <script>
+import { gsap } from 'gsap'
 import TheHero from '~/components/ThHero'
+const animationSpeed = 0.75
+const animationTimingIn = 'Expo.easeIn'
+const animationTimingOut = 'Expo.easeOut'
+
 export default {
   components: {
     TheHero
@@ -250,6 +256,22 @@ export default {
 
   mounted () {
     window.addEventListener('scroll', this.moveBackground)
+
+    gsap.timeline({ paused: true })
+      .fromTo(
+        '.works_block',
+        animationSpeed,
+        { y: 150, opacity: 1, ease: animationTimingIn },
+        { y: 0, opacity: 1, ease: animationTimingOut }
+      )
+      .staggerFromTo(
+        '.block',
+        animationSpeed + 2,
+        { opacity: 0, y: 10, ease: animationTimingIn },
+        { opacity: 1, y: 0, ease: animationTimingOut },
+        0.05
+      )
+      .play()
   },
 
   beforeDestroy () {
@@ -262,24 +284,51 @@ export default {
 
       bgPattern.style.backgroundPosition = 1020 - window.pageYOffset + 'px'
     },
-    showModal () {
-      const p = document.getElementById('card')
-      const c = document.getElementById('content')
 
-      p.style.visibility = 'visible'
-      p.style.zIndex = '1'
-      p.style.opacity = '3'
-      c.style.opacity = '1'
+    showModal () {
+      gsap.timeline({ paused: true })
+        .fromTo(
+          '#card',
+          animationSpeed - 0.5,
+          { display: 'none', visibility: 'hidden', opacity: 0, ease: animationTimingIn },
+          { display: 'flex', visibility: 'visible', opacity: 1, ease: animationTimingOut }
+        )
+        .fromTo(
+          '.modalImg',
+          animationSpeed,
+          { opacity: 0, scaleY: 0, ease: animationTimingIn },
+          { opacity: 1, scaleY: 1, ease: animationTimingOut }
+        )
+        .staggerFromTo(
+          '#modal-content',
+          animationSpeed + 2,
+          { opacity: 0, y: 10, ease: animationTimingIn },
+          { opacity: 1, y: 0, ease: animationTimingOut },
+          0.25
+        )
+        .play()
     },
 
     hideModal () {
-      const p = document.getElementById('card')
-      const c = document.getElementById('content')
-
-      p.style.opacity = '0'
-      p.style.zIndex = '-1'
-
-      c.style.opacity = '0'
+      gsap.timeline({ paused: true })
+        .staggerFromTo(
+          '#modal-content',
+          animationSpeed,
+          { opacity: 1, y: 0, ease: animationTimingOut },
+          { opacity: 0, y: 10, ease: animationTimingIn }
+        ).fromTo(
+          '.modalImg',
+          animationSpeed,
+          { opacity: 1, scaleY: 1, ease: animationTimingOut },
+          { opacity: 0, scaleY: 0, ease: animationTimingIn },
+          '+=0.25'
+        ).fromTo(
+          '#card',
+          animationSpeed,
+          { display: 'flex', visibility: 'visible', opacity: 1, ease: animationTimingOut },
+          { display: 'none', visibility: 'hidden', opacity: 0, ease: animationTimingIn }
+        )
+        .play()
     }
   }
 
@@ -346,6 +395,7 @@ export default {
     input {
       border: none;
       border-bottom: 1px solid #666666;
+      outline: none;
 
       margin-right: 50px;
       padding: 12px 0px;

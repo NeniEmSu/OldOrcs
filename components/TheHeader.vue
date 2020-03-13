@@ -160,6 +160,7 @@
         <nuxt-link
           :to="localePath({name: 'index'},$i18n.locale)"
           exact
+          :data-text="$t('links.home')"
         >
           {{ $t('links.home') }}
         </nuxt-link>
@@ -171,6 +172,7 @@
           }"
           to="#services"
           exact
+          :data-text=" $t('links.services')"
         >
           {{ $t('links.services') }}
         </nuxt-link>
@@ -182,6 +184,7 @@
           }"
           to="#works"
           exact
+          :data-text=" $t('links.portfolio')"
         >
           {{ $t('links.portfolio') }}
         </nuxt-link>
@@ -192,6 +195,7 @@
           }"
           to="#contact"
           exact
+          :data-text=" $t('links.contact')"
         >
           {{ $t('links.contact') }}
         </nuxt-link>
@@ -210,6 +214,10 @@
 </template>
 
 <script>
+// import { gsap } from 'gsap'
+// const animationSpeed = 0.75
+// const animationTimingIn = 'Expo.easeIn'
+// const animationTimingOut = 'Expo.easeOut'
 
 export default {
   data () {
@@ -220,6 +228,7 @@ export default {
 
   mounted () {
     window.addEventListener('scroll', this.onScroll)
+
     this.$nextTick(function () {
       window.addEventListener('scroll', function () {
         const navbar = document.getElementById('myHeader')
@@ -250,13 +259,7 @@ export default {
 
       if (target) {
         target.scrollIntoView(true)
-
-        // eslint-disable-next-line no-console
-        console.log(e)
-
         this.$scrollTo(target, 300, { easing: 'ease-in-out' })
-
-        // this.toggleNavbar()
       }
     }
   }
@@ -308,17 +311,32 @@ header .nav a {
   padding: 45px 0;
   margin: 0 0 0 50px;
 
-  transition: border-bottom 300ms linear, font-weight 300ms linear;
-  -webkit-transition: border-bottom 300ms linear, font-weight 300ms linear;
-  -moz-transition: border-bottom 300ms linear, font-weight 300ms linear;
-  -ms-transition: border-bottom 300ms linear, font-weight 300ms linear;
-  -o-transition: border-bottom 300ms linear, font-weight 300ms linear;
+  transition: border-bottom 300ms linear, font-weight 300ms linear,
+    color 300ms linear;
+  -webkit-transition: border-bottom 300ms linear, font-weight 300ms linear,
+    color 300ms linear;
+  -moz-transition: border-bottom 300ms linear, font-weight 300ms linear,
+    color 300ms linear;
+  -ms-transition: border-bottom 300ms linear, font-weight 300ms linear,
+    color 300ms linear;
+  -o-transition: border-bottom 300ms linear, font-weight 300ms linear,
+    color 300ms linear;
+}
+
+header .nav a::before {
+  display: block;
+  content: attr(data-text);
+  font-weight: 600;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
 }
 
 header .nav a:hover,
 header .nav a.nuxt-link-exact-active {
   content: "";
   display: block;
+  font-weight: 600;
 
   color: #0084a1;
   border-bottom: 5px #0084a1 solid;

@@ -16,15 +16,15 @@
 <template>
   <div id="hero">
     <div class="text-inner">
-      <span class="start text-inner">
+      <span class="start">
         {{ $t('we') }}
       </span>
 
-      <h1 class="text-inner">
+      <h1 class="">
         OLDORCS
       </h1>
 
-      <span class="end text-inner">
+      <span class="end">
         {{ $t('create') }}
       </span>
     </div>
