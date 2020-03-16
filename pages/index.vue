@@ -137,106 +137,146 @@
 
         <div class="sub_categories">
           <div class="sub_category">
-            <h4>Логотипи</h4>
+            <h4 data-text="Логотипи">
+              Логотипи
+            </h4>
           </div>
           <div class="sub_category">
-            <h4>Макети</h4>
+            <h4
+              class="active"
+              data-text="Макети"
+            >
+              Макети
+            </h4>
           </div>
           <div class="sub_category">
-            <h4>Іконки</h4>
+            <h4 data-text="Іконки">
+              Іконки
+            </h4>
           </div>
           <div class="sub_category">
-            <h4>Кольори</h4>
+            <h4 data-text="Кольори">
+              Кольори
+            </h4>
           </div>
           <div class="sub_category">
-            <h4>Торговамарка</h4>
+            <h4 data-text="Торговамарка">
+              Торговамарка
+            </h4>
           </div>
           <div class="sub_category">
-            <h4>Товари</h4>
+            <h4 data-text="Товари">
+              Товари
+            </h4>
           </div>
           <div class="sub_category">
-            <h4>Бренд-Буки</h4>
+            <h4 data-text="Бренд-Буки">
+              Бренд-Буки
+            </h4>
           </div>
         </div>
+        <section class="work-group">
+          <div class="overlay-page">
+            <nuxt-child />
+          </div>
 
-        <div class="works_block">
-          <img
-            class="block"
-            src="~/assets/img/we-are.jpg"
-            alt="we-are"
+          <transition-group
+            name="slide-up"
+            mode="out-in"
+            class="works_block"
+            tag="div"
+            appear
           >
-          <img
-            class="block"
-            src="~/assets/img/tura.jpg"
-            alt="tura"
-          >
-          <img
-            class="block"
-            src="~/assets/img/nokkaido.jpg"
-            alt="nokkaido"
-          >
-          <img
-            class="block"
-            src="~/assets/img/urwahn-bike.jpg"
-            alt="urwahn-bike"
-          >
-          <img
-            class="block"
-            src="~/assets/img/aitchat.jpg"
-            alt="aitchat"
-          >
-          <img
-            class="block"
-            src="~/assets/img/chat.jpg"
-            alt="chat"
-          >
-          <img
-            class="block"
-            src="~/assets/img/bloc.jpg"
-            alt="bloc"
-          >
-          <img
-            class="block"
-            src="~/assets/img/moko.jpg"
-            alt="moko"
-          >
-          <img
-            class="block"
-            src="~/assets/img/symbol.jpg"
-            alt="symbol"
-          >
-          <img
-            class="block"
-            src="~/assets/img/hello.jpg"
-            alt="hello"
-          >
-          <img
-            class="block"
-            src="~/assets/img/cats.jpg"
-            alt="cats"
-          >
-          <img
-            class="block"
-            src="~/assets/img/lidiya.jpg"
-            alt="lidiya"
-          >
-        </div>
+            <img
+              key="1"
+              class="block"
+              src="~/assets/img/we-are.jpg"
+              alt="we-are"
+            >
+            <img
+              key="2"
+              class="block"
+              src="~/assets/img/tura.jpg"
+              alt="tura"
+            >
+            <img
+              key="3"
+              class="block"
+              src="~/assets/img/nokkaido.jpg"
+              alt="nokkaido"
+            >
+            <img
+              key="4"
+              class="block"
+              src="~/assets/img/urwahn-bike.jpg"
+              alt="urwahn-bike"
+            >
+            <img
+              key="5"
+              class="block"
+              src="~/assets/img/aitchat.jpg"
+              alt="aitchat"
+            >
+            <img
+              key="6"
+              class="block"
+              src="~/assets/img/chat.jpg"
+              alt="chat"
+            >
+            <img
+              key="7"
+              class="block"
+              src="~/assets/img/bloc.jpg"
+              alt="bloc"
+            >
+            <img
+              key="8"
+              class="block"
+              src="~/assets/img/moko.jpg"
+              alt="moko"
+            >
+            <img
+              key="9"
+              class="block"
+              src="~/assets/img/symbol.jpg"
+              alt="symbol"
+            >
+            <img
+              key="10"
+              class="block"
+              src="~/assets/img/hello.jpg"
+              alt="hello"
+            >
+            <img
+              key="11"
+              class="block"
+              src="~/assets/img/cats.jpg"
+              alt="cats"
+            >
+            <img
+              key="12"
+              class="block"
+              src="~/assets/img/lidiya.jpg"
+              alt="lidiya"
+            >
+          </transition-group>
 
-        <p class="show_more">
-          Показати ще
-          <svg
-            width="16"
-            height="21"
-            viewBox="0 0 16 21"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M7.29289 20.7071C7.68342 21.0976 8.31658 21.0976 8.70711 20.7071L15.0711 14.3431C15.4616 13.9526 15.4616 13.3195 15.0711 12.9289C14.6805 12.5384 14.0474 12.5384 13.6569 12.9289L8 18.5858L2.34315 12.9289C1.95262 12.5384 1.31946 12.5384 0.928932 12.9289C0.538407 13.3195 0.538407 13.9526 0.928932 14.3431L7.29289 20.7071ZM7 -4.37114e-08L7 20L9 20L9 4.37114e-08L7 -4.37114e-08Z"
-              fill="#5998BB"
-            />
-          </svg>
-        </p>
+          <p class="show_more">
+            Показати ще
+            <svg
+              width="16"
+              height="21"
+              viewBox="0 0 16 21"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.29289 20.7071C7.68342 21.0976 8.31658 21.0976 8.70711 20.7071L15.0711 14.3431C15.4616 13.9526 15.4616 13.3195 15.0711 12.9289C14.6805 12.5384 14.0474 12.5384 13.6569 12.9289L8 18.5858L2.34315 12.9289C1.95262 12.5384 1.31946 12.5384 0.928932 12.9289C0.538407 13.3195 0.538407 13.9526 0.928932 14.3431L7.29289 20.7071ZM7 -4.37114e-08L7 20L9 20L9 4.37114e-08L7 -4.37114e-08Z"
+                fill="#5998BB"
+              />
+            </svg>
+          </p>
+        </section>
       </section>
     </main>
   </div>
@@ -252,6 +292,12 @@ const animationTimingOut = 'Expo.easeOut'
 export default {
   components: {
     TheHero
+  },
+
+  data () {
+    return {
+
+    }
   },
 
   mounted () {
@@ -290,8 +336,8 @@ export default {
         .fromTo(
           '#card',
           animationSpeed - 0.5,
-          { display: 'none', visibility: 'hidden', opacity: 0, ease: animationTimingIn },
-          { display: 'flex', visibility: 'visible', opacity: 1, ease: animationTimingOut }
+          { display: 'none', x: 0, visibility: 'hidden', opacity: 0, ease: animationTimingIn },
+          { display: 'flex', x: 100, visibility: 'visible', opacity: 1, ease: animationTimingOut }
         )
         .fromTo(
           '.modalImg',
@@ -336,6 +382,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.slide-up-enter {
+  transform: translateY(10px);
+  opacity: 0;
+}
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 200ms ease;
+}
+
+.slide-up-move {
+  transition: all 0.8s ease-in;
+}
+// .slide-up-leave-to{
+
+// }
+
 #services {
   position: relative;
 }
@@ -424,5 +486,13 @@ export default {
       padding: 12px 15px;
     }
   }
+}
+.work-group {
+  position: relative;
+}
+.overlay-page {
+  position: absolute;
+  z-index: 3;
+  display: none;
 }
 </style>

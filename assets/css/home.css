@@ -248,24 +248,38 @@ main {
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
-
   text-align: center;
-
   color: #666666;
-
   margin-bottom: 30px;
+  cursor: pointer;
+  transition: all 300ms linear;
+  -webkit-transition: all 300ms linear;
+  -moz-transition: all 300ms linear;
+  -ms-transition: all 300ms linear;
+  -o-transition: all 300ms linear;
+}
+
+.works .sub_categories .sub_category h4::before {
+  display: block;
+  content: attr(data-text);
+  font-weight: 600;
+  font-size: 24px;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
 }
 
 .works .sub_categories .sub_category h4:hover,
 .works .sub_categories .sub_category h4.active {
+  content: "";
   font-weight: 600;
   font-size: 24px;
   line-height: 29px;
   color: #0084A1;
 }
 
-
 .works_block {
+  position: relative;
   display: grid;
   grid-template-columns: auto auto auto auto;
   grid-gap: 5px;
@@ -295,86 +309,4 @@ main {
 
 .show_more svg {
   margin-left: 10px;
-}
-
-
-
-footer {
-  width: 100vw;
-  position: relative;
-  background-color: #0084A1;
-}
-
-footer .container {
-  padding: 64px 15%;
-}
-
-.footer_container::before {
-  content: url(../img/spikes-left.png);
-  position: absolute;
-  left: 10%;
-  bottom: 0;
-
-}
-
-.footer_container::after {
-  content: url(../img/spikes-right.png);
-  position: absolute;
-  right: 10%;
-  bottom: 0;
-
-}
-
-footer h2 {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 29px;
-  text-align: left;
-
-  color: #FFFFFF;
-
-  margin-bottom: 50px;
-}
-
-footer .contacts {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 50px 150px;
-  padding: 0px;
-  margin: auto;
-}
-
-/* footer .contact_item {} */
-
-footer .contact_items_header {
-  display: flex;
-  margin-bottom: 10px;
-}
-
-footer .contact_items_header svg {
-  height: 15px;
-}
-
-footer .contact_items_header h5 {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-
-  color: #FFFFFF;
-
-  margin-left: 10px;
-
-}
-
-footer .contact_items_body p {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 20px;
-
-  color: #FFFFFF;
-
-  margin-left: 25px;
 }

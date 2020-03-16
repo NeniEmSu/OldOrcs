@@ -177,3 +177,80 @@
     </section>
   </footer>
 </template>
+
+<style lang="scss" scoped>
+footer {
+  width: 100vw;
+  position: relative;
+  background-color: #0084a1;
+}
+
+footer .container {
+  padding: 64px 15%;
+}
+
+.footer_container::before {
+  content: url(~assets/img/spikes-left.png);
+  position: absolute;
+  left: 10%;
+  bottom: 0;
+}
+
+.footer_container::after {
+  content: url(~assets/img/spikes-right.png);
+  position: absolute;
+  right: 10%;
+  bottom: 0;
+}
+
+footer h2 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: left;
+
+  color: #ffffff;
+
+  margin-bottom: 50px;
+}
+
+footer .contacts {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 50px 150px;
+  padding: 0px;
+  margin: auto;
+}
+
+footer .contact_items_header {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+footer .contact_items_header svg {
+  height: 15px;
+}
+
+footer .contact_items_header h5 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+
+  color: #ffffff;
+
+  margin-left: 10px;
+}
+
+footer .contact_items_body p {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+
+  color: #ffffff;
+
+  margin-left: 25px;
+}
+</style>
