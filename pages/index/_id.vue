@@ -11,10 +11,13 @@
 
 <template>
   <div class="layout">
-    <img
-      src="~/assets/img/thumnail.jpg"
-      alt="img1"
-    >
+    <div class="img">
+      <img
+        src="~/assets/img/thumnail.jpg"
+        alt="img1"
+      >
+    </div>
+
     <div class="text">
       <div class="close">
         <svg
@@ -23,6 +26,7 @@
           viewBox="0 0 50 50"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          @click="hideModal"
         >
           <path
             d="M50 2.94594L47.0541 0L25 22.0541L2.94594 0L0 2.94594L22.0541 25L0 47.0541L2.94594 50L25 27.9459L47.0541 50L50 47.0541L27.9459 25L50 2.94594Z"
@@ -36,14 +40,19 @@
         <p>Це набір колірних, графічних, словесних, типографських, дизайнерських, постійних елементів (констант), що забезпечують візуальну і змістову єдність товарів (послуг) усієї вихідної від фірми інформації, її внутрішнього оформлення.</p>
       </div>
     </div>
-    <img
-      src="~/assets/img/cycler1.jpg"
-      alt="cycler1"
-    >
-    <img
-      src="~/assets/img/cycler2.jpg"
-      alt="cycler2"
-    >
+    <div class="img">
+      <img
+        src="~/assets/img/cycler1.jpg"
+        alt="cycler1"
+      >
+    </div>
+    <div class="img">
+      <img
+        src="~/assets/img/cycler2.jpg"
+        alt="cycler2"
+      >
+    </div>
+
     <nuxt-link
       v-scroll-to="{
         el: '#services',
@@ -73,9 +82,13 @@
 </template>
 
 <script>
+import { gsap } from 'gsap'
+
+const animationSpeed = 0.75
+const animationTimingIn = 'Expo.easeIn'
+const animationTimingOut = 'Expo.easeOut'
 
 export default {
-
   methods: {
     scrollTo (e) {
       const scrollTo = e.target.dataset.scrollTo
@@ -86,6 +99,14 @@ export default {
 
         this.$scrollTo(target, 300, { easing: 'ease-in-out' })
       }
+    },
+    hideModal () {
+      gsap.timeline({ paused: true })
+        .fromTo('.overlay-page',
+          animationSpeed - 0.5,
+          { opacity: 1, display: 'block', ease: animationTimingOut },
+          { opacity: 0, display: 'none', ease: animationTimingIn })
+        .play()
     }
   }
 
@@ -96,19 +117,21 @@ export default {
 .layout {
   box-sizing: border-box;
   background: #ffffff;
-  /* Plate Shadow */
 
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
   padding: 10px;
   width: auto;
 
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 5px;
   width: auto;
 }
 
 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .text {
@@ -144,6 +167,10 @@ img {
     position: absolute;
     right: 30px;
     top: 30px;
+
+    svg{
+      cursor: pointer;
+    }
   }
 }
 

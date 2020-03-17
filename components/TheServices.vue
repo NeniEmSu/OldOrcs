@@ -191,6 +191,8 @@ export default {
 .services_blocks ul {
   display: flex;
   text-align: center;
+
+  overflow-x: auto;
 }
 
 .services_blocks ul li {
