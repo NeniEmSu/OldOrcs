@@ -18,8 +18,7 @@ export default {
   loading: { color: '#fff' },
 
   css: [
-    'normalize.css/normalize.css',
-    '~/assets/css/home.css'
+    'normalize.css/normalize.css'
   ],
 
   plugins: [

@@ -3,105 +3,7 @@
     <TheHero />
     <main class="container">
       <div id="bg" />
-      <section
-        id="services"
-        class="services "
-      >
-        <h2>
-          Послуги
-        </h2>
-
-        <div class="services_blocks">
-          <div
-            id="card"
-            class="modal-card"
-          >
-            <img
-              src="~/assets/img/modal-demo-img.jpg"
-              class="modalImg"
-              alt="modal-demo-img"
-            >
-            <div
-              id="modal-content"
-              class="modal-content"
-            >
-              <h3>Брендинг</h3>
-              <p>
-                Це набір колірних, графічних, словесних, типографських, дизайнерських, постійних елементів (констант), що забезпечують візуальну і змістову єдність товарів (послуг) усієї вихідної від фірми інформації, її внутрішнього оформлення.
-              </p>
-              <p>
-                Основними цілями фірмового стилю можна назвати ідентифікацію виробів і вказівку на зв'язок їх з фірмою, виділення цих товарів з загальної маси аналогічних товарів її конкурентів. Наявність фірмового стилю свідчить про впевненість його власника в позитивному враженні, яке він справляє на споживача.
-              </p>
-
-              <div class="call-to-action">
-                <h4>
-                  Замовити дзвінок
-                </h4>
-                <input
-                  type="text"
-                  placeholder="+380"
-                >
-
-                <button @click="hideModal">
-                  Відправити
-                </button>
-              </div>
-            </div>
-          </div>
-          <ul>
-            <li @click="showModal">
-              <h4>
-                Брендинг
-              </h4><img
-                src="~/assets/img/branding.jpg"
-                alt="Брендинг"
-              >
-            </li>
-            <li>
-              <h4>Графічний дизайн</h4>
-              <img
-                src="~/assets/img/graphic-design.jpg"
-                alt="Графічний дизайн"
-              >
-            </li>
-            <li>
-              <h4>Професійний друк</h4>
-              <img
-                src="~/assets/img/pofessional-printing.jpg"
-                alt="Професійний друк"
-              >
-            </li>
-            <li>
-              <h4>Оперативна поліграфія</h4>
-              <img
-                src="~/assets/img/operative-polygraphy.jpg"
-                alt="Оперативна поліграфія"
-              >
-            </li>
-            <li>
-              <h4>СММ Маркетинг</h4>
-              <img
-                src="~/assets/img/smm-marketing.jpg"
-                alt="СММ Маркетинг"
-              >
-            </li>
-            <li>
-              <h4>Зовнішня реклама</h4>
-              <img
-                src="~/assets/img/outdoor-advertising.jpg"
-                alt="Зовнішня реклама"
-              >
-            </li>
-            <li>
-              <h4>Об’єктна фотографія</h4>
-              <img
-                src="~/assets/img/object-photography.jpg"
-                alt="Об’єктна фотографія"
-              >
-            </li>
-          </ul>
-        </div>
-      </section>
+      <TheServices />
 
       <section
         id="works"
@@ -284,14 +186,16 @@
 
 <script>
 import { gsap } from 'gsap'
-import TheHero from '~/components/ThHero'
+import TheHero from '~/components/TheHero'
+import TheServices from '~/components/TheServices'
 const animationSpeed = 0.75
 const animationTimingIn = 'Expo.easeIn'
 const animationTimingOut = 'Expo.easeOut'
 
 export default {
   components: {
-    TheHero
+    TheHero,
+    TheServices
   },
 
   data () {
@@ -394,102 +298,168 @@ export default {
 .slide-up-move {
   transition: all 0.8s ease-in;
 }
-// .slide-up-leave-to{
 
-// }
-
-#services {
-  position: relative;
-}
-.services_blocks {
-  position: relative;
-}
-.modal-card {
-  position: absolute;
-  z-index: 1;
-  // height: 600px;
-  width: 100%;
-  background: #ffffff;
-
-  top: 15%;
-  left: 10;
-
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
-  display: flex;
-  visibility: hidden;
-
-  .modal-content {
-    padding: 120px 50px;
-
-    h3 {
-      font-style: normal;
-      font-weight: 600;
-      font-size: 24px;
-      line-height: 29px;
-
-      color: #666666;
-
-      margin-bottom: 30px;
-    }
-
-    p {
-      font-style: normal;
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 120%;
-
-      color: #666666;
-
-      margin-bottom: 30px;
-    }
-
-    h4 {
-      font-style: normal;
-      font-weight: 600;
-      font-size: 24px;
-      line-height: 29px;
-
-      color: #666666;
-
-      margin-bottom: 30px;
-    }
-
-    input {
-      border: none;
-      border-bottom: 1px solid #666666;
-      outline: none;
-
-      margin-right: 50px;
-      padding: 12px 0px;
-
-      font-style: normal;
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 120%;
-      /* or 19px */
-
-      color: rgba(102, 102, 102, 0.5);
-    }
-
-    button {
-      font-style: normal;
-      font-weight: 600;
-      font-size: 16px;
-      line-height: 120%;
-
-      text-transform: uppercase;
-
-      color: #ffffff;
-      background-color: #5998bb;
-      border: none;
-
-      padding: 12px 15px;
-    }
-  }
-}
 .work-group {
   position: relative;
 }
+.works {
+  /* width: 100%; */
+  margin-bottom: 40px;
+}
+
+.works h2 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 59px;
+
+  color: #DC6D48;
+
+  margin-bottom: 50px;
+}
+
+.works .categories {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto;
+  grid-gap: 5px;
+}
+
+.works .categories .category {
+  max-width: 210px;
+  min-width: 210px;
+  width: 100%;
+  height: 100px;
+
+  background-position: center;
+  background-size: cover;
+
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+
+  border-radius: 1px;
+
+  margin-bottom: 90px;
+
+}
+
+.works .categories .category h3 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+
+  text-align: center;
+
+  color: #FFFFFF;
+}
+
+.works .categories .category.works-branding {
+  background-image: url(~assets/img/works-branding.jpg);
+}
+
+.works .categories .category.Works-graphic-design {
+  background-image: url(~assets/img/Works-graphic-design.jpg);
+}
+
+.works .categories .category.works-object-photography {
+  background-image: url(~assets/img/works-object-photography.jpg);
+}
+
+.works .categories .category.works-operative-polygraphy {
+  background-image: url(~assets/img/works-operative-polygraphy.jpg);
+}
+
+.works .categories .category.works-outdoor-advertising {
+  background-image: url(~assets/img/works-outdoor-advertising.jpg);
+}
+
+.works .categories .category.works-pofessional-printing {
+  background-image: url(~assets/img/works-pofessional-printing.jpg);
+}
+
+.works .categories .category.works-smm-marketing {
+  background-image: url(~assets/img/works-smm-marketing.jpg);
+}
+
+.works .sub_categories {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto;
+  grid-gap: 10px;
+}
+
+.works .sub_categories .sub_category h4 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #666666;
+  margin-bottom: 30px;
+  cursor: pointer;
+  transition: all 300ms linear;
+  -webkit-transition: all 300ms linear;
+  -moz-transition: all 300ms linear;
+  -ms-transition: all 300ms linear;
+  -o-transition: all 300ms linear;
+}
+
+.works .sub_categories .sub_category h4::before {
+  display: block;
+  content: attr(data-text);
+  font-weight: 600;
+  font-size: 24px;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.works .sub_categories .sub_category h4:hover,
+.works .sub_categories .sub_category h4.active {
+  content: "";
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+  color: #0084A1;
+}
+
+.works_block {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 5px;
+  margin-bottom: 40px;
+}
+
+.works_block img {
+  width: 100%;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.show_more {
+  display: flex;
+  justify-content: center;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  /* identical to box height */
+
+  text-align: center;
+
+  color: #5998BB;
+}
+
+.show_more svg {
+  margin-left: 10px;
+}
+
 .overlay-page {
   position: absolute;
   z-index: 3;

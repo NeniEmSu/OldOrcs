@@ -86,4 +86,61 @@ body {
 
   overflow-x: hidden;
 }
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 100%;
+}
+
+@media screen and (min-width: 576px) {
+  .container {
+
+    max-width: 540px;
+  }
+}
+
+@media screen and (min-width: 788px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1110px;
+}
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1200px;
+}
+}
+
+@media only screen and (min-width: 1600px) {
+  .container{
+    max-width: 1530px;
+  }
+}
+
+main {
+  position: relative;
+}
+
+#bg {
+  position: fixed;
+  top: 1%;
+  left: 0%;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(~assets/img/dynamic-bg.svg);
+  background-repeat: no-repeat;
+  background-size: 141vw;
+  background-position: 20px, 20px;
+  z-index: -1;
+}
 </style>

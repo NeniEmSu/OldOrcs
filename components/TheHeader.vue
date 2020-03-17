@@ -272,6 +272,8 @@ header {
   width: 100vw;
   height: 100px;
 
+  background-color: #ffffff;
+
   display: flex;
   position: relative;
 
