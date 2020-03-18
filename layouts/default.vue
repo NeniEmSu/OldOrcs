@@ -20,13 +20,12 @@ export default {
     TheFooter
   },
   mounted () {
-    // gsap.from(split.chars, { duration: 0.1, visibility: 'hidden', stagger: 0.1 })
     gsap.timeline({ paused: true })
       .fromTo(
         '#hero',
         animationSpeed,
-        { y: 1500, opacity: 0, ease: animationTimingIn },
-        { y: 0, opacity: 1, ease: animationTimingOut }
+        { y: '120%', opacity: 0, ease: animationTimingIn },
+        { y: '0%', opacity: 1, ease: animationTimingOut }
       )
       .fromTo(
         '#myHeader',
@@ -72,6 +71,7 @@ export default {
 * {
   padding: 0;
   margin: 0;
+  border: none;
   box-sizing: border-box;
 }
 

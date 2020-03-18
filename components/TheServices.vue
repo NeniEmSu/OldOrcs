@@ -120,7 +120,7 @@ export default {
           '#card',
           animationSpeed - 0.5,
           { display: 'none', x: 0, visibility: 'hidden', opacity: 0, ease: animationTimingIn },
-          { display: 'flex', x: 100, visibility: 'visible', opacity: 1, ease: animationTimingOut }
+          { display: 'flex', x: 50, visibility: 'visible', opacity: 1, ease: animationTimingOut }
         )
         .fromTo(
           '.modalImg',
@@ -189,15 +189,21 @@ export default {
 }
 
 .services_blocks ul {
-  display: flex;
+  // display: flex;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 10px;
   text-align: center;
 
-  overflow-x: auto;
+  @media screen and (max-width: 1400px) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
 }
 
 .services_blocks ul li {
   list-style: none;
-  margin: auto 10px;
+  // margin: auto 10px;
 }
 
 .services_blocks ul li h4 {

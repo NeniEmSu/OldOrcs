@@ -261,11 +261,11 @@ export default {
 
 .works .categories {
   display: grid;
-  grid-template-columns: auto auto auto auto auto auto auto;
+  grid-template-columns: repeat(7, 1fr);
   grid-gap: 5px;
 
-  @media screen and (min-width: 1200px) {
-    grid-template-columns: auto auto auto auto auto;
+  @media screen and (max-width: 1400px) {
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 

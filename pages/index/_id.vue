@@ -195,6 +195,11 @@ img {
   -ms-transform: rotate(90deg);
   -o-transform: rotate(90deg);
   -webkit-transform: translate(90deg);
+
+  @media screen and (max-width: 1400px) {
+  font-size: 20px;
+  line-height: 24px;
+  }
 }
 
 .scrolldown {
