@@ -7,7 +7,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { hid: 'description', name: 'description', content: 'Бути нашим постійним клієнтом, користуватися широким спектром наших послуг - означає економити гроші, нерви та час. Спробуйте делегувати нам ваші рекламні турботи і ви залишитесь з нами назавжди. Все необхідне в одній затишній студії зі смачною музикою та кавою.' || process.env.npm_package_description }
     ],
     link: [
       { rel: 'icon', type: 'image/png', href: '/favicon.png' },
@@ -25,8 +25,13 @@ export default {
     '~/plugins/vue-scrollto',
     '~/plugins/gsap',
     '~/plugins/vue-modal',
+    '~/plugins/scrollactive',
     {
       src: '~plugins/vue-scrollmagic.js',
+      ssr: false
+    },
+    {
+      src: '~/plugins/directives',
       ssr: false
     }
   ],
