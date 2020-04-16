@@ -1,7 +1,8 @@
 <template>
   <section
     id="services"
-    class="services "
+    v-scrollAnimation
+    class="services"
   >
     <h2>
       Послуги
@@ -107,6 +108,7 @@ const animationTimingIn = 'Expo.easeIn'
 const animationTimingOut = 'Expo.easeOut'
 
 export default {
+
   data () {
     return {
 
@@ -174,7 +176,7 @@ export default {
 }
 
 .services {
-  margin-bottom: 250px;
+  margin-bottom: 220px;
 }
 
 .services h2 {
@@ -189,21 +191,22 @@ export default {
 }
 
 .services_blocks ul {
-  // display: flex;
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-gap: 10px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  justify-content: space-between;
   text-align: center;
 
-  @media screen and (max-width: 1400px) {
-    grid-template-columns: repeat(5, 1fr);
+  @media screen and (max-width: 1599px) {
+   justify-content: flex-start;
   }
 
 }
 
 .services_blocks ul li {
   list-style: none;
-  // margin: auto 10px;
+  width: 200px;
+  margin: 0 0 30PX 0;
 }
 
 .services_blocks ul li h4 {
@@ -220,7 +223,15 @@ export default {
 }
 
 .services_blocks ul li img {
+  width: 200px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+
+  @media screen and (max-width: 1599px) {
+    width: 180px;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+  }
 }
 .modal-card {
   position: absolute;

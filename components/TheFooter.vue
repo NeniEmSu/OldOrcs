@@ -164,7 +164,7 @@
             </svg>
 
             <h5>
-              Телефон
+              Telegram | Viber
             </h5>
           </div>
           <div class="contact_items_body">
@@ -201,6 +201,10 @@ footer .container {
   position: absolute;
   right: 10%;
   bottom: 0;
+}
+
+footer a{
+  text-decoration: none;
 }
 
 footer h2 {

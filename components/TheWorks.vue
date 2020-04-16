@@ -1,7 +1,8 @@
 <template>
   <section
     id="works"
-    class="works "
+    v-scrollAnimation
+    class="works"
   >
     <h2>
       Наші роботи
@@ -84,113 +85,33 @@
         appear
       >
         <img
-          key="1"
+          v-for="work in showWorks"
+          :key="work.image"
           class="block"
-          src="~/assets/img/we-are.jpg"
+          :src="require(`~/assets/img/${work.image}`)"
           alt="we-are"
           @click="showOverlaPge"
         >
-        <img
-          key="2"
-          class="block"
-          src="~/assets/img/tura.jpg"
-          alt="tura"
-        >
-        <img
-          key="3"
-          class="block"
-          src="~/assets/img/nokkaido.jpg"
-          alt="nokkaido"
-        >
-        <img
-          key="4"
-          class="block"
-          src="~/assets/img/urwahn-bike.jpg"
-          alt="urwahn-bike"
-        >
-        <img
-          key="5"
-          class="block"
-          src="~/assets/img/aitchat.jpg"
-          alt="aitchat"
-        >
-        <img
-          key="6"
-          class="block"
-          src="~/assets/img/chat.jpg"
-          alt="chat"
-        >
-        <img
-          key="7"
-          class="block"
-          src="~/assets/img/bloc.jpg"
-          alt="bloc"
-        >
-        <img
-          key="8"
-          class="block"
-          src="~/assets/img/moko.jpg"
-          alt="moko"
-        >
-        <img
-          key="9"
-          class="block"
-          src="~/assets/img/symbol.jpg"
-          alt="symbol"
-        >
-        <img
-          key="10"
-          class="block"
-          src="~/assets/img/hello.jpg"
-          alt="hello"
-        >
-        <img
-          key="11"
-          class="block"
-          src="~/assets/img/cats.jpg"
-          alt="cats"
-        >
-        <img
-          key="12"
-          class="block"
-          src="~/assets/img/lidiya.jpg"
-          alt="lidiya"
-        >
-        <img
-          key="13"
-          class="block"
-          src="~/assets/img/we-are.jpg"
-          alt="we-are"
-        >
-        <img
-          key="14"
-          class="block"
-          src="~/assets/img/tura.jpg"
-          alt="tura"
-        >
-        <img
-          key="15"
-          class="block"
-          src="~/assets/img/nokkaido.jpg"
-          alt="nokkaido"
-        >
       </transition-group>
+      <transition name="fade" mode="out-in">
+        <div v-if="loading" class="loader" />
 
-      <p class="show_more">
-        Показати ще
-        <svg
-          width="16"
-          height="21"
-          viewBox="0 0 16 21"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M7.29289 20.7071C7.68342 21.0976 8.31658 21.0976 8.70711 20.7071L15.0711 14.3431C15.4616 13.9526 15.4616 13.3195 15.0711 12.9289C14.6805 12.5384 14.0474 12.5384 13.6569 12.9289L8 18.5858L2.34315 12.9289C1.95262 12.5384 1.31946 12.5384 0.928932 12.9289C0.538407 13.3195 0.538407 13.9526 0.928932 14.3431L7.29289 20.7071ZM7 -4.37114e-08L7 20L9 20L9 4.37114e-08L7 -4.37114e-08Z"
-            fill="#5998BB"
-          />
-        </svg>
-      </p>
+        <p v-else class="show_more" @click="updateDisplay()">
+          Показати ще
+          <svg
+            width="16"
+            height="21"
+            viewBox="0 0 16 21"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7.29289 20.7071C7.68342 21.0976 8.31658 21.0976 8.70711 20.7071L15.0711 14.3431C15.4616 13.9526 15.4616 13.3195 15.0711 12.9289C14.6805 12.5384 14.0474 12.5384 13.6569 12.9289L8 18.5858L2.34315 12.9289C1.95262 12.5384 1.31946 12.5384 0.928932 12.9289C0.538407 13.3195 0.538407 13.9526 0.928932 14.3431L7.29289 20.7071ZM7 -4.37114e-08L7 20L9 20L9 4.37114e-08L7 -4.37114e-08Z"
+              fill="#5998BB"
+            />
+          </svg>
+        </p>
+      </transition>
     </section>
   </section>
 </template>
@@ -202,7 +123,130 @@ const animationSpeed = 0.75
 const animationTimingIn = 'Expo.easeIn'
 const animationTimingOut = 'Expo.easeOut'
 export default {
+  data () {
+    return {
+      displaying: 16,
+      loading: false,
+      works: [
+        {
+          image: 'we-are.jpg'
+        },
+        {
+          image: 'tura.jpg'
+        },
+        {
+          image: 'nokkaido.jpg'
+        },
+        {
+          image: 'urwahn-bike.jpg'
+        },
+        {
+          image: 'aitchat.jpg'
+        },
+        {
+          image: 'chat.jpg'
+        },
+        {
+          image: 'bloc.jpg'
+        },
+        {
+          image: 'moko.jpg'
+        },
+        {
+          image: 'symbol.jpg'
+        },
+        {
+          image: 'hello.jpg'
+        },
+        {
+          image: 'cats.jpg'
+        },
+        {
+          image: 'lidiya.jpg'
+        },
+        {
+          image: 'we-are.jpg'
+        },
+        {
+          image: 'tura.jpg'
+        },
+        {
+          image: 'nokkaido.jpg'
+        },
+        {
+          image: 'colorfull.jpg'
+        },
+        {
+          image: 'we-are.jpg'
+        },
+        {
+          image: 'tura.jpg'
+        },
+        {
+          image: 'nokkaido.jpg'
+        },
+        {
+          image: 'urwahn-bike.jpg'
+        },
+        {
+          image: 'aitchat.jpg'
+        },
+        {
+          image: 'chat.jpg'
+        },
+        {
+          image: 'bloc.jpg'
+        },
+        {
+          image: 'moko.jpg'
+        },
+        {
+          image: 'symbol.jpg'
+        },
+        {
+          image: 'hello.jpg'
+        },
+        {
+          image: 'cats.jpg'
+        },
+        {
+          image: 'lidiya.jpg'
+        },
+        {
+          image: 'we-are.jpg'
+        },
+        {
+          image: 'tura.jpg'
+        },
+        {
+          image: 'nokkaido.jpg'
+        },
+        {
+          image: 'colorfull.jpg'
+        }
+
+      ]
+    }
+  },
+
+  computed: {
+    showWorks () {
+      return this.works.slice(0, this.displaying)
+    }
+  },
+
   methods: {
+
+    updateDisplay () {
+      this.loading = true
+      const self = this
+      setTimeout(() => {
+        self.loading = false
+      }, 3000)
+      setTimeout(() => {
+        self.displaying = self.displaying += 4
+      }, 3500)
+    },
 
     showOverlaPge () {
       gsap.timeline({ paused: true })
@@ -254,18 +298,20 @@ export default {
   font-size: 48px;
   line-height: 59px;
 
-  color: #DC6D48;
+  color: #dc6d48;
 
   margin-bottom: 50px;
 }
 
 .works .categories {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-gap: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  justify-content: space-between;
+  text-align: center;
 
-  @media screen and (max-width: 1400px) {
-    grid-template-columns: repeat(5, 1fr);
+  @media screen and (max-width: 1599px) {
+   justify-content: flex-start;
   }
 }
 
@@ -284,8 +330,7 @@ export default {
   justify-content: center;
 
   align-items: center;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 5px 5px 0;
 
   border-radius: 1px;
 }
@@ -298,7 +343,7 @@ export default {
 
   text-align: center;
 
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .works .categories .category.works-branding {
@@ -330,11 +375,17 @@ export default {
 }
 
 .works .sub_categories {
-  display: grid;
-  grid-template-columns: auto auto auto auto auto auto auto;
-  grid-gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  justify-content: space-between;
+  text-align: center;
 
-   margin-top: 90px;
+  margin-top: 90px;
+
+  @media screen and (max-width: 1599px) {
+
+  }
 }
 
 .works .sub_categories .sub_category h4 {
@@ -369,7 +420,7 @@ export default {
   font-weight: 600;
   font-size: 24px;
   line-height: 29px;
-  color: #0084A1;
+  color: #0084a1;
 }
 
 .works_block {
@@ -395,11 +446,11 @@ export default {
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
-  /* identical to box height */
 
   text-align: center;
 
-  color: #5998BB;
+  color: #5998bb;
+  cursor: pointer;
 }
 
 .show_more svg {
@@ -411,5 +462,29 @@ export default {
   // position: relative;
   z-index: 3;
   display: none;
+}
+
+.loader {
+  border: 6px solid #f3f3f3; /* Light grey */
+  border-top: 6px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1500ms linear infinite;
+  margin:   auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1000ms;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

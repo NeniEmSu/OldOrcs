@@ -22,9 +22,13 @@
 <template>
   <header id="myHeader">
     <div class="container">
-      <nuxt-link
+      <a
+        v-scroll-to="{
+          el: '#hero',
+          offset: -200
+        }"
         class="logo"
-        :to="localePath({name: 'index'},$i18n.locale)"
+        :href="localePath({name: 'index'},$i18n.locale)+'#hero'"
       >
         <svg
           width="520"
@@ -154,61 +158,60 @@
             fill="black"
           />
         </svg>
-      </nuxt-link>
+      </a>
 
-      <div class="nav">
-        <nuxt-link
-          :to="localePath({name: 'index'},$i18n.locale)"
+      <scrollactive
+        ref="scrollactive"
+        :offset="220"
+        :duration="500"
+        bezier-easing-value=".5,0,.35,1.5"
+        class="my-nav nav"
+      >
+        <a
+          :href="localePath({name: 'index'},$i18n.locale)+'#hero'"
+          class="scrollactive-item"
           exact
           :data-text="$t('links.home')"
         >
           {{ $t('links.home') }}
-        </nuxt-link>
+        </a>
 
-        <nuxt-link
-          v-scroll-to="{
-            el: '#services',
-            offset: -220
-          }"
-          to="#services"
+        <a
+          class="scrollactive-item"
+          href="#services"
           exact
           :data-text=" $t('links.services')"
         >
           {{ $t('links.services') }}
-        </nuxt-link>
+        </a>
 
-        <nuxt-link
-          v-scroll-to="{
-            el: '#works',
-            offset: -120
-          }"
-          to="#works"
+        <a
+          href="#works"
+          class="scrollactive-item"
           exact
           :data-text=" $t('links.portfolio')"
         >
           {{ $t('links.portfolio') }}
-        </nuxt-link>
+        </a>
 
-        <nuxt-link
-          v-scroll-to="{
-            el: '#contact'
-          }"
-          to="#contact"
+        <a
+          class="scrollactive-item"
+          href="#contact"
           exact
           :data-text=" $t('links.contact')"
         >
           {{ $t('links.contact') }}
-        </nuxt-link>
-      </div>
+        </a>
+      </scrollactive>
     </div>
 
     <div class="lang">
-      <nuxt-link :to="switchLocalePath('uk')">
+      <a :class="$i18n.locale === 'uk' ? 'active' : ''" :href="switchLocalePath('uk')">
         Укр
-      </nuxt-link>
-      <nuxt-link :to="switchLocalePath('ru')">
+      </a>
+      <a :class="$i18n.locale === 'ru' ? 'active' : ''" :href="switchLocalePath('ru')">
         Рус
-      </nuxt-link>
+      </a>
     </div>
   </header>
 </template>
@@ -226,10 +229,18 @@ export default {
     }
   },
 
+  computed: {
+
+  },
+
+  watch: {
+    '$route.fullPath': 'hashChanged'
+  },
+
   mounted () {
     window.addEventListener('scroll', this.onScroll)
 
-    this.$nextTick(function () {
+    this.$nextTick(() => {
       window.addEventListener('scroll', function () {
         const navbar = document.getElementById('myHeader')
         const navClasses = navbar.classList
@@ -253,15 +264,7 @@ export default {
   },
 
   methods: {
-    scrollTo (e) {
-      const scrollTo = e.target.dataset.scrollTo
-      const target = document.getElementById(scrollTo)
 
-      if (target) {
-        target.scrollIntoView(true)
-        this.$scrollTo(target, 300, { easing: 'ease-in-out' })
-      }
-    }
   }
 
 }
@@ -335,7 +338,8 @@ header .nav a::before {
 }
 
 header .nav a:hover,
-header .nav a.nuxt-link-exact-active {
+// header .nav a.nuxt-link-exact-active,
+header .nav a.is-active {
   content: "";
   display: block;
   font-weight: 600;
@@ -344,13 +348,17 @@ header .nav a.nuxt-link-exact-active {
   border-bottom: 5px #0084a1 solid;
 }
 
-header .nav a.nuxt-link-exact-active {
+// header .nav a.nuxt-link-exact-active,
+header .nav a.is-active {
   font-weight: 600;
 }
 
 header .lang {
   display: flex;
-  margin-right: auto;
+  right: 40px;
+
+  position: absolute;
+
 }
 
 header .lang a {
@@ -375,11 +383,11 @@ header .lang a {
 }
 
 header .lang a:hover,
-header .lang a.nuxt-link-exact-active {
+header .lang a.active {
   color: #0084a1;
 }
 
-header .lang a.nuxt-link-exact-active {
+header .lang a.active {
   font-weight: 600;
 }
 
