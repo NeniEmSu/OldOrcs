@@ -143,4 +143,15 @@ main {
   background-position: 20px, 20px;
   z-index: -1;
 }
+
+.before-enter{
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 1s ease-out;
+}
+
+.enter{
+  opacity: 1;
+  transform: translateY(0px);
+}
 </style>
