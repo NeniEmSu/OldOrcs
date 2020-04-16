@@ -60,12 +60,10 @@
       }"
       class="scrolldown_container"
       to="#services"
-      @click="scrollTo"
     >
       <div
         class="scroll text-inner"
         data-scroll-to="services"
-        @click="scrollTo"
       >
         {{ $t('scroll') }}
       </div>
@@ -73,7 +71,6 @@
       <div
         class="scrolldown text-inner"
         data-scroll-to="services"
-        @click="scrollTo"
       >
         <div class="line" />
       </div>
@@ -90,16 +87,6 @@ const animationTimingOut = 'Expo.easeOut'
 
 export default {
   methods: {
-    scrollTo (e) {
-      const scrollTo = e.target.dataset.scrollTo
-      const target = document.getElementById(scrollTo)
-
-      if (target) {
-        target.scrollIntoView(true)
-
-        this.$scrollTo(target, 300, { easing: 'ease-in-out' })
-      }
-    },
     hideModal () {
       gsap.timeline({ paused: true })
         .fromTo('.overlay-page',
