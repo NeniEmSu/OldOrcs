@@ -161,13 +161,14 @@
       </b-navbar-brand>
 
       <b-sidebar id="sidebar-right" backdrop shadow right>
-        <div class="px-3 py-2">
+        <div class="px-3 py-2 text-center">
           <b-navbar-nav v-b-scrollspy="200" class="d-block">
             <b-nav-item
               v-scroll-to="{
                 el: '#hero',
                 offset: -200
               }"
+              class="sbNav"
               :to="localePath({ name: 'index' }, $i18n.locale) + '#hero'"
             >
               {{ $t('links.home') }}
@@ -178,6 +179,7 @@
                 el: '#services',
                 offset: -120
               }"
+              class="sbNav"
               to="#services"
             >
               {{ $t('links.services') }}
@@ -188,6 +190,7 @@
                 el: '#works',
                 offset: -120
               }"
+              class="sbNav"
               to="#works"
             >
               {{ $t('links.portfolio') }}
@@ -198,10 +201,15 @@
                 el: '#contact',
                 offset: -120
               }"
+              class="sbNav"
               to="#contact"
             >
               {{ $t('links.contact') }}
             </b-nav-item>
+            <div class="d-inline-flex sbLang">
+              <b-nav-item :to="switchLocalePath('uk')">Укр</b-nav-item>
+              <b-nav-item :to="switchLocalePath('ru')">Рус </b-nav-item>
+            </div>
           </b-navbar-nav>
         </div>
       </b-sidebar>
@@ -214,7 +222,6 @@
               offset: -200
             }"
             :to="localePath({ name: 'index' }, $i18n.locale) + '#hero'"
-            :data-text="$t('links.home')"
           >
             {{ $t('links.home') }}
           </b-nav-item>
@@ -225,7 +232,6 @@
               offset: -120
             }"
             to="#services"
-            :data-text="$t('links.services')"
           >
             {{ $t('links.services') }}
           </b-nav-item>
@@ -236,7 +242,6 @@
               offset: -120
             }"
             to="#works"
-            :data-text="$t('links.portfolio')"
           >
             {{ $t('links.portfolio') }}
           </b-nav-item>
@@ -247,7 +252,6 @@
               offset: -120
             }"
             to="#contact"
-            :data-text="$t('links.contact')"
           >
             {{ $t('links.contact') }}
           </b-nav-item>
@@ -462,11 +466,11 @@ header {
     }
 
     a:hover,
-    a.nuxt-link--active {
+    a.nuxt-link-exact-active {
       color: #0084a1;
     }
 
-    a.nuxt-link--active {
+    a.nuxt-link-exact-active {
       font-weight: 600;
     }
   }
@@ -502,5 +506,76 @@ header {
   margin: auto 0;
 
   cursor: pointer;
+}
+
+#sidebar-right {
+  .sbNav a.nav-link {
+    list-style: none;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+
+    text-decoration: none;
+    text-transform: capitalize;
+    text-align: center;
+
+    color: #666666;
+    border-bottom: 0px #0084a1 solid;
+    text-decoration: none;
+
+    margin: 30px;
+
+    transition: border-bottom 300ms linear, font-weight 300ms linear,
+      color 300ms linear;
+    -webkit-transition: border-bottom 300ms linear, font-weight 300ms linear,
+      color 300ms linear;
+    -moz-transition: border-bottom 300ms linear, font-weight 300ms linear,
+      color 300ms linear;
+    -ms-transition: border-bottom 300ms linear, font-weight 300ms linear,
+      color 300ms linear;
+    -o-transition: border-bottom 300ms linear, font-weight 300ms linear,
+      color 300ms linear;
+
+    &:hover,
+    &.active {
+      content: '';
+      display: block;
+
+      color: #0084a1;
+      border-bottom: 5px #0084a1 solid;
+    }
+  }
+
+  .sbLang {
+    display: inline-flex;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    a {
+      list-style: none;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 20px;
+      text-decoration: none;
+      text-transform: capitalize;
+
+      color: #666666;
+
+      transition: all 300ms ease;
+      -webkit-transition: all 300ms ease;
+      -moz-transition: all 300ms ease;
+      -ms-transition: all 300ms ease;
+      -o-transition: all 300ms ease;
+
+      &:hover,
+      &.nuxt-link-exact-active {
+        color: #0084a1;
+      }
+    }
+  }
 }
 </style>

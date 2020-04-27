@@ -159,6 +159,8 @@ a,
 
   @media screen and (max-width: 600px) {
     font-size: 12px;
+    bottom: 90px;
+    left: 80%;
   }
 }
 
@@ -171,6 +173,10 @@ a,
   right: 0;
   margin: 0 auto;
   overflow: hidden;
+
+  @media screen and (max-width: 600px) {
+    left: 79.5%;
+  }
 }
 
 .line {
