@@ -158,9 +158,10 @@ a,
   -webkit-transform: translate(90deg);
 
   @media screen and (max-width: 600px) {
+    width: 100px;
     font-size: 12px;
-    bottom: 90px;
-    left: 80%;
+    bottom: 100px;
+    left: 75%;
   }
 }
 
