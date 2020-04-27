@@ -25,16 +25,15 @@ export default {
     TheWorks
   },
 
-  data () {
-    return {
-
-    }
+  data() {
+    return {}
   },
 
-  mounted () {
+  mounted() {
     window.addEventListener('scroll', this.moveBackground)
 
-    gsap.timeline({ paused: true })
+    gsap
+      .timeline({ paused: true })
       .fromTo(
         '.works_block',
         animationSpeed,
@@ -51,24 +50,37 @@ export default {
       .play()
   },
 
-  beforeDestroy () {
+  beforeDestroy() {
     window.removeEventListener('scroll', this.moveBackground)
   },
 
   methods: {
-    moveBackground (e) {
+    moveBackground(e) {
       const bgPattern = document.getElementById('bg')
 
       bgPattern.style.backgroundPosition = 1020 - window.pageYOffset + 'px'
     },
 
-    showModal () {
-      gsap.timeline({ paused: true })
+    showModal() {
+      gsap
+        .timeline({ paused: true })
         .fromTo(
           '#card',
           animationSpeed - 0.5,
-          { display: 'none', x: 0, visibility: 'hidden', opacity: 0, ease: animationTimingIn },
-          { display: 'flex', x: 100, visibility: 'visible', opacity: 1, ease: animationTimingOut }
+          {
+            display: 'none',
+            x: 0,
+            visibility: 'hidden',
+            opacity: 0,
+            ease: animationTimingIn
+          },
+          {
+            display: 'flex',
+            x: 100,
+            visibility: 'visible',
+            opacity: 1,
+            ease: animationTimingOut
+          }
         )
         .fromTo(
           '.modalImg',
@@ -86,32 +98,42 @@ export default {
         .play()
     },
 
-    hideModal () {
-      gsap.timeline({ paused: true })
+    hideModal() {
+      gsap
+        .timeline({ paused: true })
         .staggerFromTo(
           '#modal-content',
           animationSpeed,
           { opacity: 1, y: 0, ease: animationTimingOut },
           { opacity: 0, y: 10, ease: animationTimingIn }
-        ).fromTo(
+        )
+        .fromTo(
           '.modalImg',
           animationSpeed,
           { opacity: 1, scaleY: 1, ease: animationTimingOut },
           { opacity: 0, scaleY: 0, ease: animationTimingIn },
           '+=0.25'
-        ).fromTo(
+        )
+        .fromTo(
           '#card',
           animationSpeed,
-          { display: 'flex', visibility: 'visible', opacity: 1, ease: animationTimingOut },
-          { display: 'none', visibility: 'hidden', opacity: 0, ease: animationTimingIn }
+          {
+            display: 'flex',
+            visibility: 'visible',
+            opacity: 1,
+            ease: animationTimingOut
+          },
+          {
+            display: 'none',
+            visibility: 'hidden',
+            opacity: 0,
+            ease: animationTimingIn
+          }
         )
         .play()
     }
   }
-
 }
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

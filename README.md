@@ -1,10 +1,10 @@
-# oldOrcs
+# fullstack-music-manager
 
-> Брендинг • Дизайн • Друк
+> Fullstack music manager app with express
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 $ npm install
 

@@ -1,0 +1,19 @@
+version: '3'
+services:
+  mongo:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_DATABASE: oldorcs
+      # MONGO_INITDB_ROOT_USERNAME: 'admin'
+      # MONGO_INITDB_ROOT_PASSWORD: 'password'
+    ports:
+      - 27017:27017
+  oldorcs:
+    image: oldorcs:latest
+    environment:
+      PORT: 3000
+    ports:
+      - 3000:3000
+
+
+# docker-compose -f docker-compose.yml up

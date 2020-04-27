@@ -20,15 +20,15 @@
 </i18n>
 
 <template>
-  <header id="myHeader">
-    <div class="container">
-      <a
+  <header id="myHeader" class="menu_fixed">
+    <b-navbar type="white" variant="white" class="container">
+      <b-navbar-brand
         v-scroll-to="{
           el: '#hero',
           offset: -200
         }"
         class="logo"
-        :href="localePath({name: 'index'},$i18n.locale)+'#hero'"
+        :to="localePath({ name: 'index' }, $i18n.locale) + '#hero'"
       >
         <svg
           width="520"
@@ -158,60 +158,143 @@
             fill="black"
           />
         </svg>
-      </a>
+      </b-navbar-brand>
 
-      <scrollactive
-        ref="scrollactive"
-        :offset="220"
-        :duration="500"
-        bezier-easing-value=".5,0,.35,1.5"
-        class="my-nav nav"
+      <b-sidebar id="sidebar-right" backdrop shadow right>
+        <div class="px-3 py-2">
+          <b-navbar-nav v-b-scrollspy="200" class="d-block">
+            <b-nav-item
+              v-scroll-to="{
+                el: '#hero',
+                offset: -200
+              }"
+              :to="localePath({ name: 'index' }, $i18n.locale) + '#hero'"
+            >
+              {{ $t('links.home') }}
+            </b-nav-item>
+
+            <b-nav-item
+              v-scroll-to="{
+                el: '#services',
+                offset: -120
+              }"
+              to="#services"
+            >
+              {{ $t('links.services') }}
+            </b-nav-item>
+
+            <b-nav-item
+              v-scroll-to="{
+                el: '#works',
+                offset: -120
+              }"
+              to="#works"
+            >
+              {{ $t('links.portfolio') }}
+            </b-nav-item>
+
+            <b-nav-item
+              v-scroll-to="{
+                el: '#contact',
+                offset: -120
+              }"
+              to="#contact"
+            >
+              {{ $t('links.contact') }}
+            </b-nav-item>
+          </b-navbar-nav>
+        </div>
+      </b-sidebar>
+
+      <div class="my-nav nav" is-nav>
+        <b-navbar-nav v-b-scrollspy="200" class="ml-auto d-none d-lg-flex">
+          <b-nav-item
+            v-scroll-to="{
+              el: '#hero',
+              offset: -200
+            }"
+            :to="localePath({ name: 'index' }, $i18n.locale) + '#hero'"
+            :data-text="$t('links.home')"
+          >
+            {{ $t('links.home') }}
+          </b-nav-item>
+
+          <b-nav-item
+            v-scroll-to="{
+              el: '#services',
+              offset: -120
+            }"
+            to="#services"
+            :data-text="$t('links.services')"
+          >
+            {{ $t('links.services') }}
+          </b-nav-item>
+
+          <b-nav-item
+            v-scroll-to="{
+              el: '#works',
+              offset: -120
+            }"
+            to="#works"
+            :data-text="$t('links.portfolio')"
+          >
+            {{ $t('links.portfolio') }}
+          </b-nav-item>
+
+          <b-nav-item
+            v-scroll-to="{
+              el: '#contact',
+              offset: -120
+            }"
+            to="#contact"
+            :data-text="$t('links.contact')"
+          >
+            {{ $t('links.contact') }}
+          </b-nav-item>
+        </b-navbar-nav>
+      </div>
+
+      <svg
+        v-b-toggle.sidebar-right
+        class="toggle-icon ml-auto d-lg-none d-flex"
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="26"
+        viewBox="0 0 30 26"
       >
-        <a
-          :href="localePath({name: 'index'},$i18n.locale)+'#hero'"
-          class="scrollactive-item"
-          exact
-          :data-text="$t('links.home')"
-        >
-          {{ $t('links.home') }}
-        </a>
+        <path
+          d="M29.318,0H.682A.718.718,0,0,0,0,.75v1.5A.718.718,0,0,0,.682,3H29.318A.718.718,0,0,0,30,2.25V.75A.718.718,0,0,0,29.318,0Z"
+          transform="translate(0 12)"
+          fill="#0084a1"
+        />
+        <path
+          d="M14.318,0H.682A.718.718,0,0,0,0,.75v1.5A.718.718,0,0,0,.682,3H14.318A.718.718,0,0,0,15,2.25V.75A.718.718,0,0,0,14.318,0Z"
+          transform="translate(0 23)"
+          fill="#0084a1"
+        />
+        <path
+          d="M14.318,0H.682A.718.718,0,0,0,0,.75v1.5A.718.718,0,0,0,.682,3H14.318A.718.718,0,0,0,15,2.25V.75A.718.718,0,0,0,14.318,0Z"
+          transform="translate(15)"
+          fill="#0084a1"
+        />
+      </svg>
 
-        <a
-          class="scrollactive-item"
-          href="#services"
-          exact
-          :data-text=" $t('links.services')"
-        >
-          {{ $t('links.services') }}
-        </a>
+      <div></div>
+    </b-navbar>
 
-        <a
-          href="#works"
-          class="scrollactive-item"
-          exact
-          :data-text=" $t('links.portfolio')"
-        >
-          {{ $t('links.portfolio') }}
-        </a>
-
-        <a
-          class="scrollactive-item"
-          href="#contact"
-          exact
-          :data-text=" $t('links.contact')"
-        >
-          {{ $t('links.contact') }}
-        </a>
-      </scrollactive>
-    </div>
-
-    <div class="lang">
-      <a :class="$i18n.locale === 'uk' ? 'active' : ''" :href="switchLocalePath('uk')">
+    <div class="lang xLarge">
+      <nuxt-link :to="switchLocalePath('uk')">
         Укр
-      </a>
-      <a :class="$i18n.locale === 'ru' ? 'active' : ''" :href="switchLocalePath('ru')">
+      </nuxt-link>
+      <nuxt-link :to="switchLocalePath('ru')">
         Рус
-      </a>
+      </nuxt-link>
+    </div>
+    <div class="lang large">
+      <b-nav-item-dropdown style="padding: 12px 0;" text="Lang" right>
+        <b-dropdown-item :to="switchLocalePath('uk')">Укр</b-dropdown-item>
+        <b-dropdown-item :to="switchLocalePath('ru')">Рус</b-dropdown-item>
+      </b-nav-item-dropdown>
     </div>
   </header>
 </template>
@@ -223,50 +306,43 @@
 // const animationTimingOut = 'Expo.easeOut'
 
 export default {
-  data () {
+  data() {
     return {
       lastScrollPosition: 0
     }
   },
 
-  computed: {
+  computed: {},
 
-  },
+  watch: {},
 
-  watch: {
-    '$route.fullPath': 'hashChanged'
-  },
+  // mounted() {
+  //   window.addEventListener('scroll', this.onScroll)
 
-  mounted () {
-    window.addEventListener('scroll', this.onScroll)
+  //   this.$nextTick(() => {
+  //     window.addEventListener('scroll', function() {
+  //       const navbar = document.getElementById('myHeader')
+  //       const navClasses = navbar.classList
+  //       if (document.documentElement.scrollTop >= 300) {
+  //         if (navClasses.contains('menu_fixed') === false) {
+  //           navClasses.toggle('menu_fixed')
+  //           navClasses.toggle('animated')
+  //           navClasses.toggle('fadeInDown')
+  //         }
+  //       } else if (navClasses.contains('menu_fixed') === true) {
+  //         navClasses.toggle('menu_fixed')
+  //         navClasses.toggle('animated')
+  //         navClasses.toggle('fadeInDown')
+  //       }
+  //     })
+  //   })
+  // },
 
-    this.$nextTick(() => {
-      window.addEventListener('scroll', function () {
-        const navbar = document.getElementById('myHeader')
-        const navClasses = navbar.classList
-        if (document.documentElement.scrollTop >= 500) {
-          if (navClasses.contains('menu_fixed') === false) {
-            navClasses.toggle('menu_fixed')
-            navClasses.toggle('animated')
-            navClasses.toggle('fadeInDown')
-          }
-        } else if (navClasses.contains('menu_fixed') === true) {
-          navClasses.toggle('menu_fixed')
-          navClasses.toggle('animated')
-          navClasses.toggle('fadeInDown')
-        }
-      })
-    })
-  },
+  // beforeDestroy() {
+  //   window.removeEventListener('scroll', this.onScroll)
+  // },
 
-  beforeDestroy () {
-    window.removeEventListener('scroll', this.onScroll)
-  },
-
-  methods: {
-
-  }
-
+  methods: {}
 }
 </script>
 
@@ -281,127 +357,119 @@ header {
   position: relative;
 
   z-index: 1;
-}
 
-header .container {
-  display: flex;
-}
+  &.menu_fixed {
+    position: fixed;
+    width: 100vw;
+    background-color: #fff;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+    top: 0;
+  }
 
-header .logo,
-header svg {
-  width: auto;
-  height: 65px;
-  margin: auto 0;
-}
+  .logo svg {
+    width: auto;
+    height: 65px;
+    margin: auto 0;
 
-header .nav {
-  display: flex;
-  margin-left: auto;
-}
+    @media screen and (max-width: 600px) {
+      height: 50px;
+    }
+  }
 
-header .nav a {
-  list-style: none;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 20px;
+  .nav {
+    display: flex;
+    margin-left: auto;
 
-  text-decoration: none;
-  text-transform: capitalize;
+    a.nav-link {
+      list-style: none;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 20px;
 
-  color: #666666;
-  border-bottom: 0px #0084a1 solid;
-  text-decoration: none;
+      text-decoration: none;
+      text-transform: capitalize;
+      text-align: center;
 
-  padding: 45px 0;
-  margin: 0 0 0 50px;
+      color: #666666;
+      border-bottom: 0px #0084a1 solid;
+      text-decoration: none;
 
-  transition: border-bottom 300ms linear, font-weight 300ms linear,
-    color 300ms linear;
-  -webkit-transition: border-bottom 300ms linear, font-weight 300ms linear,
-    color 300ms linear;
-  -moz-transition: border-bottom 300ms linear, font-weight 300ms linear,
-    color 300ms linear;
-  -ms-transition: border-bottom 300ms linear, font-weight 300ms linear,
-    color 300ms linear;
-  -o-transition: border-bottom 300ms linear, font-weight 300ms linear,
-    color 300ms linear;
-}
+      padding: 45px 0 30px 0;
+      margin: 0 25px 0 25px;
 
-header .nav a::before {
-  display: block;
-  content: attr(data-text);
-  font-weight: 600;
-  height: 0;
-  overflow: hidden;
-  visibility: hidden;
-}
+      transition: border-bottom 300ms linear, font-weight 300ms linear,
+        color 300ms linear;
+      -webkit-transition: border-bottom 300ms linear, font-weight 300ms linear,
+        color 300ms linear;
+      -moz-transition: border-bottom 300ms linear, font-weight 300ms linear,
+        color 300ms linear;
+      -ms-transition: border-bottom 300ms linear, font-weight 300ms linear,
+        color 300ms linear;
+      -o-transition: border-bottom 300ms linear, font-weight 300ms linear,
+        color 300ms linear;
 
-header .nav a:hover,
-// header .nav a.nuxt-link-exact-active,
-header .nav a.is-active {
-  content: "";
-  display: block;
-  font-weight: 600;
+      &:hover,
+      &.active {
+        content: '';
+        display: block;
 
-  color: #0084a1;
-  border-bottom: 5px #0084a1 solid;
-}
+        color: #0084a1;
+        border-bottom: 5px #0084a1 solid;
+      }
+    }
+  }
 
-// header .nav a.nuxt-link-exact-active,
-header .nav a.is-active {
-  font-weight: 600;
-}
+  .lang {
+    display: flex;
 
-header .lang {
-  display: flex;
-  right: 40px;
+    position: absolute;
 
-  position: absolute;
+    &.large {
+      display: none;
+      @media screen and (min-width: 1580px) and (max-width: 1729.9px) {
+        display: flex;
+        right: 20px;
+      }
+    }
 
-}
+    &.xLarge {
+      display: none;
+      @media screen and (min-width: 1730px) {
+        display: flex;
+        right: 4%;
+      }
+    }
+    a {
+      list-style: none;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 20px;
+      text-decoration: none;
+      text-transform: capitalize;
 
-header .lang a {
-  list-style: none;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 20px;
-  text-decoration: none;
-  text-transform: capitalize;
+      color: #666666;
 
-  color: #666666;
+      padding: 45px 0;
+      margin: 0 0 0 20px;
 
-  padding: 45px 0;
-  margin: 0 0 0 20px;
+      transition: all 300ms ease;
+      -webkit-transition: all 300ms ease;
+      -moz-transition: all 300ms ease;
+      -ms-transition: all 300ms ease;
+      -o-transition: all 300ms ease;
+    }
 
-  transition: all 300ms ease;
-  -webkit-transition: all 300ms ease;
-  -moz-transition: all 300ms ease;
-  -ms-transition: all 300ms ease;
-  -o-transition: all 300ms ease;
-}
+    a:hover,
+    a.nuxt-link--active {
+      color: #0084a1;
+    }
 
-header .lang a:hover,
-header .lang a.active {
-  color: #0084a1;
-}
-
-header .lang a.active {
-  font-weight: 600;
-}
-
-a {
-  cursor: pointer;
-}
-
-.menu_fixed {
-  position: fixed;
-  z-index: 9999 !important;
-  width: 100%;
-  background-color: #fff;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
-  top: 0;
+    a.nuxt-link--active {
+      font-weight: 600;
+    }
+  }
 }
 
 .animated {
@@ -426,5 +494,13 @@ a {
     transform: translateZ(0);
     opacity: 1;
   }
+}
+
+.toggle-icon {
+  height: 26px;
+  width: 30px;
+  margin: auto 0;
+
+  cursor: pointer;
 }
 </style>

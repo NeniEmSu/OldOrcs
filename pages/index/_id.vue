@@ -12,10 +12,7 @@
 <template>
   <div class="layout">
     <div class="img">
-      <img
-        src="~/assets/img/thumnail.jpg"
-        alt="img1"
-      >
+      <img src="~/assets/img/thumnail.jpg" alt="img1" />
     </div>
 
     <div class="text">
@@ -37,41 +34,27 @@
 
       <div class="content">
         <h2>Заголовок</h2>
-        <p>Це набір колірних, графічних, словесних, типографських, дизайнерських, постійних елементів (констант), що забезпечують візуальну і змістову єдність товарів (послуг) усієї вихідної від фірми інформації, її внутрішнього оформлення.</p>
+        <p>
+          Це набір колірних, графічних, словесних, типографських, дизайнерських,
+          постійних елементів (констант), що забезпечують візуальну і змістову
+          єдність товарів (послуг) усієї вихідної від фірми інформації, її
+          внутрішнього оформлення.
+        </p>
       </div>
     </div>
     <div class="img">
-      <img
-        src="~/assets/img/cycler1.jpg"
-        alt="cycler1"
-      >
+      <img src="~/assets/img/cycler1.jpg" alt="cycler1" />
     </div>
     <div class="img">
-      <img
-        src="~/assets/img/cycler2.jpg"
-        alt="cycler2"
-      >
+      <img src="~/assets/img/cycler2.jpg" alt="cycler2" />
     </div>
 
-    <nuxt-link
-      v-scroll-to="{
-        el: '#services',
-        offset: -220
-      }"
-      class="scrolldown_container"
-      to="#services"
-    >
-      <div
-        class="scroll text-inner"
-        data-scroll-to="services"
-      >
+    <nuxt-link class="scrolldown_container" to="#services">
+      <div class="scroll text-inner" data-scroll-to="services">
         {{ $t('scroll') }}
       </div>
 
-      <div
-        class="scrolldown text-inner"
-        data-scroll-to="services"
-      >
+      <div class="scrolldown text-inner" data-scroll-to="services">
         <div class="line" />
       </div>
     </nuxt-link>
@@ -87,16 +70,18 @@ const animationTimingOut = 'Expo.easeOut'
 
 export default {
   methods: {
-    hideModal () {
-      gsap.timeline({ paused: true })
-        .fromTo('.overlay-page',
+    hideModal() {
+      gsap
+        .timeline({ paused: true })
+        .fromTo(
+          '.overlay-page',
           animationSpeed - 0.5,
           { opacity: 1, display: 'block', ease: animationTimingOut },
-          { opacity: 0, display: 'none', ease: animationTimingIn })
+          { opacity: 0, display: 'none', ease: animationTimingIn }
+        )
         .play()
     }
   }
-
 }
 </script>
 
@@ -155,7 +140,7 @@ img {
     right: 30px;
     top: 30px;
 
-    svg{
+    svg {
       cursor: pointer;
     }
   }
@@ -184,8 +169,8 @@ img {
   -webkit-transform: translate(90deg);
 
   @media screen and (max-width: 1400px) {
-  font-size: 20px;
-  line-height: 24px;
+    font-size: 20px;
+    line-height: 24px;
   }
 }
 

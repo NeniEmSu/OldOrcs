@@ -17,15 +17,12 @@
 
 <template>
   <footer>
-    <section
-      id="contact"
-      class="container footer_container"
-    >
-      <h2>
-        {{ $t('title') }}
-      </h2>
-
+    <section id="contact" class="container footer_container">
       <div class="contacts">
+        <h2>
+          {{ $t('title') }}
+        </h2>
+        <div></div>
         <a
           href="https://www.google.com/maps/place/Henerala+Myrona+Tarnavs'koho+St,+36,+Ternopil,+Ternopil's'ka+oblast,+46024/@49.566604,25.6356834,17z/data=!3m1!4b1!4m5!3m4!1s0x473033dfc7ec2fb5:0x5eb16a8fb79c4e7e!8m2!3d49.566604!4d25.6378721"
           target="_blank"
@@ -55,10 +52,7 @@
           </div>
         </a>
 
-        <a
-          href="mailto:office@oldorcs.com"
-          class="contact_item"
-        >
+        <a href="mailto:office@oldorcs.com" class="contact_item">
           <div class="contact_items_header">
             <svg
               width="15"
@@ -87,11 +81,7 @@
               </g>
               <defs>
                 <clipPath id="clip0">
-                  <rect
-                    width="15"
-                    height="15"
-                    fill="white"
-                  />
+                  <rect width="15" height="15" fill="white" />
                 </clipPath>
               </defs>
             </svg>
@@ -107,11 +97,7 @@
           </div>
         </a>
 
-        <a
-          href="tel:+38-097-207-30-30"
-          class="contact_item"
-        >
-
+        <a href="tel:+38-097-207-30-30" class="contact_item">
           <div class="contact_items_header">
             <svg
               width="15"
@@ -154,11 +140,7 @@
               </g>
               <defs>
                 <clipPath id="clip0">
-                  <rect
-                    width="15"
-                    height="15"
-                    fill="white"
-                  />
+                  <rect width="15" height="15" fill="white" />
                 </clipPath>
               </defs>
             </svg>
@@ -181,8 +163,11 @@
 <style lang="scss" scoped>
 footer {
   width: 100vw;
+  height: auto;
   position: relative;
   background-color: #0084a1;
+  margin-bottom: 0;
+  bottom: 0;
 }
 
 footer .container {
@@ -192,18 +177,38 @@ footer .container {
 .footer_container::before {
   content: url(~assets/img/spikes-left.png);
   position: absolute;
+  padding: 0;
+  height: auto;
   left: 10%;
   bottom: 0;
+
+  @media screen and (max-width: 1200px) {
+    left: 5%;
+  }
+
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 }
 
-.footer_container::after {
+footer::after {
   content: url(~assets/img/spikes-right.png);
   position: absolute;
+  padding: 0;
+  height: auto;
   right: 10%;
   bottom: 0;
+
+  @media screen and (max-width: 1200px) {
+    right: 5%;
+  }
+
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
 }
 
-footer a{
+footer a {
   text-decoration: none;
 }
 
@@ -217,14 +222,40 @@ footer h2 {
   color: #ffffff;
 
   margin-bottom: 50px;
+
+  @media screen and (max-width: 1200px) {
+    margin-bottom: 25px;
+  }
+
+  @media screen and (max-width: 600px) {
+    margin-bottom: 12.5px;
+  }
+
+  @media screen and (max-width: 376px) {
+    text-align: center;
+  }
 }
 
 footer .contacts {
   display: grid;
   grid-template-columns: auto auto;
+  justify-content: center;
   grid-gap: 50px 150px;
   padding: 0px;
   margin: auto;
+
+  @media screen and (max-width: 1200px) {
+    grid-gap: 25px 100px;
+  }
+
+  @media screen and (max-width: 600px) {
+    grid-gap: 12.5px 50px;
+  }
+
+  @media screen and (max-width: 376px) {
+    grid-template-columns: auto;
+    text-align: center;
+  }
 }
 
 footer .contact_items_header {
@@ -234,6 +265,10 @@ footer .contact_items_header {
 
 footer .contact_items_header svg {
   height: 15px;
+
+  @media screen and (max-width: 376px) {
+    margin-left: auto;
+  }
 }
 
 footer .contact_items_header h5 {
@@ -245,6 +280,10 @@ footer .contact_items_header h5 {
   color: #ffffff;
 
   margin-left: 10px;
+
+  @media screen and (max-width: 376px) {
+    margin-right: auto;
+  }
 }
 
 footer .contact_items_body p {

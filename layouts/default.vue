@@ -19,8 +19,9 @@ export default {
     TheHeader,
     TheFooter
   },
-  mounted () {
-    gsap.timeline({ paused: true })
+  mounted() {
+    gsap
+      .timeline({ paused: true })
       .fromTo(
         '#hero',
         animationSpeed,
@@ -79,51 +80,15 @@ html {
   scroll-behavior: smooth;
   padding: 0;
   margin: 0;
-}
-
-body {
-  font-family: "Montserrat", sans-serif;
-
+  width: 100vw;
   overflow-x: hidden;
 }
 
-.container {
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 15px;
-  padding-left: 15px;
-  width: 100%;
-}
+body {
+  font-family: 'Montserrat', sans-serif;
 
-@media screen and (min-width: 576px) {
-  .container {
-
-    max-width: 540px;
-  }
-}
-
-@media screen and (min-width: 788px) {
-  .container {
-    max-width: 720px;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .container {
-    max-width: 1110px;
-}
-}
-
-@media screen and (min-width: 1440px) {
-  .container {
-    max-width: 1200px;
-}
-}
-
-@media only screen and (min-width: 1600px) {
-  .container{
-    max-width: 1530px;
-  }
+  overflow-x: hidden;
+  width: 100vw;
 }
 
 main {
@@ -144,13 +109,13 @@ main {
   z-index: -1;
 }
 
-.before-enter{
+.before-enter {
   opacity: 0;
   transform: translateY(100px);
   transition: all 1s ease-out;
 }
 
-.enter{
+.enter {
   opacity: 1;
   transform: translateY(0px);
 }

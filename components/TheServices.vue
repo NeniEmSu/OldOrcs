@@ -1,43 +1,37 @@
 <template>
-  <section
-    id="services"
-    v-scrollAnimation
-    class="services"
-  >
+  <section id="services" class="services">
     <h2>
       Послуги
     </h2>
 
-    <div class="services_blocks">
-      <div
-        id="card"
-        class="modal-card"
-      >
+    <div v-scrollAnimation class="services_blocks">
+      <div id="card" class="modal-card">
         <img
           src="~/assets/img/modal-demo-img.jpg"
           class="modalImg"
           alt="modal-demo-img"
-        >
-        <div
-          id="modal-content"
-          class="modal-content"
-        >
+        />
+        <div id="modal-content" class="modal-content">
           <h3>Брендинг</h3>
           <p>
-            Це набір колірних, графічних, словесних, типографських, дизайнерських, постійних елементів (констант), що забезпечують візуальну і змістову єдність товарів (послуг) усієї вихідної від фірми інформації, її внутрішнього оформлення.
+            Це набір колірних, графічних, словесних, типографських,
+            дизайнерських, постійних елементів (констант), що забезпечують
+            візуальну і змістову єдність товарів (послуг) усієї вихідної від
+            фірми інформації, її внутрішнього оформлення.
           </p>
           <p>
-            Основними цілями фірмового стилю можна назвати ідентифікацію виробів і вказівку на зв'язок їх з фірмою, виділення цих товарів з загальної маси аналогічних товарів її конкурентів. Наявність фірмового стилю свідчить про впевненість його власника в позитивному враженні, яке він справляє на споживача.
+            Основними цілями фірмового стилю можна назвати ідентифікацію виробів
+            і вказівку на зв'язок їх з фірмою, виділення цих товарів з загальної
+            маси аналогічних товарів її конкурентів. Наявність фірмового стилю
+            свідчить про впевненість його власника в позитивному враженні, яке
+            він справляє на споживача.
           </p>
 
           <div class="call-to-action">
             <h4>
               Замовити дзвінок
             </h4>
-            <input
-              type="text"
-              placeholder="+380"
-            >
+            <input v-model="phone" type="tel" placeholder="+380" />
 
             <button @click="hideModal">
               Відправити
@@ -49,52 +43,44 @@
         <li @click="showModal">
           <h4>
             Брендинг
-          </h4><img
-            src="~/assets/img/branding.jpg"
-            alt="Брендинг"
-          >
+          </h4>
+          <img src="~/assets/img/branding.jpg" alt="Брендинг" />
         </li>
         <li>
           <h4>Графічний дизайн</h4>
-          <img
-            src="~/assets/img/graphic-design.jpg"
-            alt="Графічний дизайн"
-          >
+          <img src="~/assets/img/graphic-design.jpg" alt="Графічний дизайн" />
         </li>
         <li>
           <h4>Професійний друк</h4>
           <img
             src="~/assets/img/pofessional-printing.jpg"
             alt="Професійний друк"
-          >
+          />
         </li>
         <li>
           <h4>Оперативна поліграфія</h4>
           <img
             src="~/assets/img/operative-polygraphy.jpg"
             alt="Оперативна поліграфія"
-          >
+          />
         </li>
         <li>
           <h4>СММ Маркетинг</h4>
-          <img
-            src="~/assets/img/smm-marketing.jpg"
-            alt="СММ Маркетинг"
-          >
+          <img src="~/assets/img/smm-marketing.jpg" alt="СММ Маркетинг" />
         </li>
         <li>
           <h4>Зовнішня реклама</h4>
           <img
             src="~/assets/img/outdoor-advertising.jpg"
             alt="Зовнішня реклама"
-          >
+          />
         </li>
         <li>
           <h4>Об’єктна фотографія</h4>
           <img
             src="~/assets/img/object-photography.jpg"
             alt="Об’єктна фотографія"
-          >
+          />
         </li>
       </ul>
     </div>
@@ -108,21 +94,33 @@ const animationTimingIn = 'Expo.easeIn'
 const animationTimingOut = 'Expo.easeOut'
 
 export default {
-
-  data () {
+  data() {
     return {
-
+      phone: ''
     }
   },
 
   methods: {
-    showModal () {
-      gsap.timeline({ paused: true })
+    showModal() {
+      gsap
+        .timeline({ paused: true })
         .fromTo(
           '#card',
           animationSpeed - 0.5,
-          { display: 'none', x: 0, visibility: 'hidden', opacity: 0, ease: animationTimingIn },
-          { display: 'flex', x: 50, visibility: 'visible', opacity: 1, ease: animationTimingOut }
+          {
+            display: 'none',
+            x: 0,
+            visibility: 'hidden',
+            opacity: 0,
+            ease: animationTimingIn
+          },
+          {
+            display: 'flex',
+            x: 50,
+            visibility: 'visible',
+            opacity: 1,
+            ease: animationTimingOut
+          }
         )
         .fromTo(
           '.modalImg',
@@ -140,29 +138,41 @@ export default {
         .play()
     },
 
-    hideModal () {
-      gsap.timeline({ paused: true })
+    hideModal() {
+      gsap
+        .timeline({ paused: true })
         .staggerFromTo(
           '#modal-content',
           animationSpeed,
           { opacity: 1, y: 0, ease: animationTimingOut },
           { opacity: 0, y: 10, ease: animationTimingIn }
-        ).fromTo(
+        )
+        .fromTo(
           '.modalImg',
           animationSpeed,
           { opacity: 1, scaleY: 1, ease: animationTimingOut },
           { opacity: 0, scaleY: 0, ease: animationTimingIn },
           '+=0.25'
-        ).fromTo(
+        )
+        .fromTo(
           '#card',
           animationSpeed,
-          { display: 'flex', visibility: 'visible', opacity: 1, ease: animationTimingOut },
-          { display: 'none', visibility: 'hidden', opacity: 0, ease: animationTimingIn }
+          {
+            display: 'flex',
+            visibility: 'visible',
+            opacity: 1,
+            ease: animationTimingOut
+          },
+          {
+            display: 'none',
+            visibility: 'hidden',
+            opacity: 0,
+            ease: animationTimingIn
+          }
         )
         .play()
     }
   }
-
 }
 </script>
 
@@ -177,6 +187,10 @@ export default {
 
 .services {
   margin-bottom: 220px;
+
+  @media screen and (max-width: 1599px) {
+    margin-bottom: 100px;
+  }
 }
 
 .services h2 {
@@ -185,28 +199,26 @@ export default {
   font-size: 48px;
   line-height: 59px;
 
-  color: #DC6D48;
+  color: #dc6d48;
 
   margin-bottom: 50px;
 }
 
 .services_blocks ul {
-  display: inline-flex;
-  flex-wrap: wrap;
-  column-gap: 20px;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(7, auto);
+  grid-gap: 10px;
   text-align: center;
 
-  @media screen and (max-width: 1599px) {
-   justify-content: flex-start;
+  @media screen and (max-width: 769px) {
+    grid-template-columns: repeat(4, auto);
   }
-
 }
 
 .services_blocks ul li {
   list-style: none;
-  width: 200px;
-  margin: 0 0 30PX 0;
+  width: auto;
+  margin: auto 0 30px 0;
 }
 
 .services_blocks ul li h4 {
@@ -219,15 +231,15 @@ export default {
 
   color: #666666;
 
-  margin-bottom: 30px;
+  margin: auto 0 30px 0;
 }
 
 .services_blocks ul li img {
-  width: 200px;
+  max-width: 200px;
+  width: auto;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
 
   @media screen and (max-width: 1599px) {
-    width: 180px;
     height: 300px;
     object-fit: cover;
     object-position: center;

@@ -1,5 +1,4 @@
-
-export default {
+module.exports = {
   mode: 'universal',
 
   head: {
@@ -7,29 +6,37 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Бути нашим постійним клієнтом, користуватися широким спектром наших послуг - означає економити гроші, нерви та час. Спробуйте делегувати нам ваші рекламні турботи і ви залишитесь з нами назавжди. Все необхідне в одній затишній студії зі смачною музикою та кавою.' || process.env.npm_package_description }
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          'Бути нашим постійним клієнтом, користуватися широким спектром наших послуг - означає економити гроші, нерви та час. Спробуйте делегувати нам ваші рекламні турботи і ви залишитесь з нами назавжди. Все необхідне в одній затишній студії зі смачною музикою та кавою.' ||
+          process.env.npm_package_description
+      }
     ],
     link: [
       { rel: 'icon', type: 'image/png', href: '/favicon.png' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap&subset=cyrillic' }
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap&subset=cyrillic'
+      }
+    ],
+    script: [
+      {
+        src: 'https://kit.fontawesome.com/41fc25a21c.js'
+      }
     ]
   },
 
   loading: { color: '#fff' },
 
-  css: [
-    'normalize.css/normalize.css'
-  ],
+  css: ['~/assets/scss/override.scss'],
 
   plugins: [
     '~/plugins/vue-scrollto',
     '~/plugins/gsap',
     '~/plugins/vue-modal',
-    '~/plugins/scrollactive',
-    {
-      src: '~plugins/vue-scrollmagic.js',
-      ssr: false
-    },
     {
       src: '~/plugins/directives',
       ssr: false
@@ -38,32 +45,58 @@ export default {
 
   buildModules: [
     '@nuxtjs/eslint-module',
-    '@nuxtjs/stylelint-module'
+    '@nuxtjs/stylelint-module',
+    '@nuxtjs/moment'
   ],
 
   modules: [
+    'bootstrap-vue/nuxt',
+    'vue-sweetalert2/nuxt',
     '@nuxtjs/axios',
+    '@nuxtjs/auth',
     '@nuxtjs/pwa',
+    '@nuxtjs/dotenv',
     'vue-scrollto/nuxt',
     '@nuxtjs/dotenv',
-    ['nuxt-i18n', {
-      seo: true,
-      baseUrl: 'https://barbaresco.netlify.com',
-      locales: [{
-        iso: 'uk-Uk',
-        code: 'uk',
-        name: 'Укр'
-      },
+    [
+      'nuxt-i18n',
       {
-        iso: 'ru-RU',
-        code: 'ru',
-        name: 'Рус'
+        seo: true,
+        baseUrl: 'https://barbaresco.netlify.com',
+        locales: [
+          {
+            iso: 'uk-Uk',
+            code: 'uk',
+            name: 'Укр'
+          },
+          {
+            iso: 'ru-RU',
+            code: 'ru',
+            name: 'Рус'
+          }
+        ]
       }
-      ]
-    }]
+    ]
   ],
 
+  // auth: {
+  //   strategies: {
+  //     local: {
+  //       endpoints: {
+  //         login: {
+  //           url: '/api/auth/login',
+  //           method: 'post'
+  //         },
+  //         tokenRequired: false,
+  //         tokenType: false,
+  //         user: { url: '/api/user', method: 'get', propertyName: 'user' }
+  //       }
+  //     }
+  //   }
+  // },
+
   axios: {
+    proxy: true
   },
 
   i18n: {
@@ -82,11 +115,15 @@ export default {
   },
 
   build: {
-    transpile: [
-      'gsap'
-    ],
-
-    extend (config, ctx) {
+    transpile: ['gsap'],
+    extend(config, ctx) {
+      config.module.rules.push({
+        test: /\.(ogg|mp3|mp4|wav|mpe?g)$/i,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]'
+        }
+      })
     }
   }
 }

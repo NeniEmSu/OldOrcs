@@ -1,9 +1,5 @@
 <template>
-  <section
-    id="works"
-    v-scrollAnimation
-    class="works"
-  >
+  <section id="works" v-scrollAnimation class="works">
     <h2>
       Наші роботи
     </h2>
@@ -39,10 +35,7 @@
         </h4>
       </div>
       <div class="sub_category">
-        <h4
-          class="active"
-          data-text="Макети"
-        >
+        <h4 class="active" data-text="Макети">
           Макети
         </h4>
       </div>
@@ -72,7 +65,7 @@
         </h4>
       </div>
     </div>
-    <section class="work-group">
+    <section id="work-group" class="work-group">
       <div class="overlay-page">
         <nuxt-child />
       </div>
@@ -85,13 +78,17 @@
         appear
       >
         <img
-          v-for="work in showWorks"
-          :key="work.image"
+          v-for="(work, index) in showWorks"
+          :key="work.image + index"
+          v-scroll-to="{
+            el: '#work-group',
+            offset: -200
+          }"
           class="block"
           :src="require(`~/assets/img/${work.image}`)"
           alt="we-are"
           @click="showOverlaPge"
-        >
+        />
       </transition-group>
       <transition name="fade" mode="out-in">
         <div v-if="loading" class="loader" />
@@ -123,7 +120,7 @@ const animationSpeed = 0.75
 const animationTimingIn = 'Expo.easeIn'
 const animationTimingOut = 'Expo.easeOut'
 export default {
-  data () {
+  data() {
     return {
       displaying: 16,
       loading: false,
@@ -224,20 +221,18 @@ export default {
         {
           image: 'colorfull.jpg'
         }
-
       ]
     }
   },
 
   computed: {
-    showWorks () {
+    showWorks() {
       return this.works.slice(0, this.displaying)
     }
   },
 
   methods: {
-
-    updateDisplay () {
+    updateDisplay() {
       this.loading = true
       const self = this
       setTimeout(() => {
@@ -248,8 +243,9 @@ export default {
       }, 3500)
     },
 
-    showOverlaPge () {
-      gsap.timeline({ paused: true })
+    showOverlaPge() {
+      gsap
+        .timeline({ paused: true })
         .fromTo(
           '.overlay-page',
           animationSpeed,
@@ -259,12 +255,15 @@ export default {
         .play()
     },
 
-    hideModal () {
-      gsap.timeline({ paused: true })
-        .fromTo('.overlay-page',
+    hideModal() {
+      gsap
+        .timeline({ paused: true })
+        .fromTo(
+          '.overlay-page',
           animationSpeed,
           { opacity: 1, display: 'block', ease: animationTimingOut },
-          { opacity: 0, display: 'none', ease: animationTimingIn })
+          { opacity: 0, display: 'none', ease: animationTimingIn }
+        )
         .play()
     }
   }
@@ -311,7 +310,7 @@ export default {
   text-align: center;
 
   @media screen and (max-width: 1599px) {
-   justify-content: flex-start;
+    justify-content: flex-start;
   }
 }
 
@@ -384,7 +383,6 @@ export default {
   margin-top: 90px;
 
   @media screen and (max-width: 1599px) {
-
   }
 }
 
@@ -416,7 +414,7 @@ export default {
 
 .works .sub_categories .sub_category h4:hover,
 .works .sub_categories .sub_category h4.active {
-  content: "";
+  content: '';
   font-weight: 600;
   font-size: 24px;
   line-height: 29px;
@@ -471,12 +469,16 @@ export default {
   width: 30px;
   height: 30px;
   animation: spin 1500ms linear infinite;
-  margin:   auto;
+  margin: auto;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .fade-enter-active,

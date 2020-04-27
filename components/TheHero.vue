@@ -28,38 +28,28 @@
         {{ $t('create') }}
       </span>
     </div>
-    <a
+    <nuxt-link
       v-scroll-to="{
         el: '#services',
-        offset: -220
+        offset: -120
       }"
       class="scrolldown_container"
-      href="#services"
+      to="#services"
     >
-      <div
-        class="scroll text-inner"
-        data-scroll-to="services"
-      >
+      <div class="scroll text-inner" data-scroll-to="services">
         {{ $t('scroll') }}
       </div>
 
-      <div
-        class="scrolldown text-inner"
-        data-scroll-to="services"
-      >
+      <div class="scrolldown text-inner" data-scroll-to="services">
         <div class="line" />
       </div>
-    </a>
+    </nuxt-link>
   </div>
 </template>
 
 <script>
-
 export default {
-
-  methods: {
-  }
-
+  methods: {}
 }
 </script>
 
@@ -74,6 +64,7 @@ a,
 #hero {
   width: 100vw;
   height: calc(100vh - 100px);
+  // height: 100vh;
 
   position: relative;
 
@@ -90,12 +81,19 @@ a,
 
   align-items: center;
 
+  margin-top: 100px;
   margin-bottom: 150px;
+
+  &::before {
+    content: '';
+    display: block;
+    margin-top: 100px;
+  }
 }
 
 @font-face {
   font-family: Gobold CYR-LAT;
-  src: url("~assets/fonts/GoboldCYR-LAT.otf") format("opentype");
+  src: url('~assets/fonts/GoboldCYR-LAT.otf') format('opentype');
 }
 
 #hero h1 {
@@ -108,21 +106,13 @@ a,
   color: #ffffff;
 
   margin: 15px 0;
+
+  @media screen and (max-width: 600px) {
+    font-size: 63px;
+  }
 }
 
-#hero span.start {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 29px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-
-  color: #ffffff;
-  display: block;
-  text-align: left;
-}
-
+#hero span.start,
 #hero span.end {
   font-style: normal;
   font-weight: 500;
@@ -133,6 +123,15 @@ a,
 
   color: #ffffff;
   display: block;
+
+  @media screen and (max-width: 600px) {
+    font-size: 12px;
+  }
+}
+#hero span.start {
+  text-align: left;
+}
+#hero span.end {
   text-align: right;
 }
 
@@ -157,6 +156,10 @@ a,
   -ms-transform: rotate(90deg);
   -o-transform: rotate(90deg);
   -webkit-transform: translate(90deg);
+
+  @media screen and (max-width: 600px) {
+    font-size: 12px;
+  }
 }
 
 .scrolldown {
