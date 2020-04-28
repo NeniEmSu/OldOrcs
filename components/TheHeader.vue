@@ -360,7 +360,7 @@ header {
   display: flex;
   position: relative;
 
-  z-index: 1;
+  z-index: 4;
 
   &.menu_fixed {
     position: fixed;
@@ -400,7 +400,7 @@ header {
       text-decoration: none;
 
       padding: 45px 0 30px 0;
-      margin: 0 25px 0 25px;
+      margin: 0 0 0 50px;
 
       transition: border-bottom 300ms linear, font-weight 300ms linear,
         color 300ms linear;

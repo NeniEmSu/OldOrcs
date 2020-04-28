@@ -123,7 +123,11 @@
           </div>
         </a>
 
-        <div class="contact_item">
+        <a
+          href="viber://contact?number=%2B+380972073030"
+          target="_blank"
+          class="contact_item"
+        >
           <div class="contact_items_header">
             <svg
               width="15"
@@ -154,7 +158,7 @@
               +38 097 207 30 30
             </p>
           </div>
-        </div>
+        </a>
       </div>
     </section>
   </footer>
@@ -171,40 +175,32 @@ footer {
 }
 
 footer .container {
-  padding: 64px 15%;
-}
-
-.footer_container::before {
-  content: url(~assets/img/spikes-left.png);
-  position: absolute;
-  padding: 0;
-  height: auto;
-  left: 10%;
+  position: relative;
   bottom: 0;
-
-  @media screen and (max-width: 1200px) {
-    left: 5%;
+  margin-bottom: 0;
+  padding: 70px 15%;
+  &::before {
+    content: url(~assets/img/spikes-left.png);
+    position: absolute;
+    padding: 0;
+    height: auto;
+    left: 0;
+    bottom: 0;
+    // @media screen and (max-width: 600px) {
+    //   display: none;
+    // }
   }
+  &::after {
+    content: url(~assets/img/spikes-right.png);
+    position: absolute;
+    padding: 0;
+    height: auto;
+    right: 0;
+    bottom: 0;
 
-  @media screen and (max-width: 600px) {
-    display: none;
-  }
-}
-
-footer::after {
-  content: url(~assets/img/spikes-right.png);
-  position: absolute;
-  padding: 0;
-  height: auto;
-  right: 10%;
-  bottom: 0;
-
-  @media screen and (max-width: 1200px) {
-    right: 5%;
-  }
-
-  @media screen and (max-width: 600px) {
-    display: none;
+    // @media screen and (max-width: 600px) {
+    //   display: none;
+    // }
   }
 }
 

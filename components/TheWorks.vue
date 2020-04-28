@@ -304,9 +304,6 @@ export default {
 
 .works .categories {
   display: flex;
-  flex-wrap: wrap;
-  column-gap: 10px;
-  justify-content: space-between;
   text-align: center;
 
   @media screen and (max-width: 1599px) {
@@ -315,8 +312,8 @@ export default {
 }
 
 .works .categories .category {
-  max-width: 210px;
-  min-width: 210px;
+  max-width: 205px;
+  min-width: 205px;
   width: 100%;
   height: 100px;
 
@@ -329,7 +326,7 @@ export default {
   justify-content: center;
 
   align-items: center;
-  margin: 0 5px 5px 0;
+  margin: 0 10px 5px 0;
 
   border-radius: 1px;
 }
@@ -424,9 +421,17 @@ export default {
 .works_block {
   position: relative;
   display: grid;
-  grid-template-columns: auto auto auto auto;
-  grid-gap: 5px;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 10px;
   margin-bottom: 40px;
+
+  @media screen and (max-width: 600px) {
+    grid-template-columns: repeat(3, auto);
+  }
+
+  @media screen and (max-width: 425px) {
+    grid-template-columns: repeat(2, auto);
+  }
 }
 
 .works_block img {
@@ -457,14 +462,13 @@ export default {
 
 .overlay-page {
   position: absolute;
-  // position: relative;
   z-index: 3;
   display: none;
 }
 
 .loader {
-  border: 6px solid #f3f3f3; /* Light grey */
-  border-top: 6px solid #3498db; /* Blue */
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #3498db;
   border-radius: 50%;
   width: 30px;
   height: 30px;

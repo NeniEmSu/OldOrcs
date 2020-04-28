@@ -91,6 +91,22 @@ body {
   width: 100vw;
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(128, 128, 128);
+  border-radius: 2.5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(0, 133, 163);
+  border-radius: 2.5px;
+}
+
 main {
   position: relative;
 }
