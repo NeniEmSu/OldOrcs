@@ -22,7 +22,7 @@ export default {
   components: {
     TheHero,
     TheServices,
-    TheWorks
+    TheWorks,
   },
 
   data() {
@@ -72,14 +72,14 @@ export default {
             x: 0,
             visibility: 'hidden',
             opacity: 0,
-            ease: animationTimingIn
+            ease: animationTimingIn,
           },
           {
             display: 'flex',
             x: 100,
             visibility: 'visible',
             opacity: 1,
-            ease: animationTimingOut
+            ease: animationTimingOut,
           }
         )
         .fromTo(
@@ -121,18 +121,18 @@ export default {
             display: 'flex',
             visibility: 'visible',
             opacity: 1,
-            ease: animationTimingOut
+            ease: animationTimingOut,
           },
           {
             display: 'none',
             visibility: 'hidden',
             opacity: 0,
-            ease: animationTimingIn
+            ease: animationTimingIn,
           }
         )
         .play()
-    }
-  }
+    },
+  },
 }
 </script>
 

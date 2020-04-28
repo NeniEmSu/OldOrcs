@@ -131,13 +131,13 @@ export default {
         title: '',
         phone: '',
         description: '',
-        status: false
+        status: false,
       },
       allServices: [],
       serviceLoading: false,
       isValid: false,
       addLoading: false,
-      addState: false
+      addState: false,
     }
   },
 
@@ -153,7 +153,7 @@ export default {
         return !this.isValid
       }
       return this.isValid
-    }
+    },
   },
   created() {
     this.getAllServices()
@@ -193,7 +193,7 @@ export default {
             title: '',
             phone: '',
             description: '',
-            status: false
+            status: false,
           }
           this.getAllServices() // we will create this function later
 
@@ -213,7 +213,7 @@ export default {
         text: 'Once deleted, you will not be able to recover this Service!',
         icon: 'warning',
         buttons: true,
-        dangerMode: true
+        dangerMode: true,
       }).then((willDelete) => {
         if (willDelete) {
           this.$axios
@@ -222,7 +222,7 @@ export default {
               this.getAllService()
 
               this.$swal('Poof! Your Music file has been deleted!', {
-                icon: 'success'
+                icon: 'success',
               })
             })
             .catch((err) => {
@@ -232,8 +232,8 @@ export default {
           this.$swal('Your Music file is safe!')
         }
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

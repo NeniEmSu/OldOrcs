@@ -9,7 +9,7 @@ const storage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     cb(null, new Date().toISOString().replace(/:/g, '-') + file.originalname)
-  }
+  },
 })
 const fileFilter = (req, file, cb) => {
   if (
@@ -26,7 +26,7 @@ const fileFilter = (req, file, cb) => {
 exports.upload = multer({
   storage,
   limits: {
-    fileSize: 1024 * 1024 * 10
+    fileSize: 1024 * 1024 * 10,
   },
-  fileFilter
+  fileFilter,
 })

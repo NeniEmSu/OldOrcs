@@ -38,7 +38,7 @@ export default {
   data() {
     return {
       username: '',
-      password: ''
+      password: '',
     }
   },
   methods: {
@@ -47,14 +47,14 @@ export default {
         const response = await this.$auth.loginWith('local', {
           data: {
             username: this.username,
-            password: this.password
-          }
+            password: this.password,
+          },
         })
         console.log(response)
       } catch (err) {
         console.log(err)
       }
-    }
-  }
+    },
+  },
 }
 </script>

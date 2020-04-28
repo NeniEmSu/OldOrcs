@@ -22,7 +22,7 @@ exports.addNewJob = async (req, res) => {
       title: req.body.title,
       description: req.body.description,
       thumbnail: req.files.thumbnail,
-      images: req.files.images
+      images: req.files.images,
     })
 
     const newJob = await work.save()
@@ -41,7 +41,7 @@ exports.updateJob = async (req, res) => {
       description: req.body.description,
       thumbnail: req.files.thumbnail,
       images: req.files.images,
-      updated: Date.now()
+      updated: Date.now(),
     })
 
     const updatedJob = await work.updateOne({
@@ -50,7 +50,7 @@ exports.updateJob = async (req, res) => {
       description: req.body.description,
       thumbnail: req.files.thumbnail,
       images: req.files.images,
-      updated: Date.now()
+      updated: Date.now(),
     })
     res.status(202).json({ data: updatedJob })
   } catch (err) {

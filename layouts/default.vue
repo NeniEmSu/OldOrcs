@@ -17,23 +17,23 @@ const animationTimingOut = 'Expo.easeOut'
 export default {
   components: {
     TheHeader,
-    TheFooter
+    TheFooter,
   },
   mounted() {
     gsap
       .timeline({ paused: true })
-      .fromTo(
-        '#hero',
-        animationSpeed,
-        { y: '120%', opacity: 0, ease: animationTimingIn },
-        { y: '0%', opacity: 1, ease: animationTimingOut }
-      )
       .fromTo(
         '#myHeader',
         animationSpeed,
         { y: '-100%', opacity: 0, ease: animationTimingIn },
         { y: '0%', opacity: 1, ease: animationTimingOut },
         '-=0.25'
+      )
+      .fromTo(
+        '#hero',
+        animationSpeed,
+        { y: '120%', opacity: 0, ease: animationTimingIn },
+        { y: '0%', opacity: 1, ease: animationTimingOut }
       )
       .fromTo(
         '.text-inner',
@@ -56,15 +56,8 @@ export default {
         { y: '0%', opacity: 1, ease: animationTimingOut },
         '-=0.05'
       )
-      .fromTo(
-        '.img-container',
-        animationSpeed,
-        { y: -50, opacity: 0, ease: animationTimingIn },
-        { y: 0, opacity: 1, ease: animationTimingOut },
-        '-=1'
-      )
       .play()
-  }
+  },
 }
 </script>
 

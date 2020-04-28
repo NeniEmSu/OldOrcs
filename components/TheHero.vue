@@ -31,7 +31,7 @@
     <nuxt-link
       v-scroll-to="{
         el: '#services',
-        offset: -120
+        offset: -120,
       }"
       class="scrolldown_container"
       to="#services"
@@ -49,7 +49,7 @@
 
 <script>
 export default {
-  methods: {}
+  methods: {},
 }
 </script>
 

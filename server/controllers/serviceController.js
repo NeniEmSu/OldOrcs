@@ -21,7 +21,7 @@ exports.addNewService = async (req, res) => {
   try {
     const services = new Service({
       title: req.body.title,
-      phone: req.body.phone
+      phone: req.body.phone,
     })
 
     const newService = await services.save()
@@ -41,7 +41,7 @@ exports.updateService = async (req, res) => {
       phone: req.body.phone,
       status: req.body.status,
       description: req.body.description,
-      updated: Date.now()
+      updated: Date.now(),
     })
 
     const updatedService = await service.updateOne({
@@ -51,7 +51,7 @@ exports.updateService = async (req, res) => {
       phone: req.body.phone,
       status: req.body.status,
       description: req.body.description,
-      updated: Date.now()
+      updated: Date.now(),
     })
     res.status(202).json({ data: updatedService })
   } catch (err) {

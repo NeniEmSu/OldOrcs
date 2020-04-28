@@ -12,12 +12,12 @@ router.post(
   upload.upload.fields([
     {
       name: 'thumbnail',
-      maxCount: 1
+      maxCount: 1,
     },
     {
       name: 'images',
-      maxCount: 10
-    }
+      maxCount: 10,
+    },
   ]),
   workController.addNewJob
 )
@@ -27,12 +27,12 @@ router.put(
   upload.upload.fields([
     {
       name: 'thumbnail',
-      maxCount: 1
+      maxCount: 1,
     },
     {
       name: 'images',
-      maxCount: 10
-    }
+      maxCount: 10,
+    },
   ]),
   workController.updateJob
 )

@@ -82,7 +82,7 @@
           :key="work.image + index"
           v-scroll-to="{
             el: '#work-group',
-            offset: -200
+            offset: -200,
           }"
           class="block"
           :src="require(`~/assets/img/${work.image}`)"
@@ -126,109 +126,109 @@ export default {
       loading: false,
       works: [
         {
-          image: 'we-are.jpg'
+          image: 'we-are.jpg',
         },
         {
-          image: 'tura.jpg'
+          image: 'tura.jpg',
         },
         {
-          image: 'nokkaido.jpg'
+          image: 'nokkaido.jpg',
         },
         {
-          image: 'urwahn-bike.jpg'
+          image: 'urwahn-bike.jpg',
         },
         {
-          image: 'aitchat.jpg'
+          image: 'aitchat.jpg',
         },
         {
-          image: 'chat.jpg'
+          image: 'chat.jpg',
         },
         {
-          image: 'bloc.jpg'
+          image: 'bloc.jpg',
         },
         {
-          image: 'moko.jpg'
+          image: 'moko.jpg',
         },
         {
-          image: 'symbol.jpg'
+          image: 'symbol.jpg',
         },
         {
-          image: 'hello.jpg'
+          image: 'hello.jpg',
         },
         {
-          image: 'cats.jpg'
+          image: 'cats.jpg',
         },
         {
-          image: 'lidiya.jpg'
+          image: 'lidiya.jpg',
         },
         {
-          image: 'we-are.jpg'
+          image: 'we-are.jpg',
         },
         {
-          image: 'tura.jpg'
+          image: 'tura.jpg',
         },
         {
-          image: 'nokkaido.jpg'
+          image: 'nokkaido.jpg',
         },
         {
-          image: 'colorfull.jpg'
+          image: 'colorfull.jpg',
         },
         {
-          image: 'we-are.jpg'
+          image: 'we-are.jpg',
         },
         {
-          image: 'tura.jpg'
+          image: 'tura.jpg',
         },
         {
-          image: 'nokkaido.jpg'
+          image: 'nokkaido.jpg',
         },
         {
-          image: 'urwahn-bike.jpg'
+          image: 'urwahn-bike.jpg',
         },
         {
-          image: 'aitchat.jpg'
+          image: 'aitchat.jpg',
         },
         {
-          image: 'chat.jpg'
+          image: 'chat.jpg',
         },
         {
-          image: 'bloc.jpg'
+          image: 'bloc.jpg',
         },
         {
-          image: 'moko.jpg'
+          image: 'moko.jpg',
         },
         {
-          image: 'symbol.jpg'
+          image: 'symbol.jpg',
         },
         {
-          image: 'hello.jpg'
+          image: 'hello.jpg',
         },
         {
-          image: 'cats.jpg'
+          image: 'cats.jpg',
         },
         {
-          image: 'lidiya.jpg'
+          image: 'lidiya.jpg',
         },
         {
-          image: 'we-are.jpg'
+          image: 'we-are.jpg',
         },
         {
-          image: 'tura.jpg'
+          image: 'tura.jpg',
         },
         {
-          image: 'nokkaido.jpg'
+          image: 'nokkaido.jpg',
         },
         {
-          image: 'colorfull.jpg'
-        }
-      ]
+          image: 'colorfull.jpg',
+        },
+      ],
     }
   },
 
   computed: {
     showWorks() {
       return this.works.slice(0, this.displaying)
-    }
+    },
   },
 
   methods: {
@@ -265,8 +265,8 @@ export default {
           { opacity: 0, display: 'none', ease: animationTimingIn }
         )
         .play()
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -13,7 +13,7 @@ exports.addNewMusic = async (req, res) => {
       title: req.body.title,
       artist: req.body.artist,
       music: req.files.music,
-      image: req.files.image
+      image: req.files.image,
     })
 
     const newMusic = await music.save()
@@ -32,7 +32,7 @@ exports.updateMusic = async (req, res) => {
       artist: req.body.artist,
       music: req.files.music,
       image: req.files.image,
-      updated: Date.now()
+      updated: Date.now(),
     })
 
     const updatedMusic = await music.updateOne({
@@ -41,7 +41,7 @@ exports.updateMusic = async (req, res) => {
       artist: req.body.artist,
       music: req.files.music,
       image: req.files.image,
-      updated: Date.now()
+      updated: Date.now(),
     })
     res.status(202).json({ data: updatedMusic })
   } catch (err) {

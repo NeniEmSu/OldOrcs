@@ -2,28 +2,28 @@ const mongoose = require('mongoose')
 const musicSchema = mongoose.Schema({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   music: {
     type: Object,
-    required: true
+    required: true,
   },
   image: {
     type: Object,
-    required: true
+    required: true,
   },
   artist: {
     type: String,
-    required: true
+    required: true,
   },
   createdAt: {
     type: Date,
-    default: Date.now()
+    default: Date.now(),
   },
   updated: {
     type: Date,
-    default: Date.now()
-  }
+    default: Date.now(),
+  },
 })
 const Music = mongoose.model('Music', musicSchema)
 module.exports = Music

@@ -13,5 +13,5 @@ export default {
   bind(el) {
     el.classList.add('before-enter')
     animatedScrollObserver.observe(el)
-  }
+  },
 }

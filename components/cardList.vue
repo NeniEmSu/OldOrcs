@@ -29,14 +29,14 @@
 import Card from './card'
 export default {
   components: {
-    Card
+    Card,
   },
   data: () => {
     return {
       touch: {
         startX: 0,
-        endX: 0
-      }
+        endX: 0,
+      },
     }
   },
   computed: {
@@ -51,7 +51,7 @@ export default {
     },
     listPosition() {
       return { transform: 'translateX(-' + this.currentIndex * 100 + '%)' }
-    }
+    },
   },
   mounted() {
     this.$el.addEventListener('touchstart', (event) => this.touchstart(event))
@@ -106,8 +106,8 @@ export default {
     },
     previous() {
       this.$store.commit('prevIndex')
-    }
-  }
+    },
+  },
 }
 </script>
 

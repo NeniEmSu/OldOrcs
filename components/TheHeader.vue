@@ -25,7 +25,7 @@
       <b-navbar-brand
         v-scroll-to="{
           el: '#hero',
-          offset: -200
+          offset: -200,
         }"
         class="logo"
         :to="localePath({ name: 'index' }, $i18n.locale) + '#hero'"
@@ -166,7 +166,7 @@
             <b-nav-item
               v-scroll-to="{
                 el: '#hero',
-                offset: -200
+                offset: -200,
               }"
               class="sbNav"
               :to="localePath({ name: 'index' }, $i18n.locale) + '#hero'"
@@ -177,7 +177,7 @@
             <b-nav-item
               v-scroll-to="{
                 el: '#services',
-                offset: -120
+                offset: -120,
               }"
               class="sbNav"
               to="#services"
@@ -188,7 +188,7 @@
             <b-nav-item
               v-scroll-to="{
                 el: '#works',
-                offset: -120
+                offset: -120,
               }"
               class="sbNav"
               to="#works"
@@ -199,7 +199,7 @@
             <b-nav-item
               v-scroll-to="{
                 el: '#contact',
-                offset: -120
+                offset: -120,
               }"
               class="sbNav"
               to="#contact"
@@ -219,7 +219,7 @@
           <b-nav-item
             v-scroll-to="{
               el: '#hero',
-              offset: -200
+              offset: -200,
             }"
             :to="localePath({ name: 'index' }, $i18n.locale) + '#hero'"
           >
@@ -229,7 +229,7 @@
           <b-nav-item
             v-scroll-to="{
               el: '#services',
-              offset: -120
+              offset: -120,
             }"
             to="#services"
           >
@@ -239,7 +239,7 @@
           <b-nav-item
             v-scroll-to="{
               el: '#works',
-              offset: -120
+              offset: -120,
             }"
             to="#works"
           >
@@ -249,7 +249,7 @@
           <b-nav-item
             v-scroll-to="{
               el: '#contact',
-              offset: -120
+              offset: -120,
             }"
             to="#contact"
           >
@@ -304,50 +304,7 @@
 </template>
 
 <script>
-// import { gsap } from 'gsap'
-// const animationSpeed = 0.75
-// const animationTimingIn = 'Expo.easeIn'
-// const animationTimingOut = 'Expo.easeOut'
-
-export default {
-  data() {
-    return {
-      lastScrollPosition: 0
-    }
-  },
-
-  computed: {},
-
-  watch: {},
-
-  // mounted() {
-  //   window.addEventListener('scroll', this.onScroll)
-
-  //   this.$nextTick(() => {
-  //     window.addEventListener('scroll', function() {
-  //       const navbar = document.getElementById('myHeader')
-  //       const navClasses = navbar.classList
-  //       if (document.documentElement.scrollTop >= 300) {
-  //         if (navClasses.contains('menu_fixed') === false) {
-  //           navClasses.toggle('menu_fixed')
-  //           navClasses.toggle('animated')
-  //           navClasses.toggle('fadeInDown')
-  //         }
-  //       } else if (navClasses.contains('menu_fixed') === true) {
-  //         navClasses.toggle('menu_fixed')
-  //         navClasses.toggle('animated')
-  //         navClasses.toggle('fadeInDown')
-  //       }
-  //     })
-  //   })
-  // },
-
-  // beforeDestroy() {
-  //   window.removeEventListener('scroll', this.onScroll)
-  // },
-
-  methods: {}
-}
+export default {}
 </script>
 
 <style lang="scss" scoped>

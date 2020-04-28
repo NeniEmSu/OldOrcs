@@ -11,22 +11,22 @@ module.exports = {
         name: 'description',
         content:
           'Бути нашим постійним клієнтом, користуватися широким спектром наших послуг - означає економити гроші, нерви та час. Спробуйте делегувати нам ваші рекламні турботи і ви залишитесь з нами назавжди. Все необхідне в одній затишній студії зі смачною музикою та кавою.' ||
-          process.env.npm_package_description
-      }
+          process.env.npm_package_description,
+      },
     ],
     link: [
       { rel: 'icon', type: 'image/png', href: '/favicon.png' },
       {
         rel: 'stylesheet',
         href:
-          'https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap&subset=cyrillic'
-      }
+          'https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap&subset=cyrillic',
+      },
     ],
     script: [
       {
-        src: 'https://kit.fontawesome.com/41fc25a21c.js'
-      }
-    ]
+        src: 'https://kit.fontawesome.com/41fc25a21c.js',
+      },
+    ],
   },
 
   loading: { color: '#fff' },
@@ -36,17 +36,16 @@ module.exports = {
   plugins: [
     '~/plugins/vue-scrollto',
     '~/plugins/gsap',
-    '~/plugins/vue-modal',
     {
       src: '~/plugins/directives',
-      ssr: false
-    }
+      ssr: false,
+    },
   ],
 
   buildModules: [
     '@nuxtjs/eslint-module',
     '@nuxtjs/stylelint-module',
-    '@nuxtjs/moment'
+    '@nuxtjs/moment',
   ],
 
   modules: [
@@ -67,16 +66,17 @@ module.exports = {
           {
             iso: 'uk-Uk',
             code: 'uk',
-            name: 'Укр'
+            name: 'Укр',
           },
           {
             iso: 'ru-RU',
             code: 'ru',
-            name: 'Рус'
-          }
-        ]
-      }
-    ]
+            name: 'Рус',
+          },
+        ],
+      },
+      '@nuxtjs/sitemap',
+    ],
   ],
 
   // auth: {
@@ -96,7 +96,14 @@ module.exports = {
   // },
 
   axios: {
-    proxy: true
+    proxy: true,
+  },
+
+  sitemap: {
+    hostname: process.env.BASE_URL,
+    gzip: true,
+    exclude: ['/admin/**'],
+    routes: [],
   },
 
   i18n: {
@@ -110,20 +117,11 @@ module.exports = {
       useCookie: true,
       cookieKey: 'i18n_redirected',
       alwaysRedirect: false,
-      fallbackLocale: 'uk'
-    }
+      fallbackLocale: 'uk',
+    },
   },
 
   build: {
     transpile: ['gsap'],
-    extend(config, ctx) {
-      config.module.rules.push({
-        test: /\.(ogg|mp3|mp4|wav|mpe?g)$/i,
-        loader: 'file-loader',
-        options: {
-          name: '[path][name].[ext]'
-        }
-      })
-    }
-  }
+  },
 }

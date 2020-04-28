@@ -80,8 +80,8 @@ export default {
           { opacity: 0, display: 'none', ease: animationTimingIn }
         )
         .play()
-    }
-  }
+    },
+  },
 }
 </script>
 

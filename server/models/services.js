@@ -2,32 +2,32 @@ const mongoose = require('mongoose')
 const serviceSchema = mongoose.Schema({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   name: {
     type: String,
-    required: false
+    required: false,
   },
   phone: {
     type: String,
-    required: true
+    required: true,
   },
   description: {
     type: String,
-    required: false
+    required: false,
   },
   status: {
     type: Boolean,
-    required: false
+    required: false,
   },
   createdAt: {
     type: Date,
-    default: Date.now()
+    default: Date.now(),
   },
   updated: {
     type: Date,
-    default: Date.now()
-  }
+    default: Date.now(),
+  },
 })
 const Service = mongoose.model('Service', serviceSchema)
 module.exports = Service

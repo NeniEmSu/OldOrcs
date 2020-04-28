@@ -33,7 +33,7 @@ async function start() {
   mongoose
     .connect(process.env.MONGO_DB_CONNECTION, {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
     })
     .then(() => {
       console.log('connected to mongodb atlas')
@@ -76,7 +76,7 @@ async function start() {
   app.listen(port, host)
   consola.ready({
     message: `Server listening on http://${host}:${port}`,
-    badge: true
+    badge: true,
   })
 }
 start()

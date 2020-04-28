@@ -5,6 +5,8 @@ $container-max-widths: (
   xl: 1530px
 ) !default;
 
+$modal-xl:                          1490px !default;
+
 
 // Include Bootstrap and BootstrapVue SCSS files
 @import '~bootstrap/scss/bootstrap.scss';
