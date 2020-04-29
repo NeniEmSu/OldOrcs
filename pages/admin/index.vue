@@ -186,7 +186,6 @@ export default {
       this.$axios
         .$post('/api/service', formData)
         .then((response) => {
-          console.log(response)
           this.addLoading = false
           this.serviceDetails = {
             name: '',
@@ -195,19 +194,15 @@ export default {
             description: '',
             status: false,
           }
-          this.getAllServices() // we will create this function later
-
+          this.getAllServices()
           this.$swal('Success', 'New Service Added', 'success')
         })
         .catch((err) => {
           this.addLoading = false
-
-          this.$swal('Error', 'Something Went wrong', 'error')
-          console.log(err)
+          this.$swal('Error', `Something Went wrong, \n Error: ${err}`, 'error')
         })
     },
     deleteService(id) {
-      // eslint-disable-next-line no-undef
       this.$swal({
         title: 'Are you sure?',
         text: 'Once deleted, you will not be able to recover this Service!',
@@ -217,19 +212,23 @@ export default {
       }).then((willDelete) => {
         if (willDelete) {
           this.$axios
-            .$delete('/api/service/' + id)
+            .$delete(`'/api/service/'${id}`)
             .then((response) => {
-              this.getAllService()
-
-              this.$swal('Poof! Your Music file has been deleted!', {
+              this.getAllServices()
+              this.$swal({
+                text: "Poof! You've sucessfully deleted that service request!",
                 icon: 'success',
               })
             })
             .catch((err) => {
-              this.$swal('Error', 'Somethimg went wrong', err)
+              this.$swal(
+                'Error',
+                `Somethimg went wrong, Error: ${err}`,
+                'error'
+              )
             })
         } else {
-          this.$swal('Your Music file is safe!')
+          this.$swal('Your service request is safe!')
         }
       })
     },

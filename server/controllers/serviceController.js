@@ -1,3 +1,4 @@
+// const fs = require('fs')
 const Service = require('../models/services')
 exports.getAllServices = async (req, res) => {
   try {
@@ -34,28 +35,12 @@ exports.addNewService = async (req, res) => {
 exports.updateService = async (req, res) => {
   try {
     const id = req.params.serviceId
-    const service = new Service({
-      _id: id,
-      title: req.body.title,
-      name: req.body.name,
-      phone: req.body.phone,
-      status: req.body.status,
-      description: req.body.description,
-      updated: Date.now(),
-    })
+    const condition = { _id: id }
 
-    const updatedService = await service.updateOne({
-      _id: id,
-      title: req.body.title,
-      name: req.body.name,
-      phone: req.body.phone,
-      status: req.body.status,
-      description: req.body.description,
-      updated: Date.now(),
-    })
+    const updatedService = await Service.updateOne(condition, req.body)
     res.status(202).json({ data: updatedService })
-  } catch (err) {
-    res.status(500).json({ error: err })
+  } catch (error) {
+    res.status(500).json({ error })
   }
 }
 
@@ -63,6 +48,7 @@ exports.deleteService = async (req, res) => {
   try {
     const id = req.params.serviceId
     const result = await Service.deleteOne({ _id: id })
+    // fs.unlinkSync()
     res.status(200).json(result)
   } catch (err) {
     res.status(500).json(err)

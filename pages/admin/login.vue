@@ -50,9 +50,9 @@ export default {
             password: this.password,
           },
         })
-        console.log(response)
-      } catch (err) {
-        console.log(err)
+        this.$swal('Success', `${response}`, 'success')
+      } catch (error) {
+        this.$swal('Error', `Something Went wrong, \n Error: ${error}`, 'error')
       }
     },
   },

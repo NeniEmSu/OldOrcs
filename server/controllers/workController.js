@@ -1,7 +1,7 @@
 const Job = require('../models/jobs')
 exports.getAllJobs = async (req, res) => {
   try {
-    const work = await Job.find()
+    const work = await Job.find().sort({ createdAt: -1 })
     res.status(200).json(work)
   } catch (err) {
     res.status(500).json(err)
@@ -35,23 +35,9 @@ exports.addNewJob = async (req, res) => {
 exports.updateJob = async (req, res) => {
   try {
     const id = req.params.workId
-    const work = new Job({
-      _id: id,
-      title: req.body.title,
-      description: req.body.description,
-      thumbnail: req.files.thumbnail,
-      images: req.files.images,
-      updated: Date.now(),
-    })
+    const condition = { _id: id }
 
-    const updatedJob = await work.updateOne({
-      _id: id,
-      title: req.body.title,
-      description: req.body.description,
-      thumbnail: req.files.thumbnail,
-      images: req.files.images,
-      updated: Date.now(),
-    })
+    const updatedJob = await Job.updateOne(condition, req.body)
     res.status(202).json({ data: updatedJob })
   } catch (err) {
     res.status(500).json({ error: err })
