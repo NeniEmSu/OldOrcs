@@ -61,7 +61,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 * {
   padding: 0;
   margin: 0;
@@ -69,32 +69,26 @@ export default {
   box-sizing: border-box;
 }
 
-html {
+html,
+body {
+  font-family: 'Montserrat', sans-serif;
   scroll-behavior: smooth;
   padding: 0;
   margin: 0;
   width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  font-family: 'Montserrat', sans-serif;
 
   overflow-x: hidden;
-  width: 100vw;
 }
 
 ::-webkit-scrollbar {
   width: 5px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px rgb(128, 128, 128);
   border-radius: 2.5px;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: rgb(0, 133, 163);
   border-radius: 2.5px;
@@ -116,6 +110,21 @@ main {
   background-size: 141vw;
   background-position: 20px, 20px;
   z-index: -1;
+}
+
+.container,
+.modal-xl {
+  @media (max-width: 1520px) and (min-width: 1441px) {
+    max-width: 1410px;
+  }
+
+  @media (max-width: 1440px) and (min-width: 1201px) {
+    max-width: 1200px;
+  }
+
+  @media (max-width: 1200px) and (min-width: 961px) {
+    max-width: 960px;
+  }
 }
 
 .before-enter {

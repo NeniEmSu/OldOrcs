@@ -159,7 +159,7 @@ a,
 
   @media screen and (max-width: 600px) {
     width: 100px;
-    font-size: 12px;
+    font-size: 14px;
     bottom: 100px;
     left: 75%;
   }
@@ -176,7 +176,8 @@ a,
   overflow: hidden;
 
   @media screen and (max-width: 600px) {
-    left: 79.5%;
+    width: 3px;
+    left: 74.5%;
   }
 }
 

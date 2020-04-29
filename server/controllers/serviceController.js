@@ -1,7 +1,7 @@
 const Service = require('../models/services')
 exports.getAllServices = async (req, res) => {
   try {
-    const services = await Service.find()
+    const services = await Service.find().sort({ createdAt: -1 })
     res.status(200).json(services)
   } catch (err) {
     res.status(500).json(err)

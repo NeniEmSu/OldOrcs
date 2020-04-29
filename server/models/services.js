@@ -22,11 +22,11 @@ const serviceSchema = mongoose.Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now(),
+    default: new Date(),
   },
   updated: {
     type: Date,
-    default: Date.now(),
+    default: new Date(),
   },
 })
 const Service = mongoose.model('Service', serviceSchema)

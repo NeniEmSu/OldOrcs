@@ -18,6 +18,7 @@
 <template>
   <footer>
     <section id="contact" class="container footer_container">
+      <img src="~/assets/img/spikes-left.png" alt="" class="before" />
       <div class="contacts">
         <h2>
           {{ $t('title') }}
@@ -160,6 +161,7 @@
           </div>
         </a>
       </div>
+      <img src="~/assets/img/spikes-right.png" alt="" class="after" />
     </section>
   </footer>
 </template>
@@ -179,117 +181,111 @@ footer .container {
   bottom: 0;
   margin-bottom: 0;
   padding: 70px 15%;
-  &::before {
-    content: url(~assets/img/spikes-left.png);
+
+  img.before,
+  img.after {
     position: absolute;
     padding: 0;
     height: auto;
-    left: 0;
     bottom: 0;
-    // @media screen and (max-width: 600px) {
-    //   display: none;
-    // }
-  }
-  &::after {
-    content: url(~assets/img/spikes-right.png);
-    position: absolute;
-    padding: 0;
-    height: auto;
-    right: 0;
-    bottom: 0;
-
-    // @media screen and (max-width: 600px) {
-    //   display: none;
-    // }
-  }
-}
-
-footer a {
-  text-decoration: none;
-}
-
-footer h2 {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 29px;
-  text-align: left;
-
-  color: #ffffff;
-
-  margin-bottom: 50px;
-
-  @media screen and (max-width: 1200px) {
-    margin-bottom: 25px;
+    &.before {
+      left: 0;
+    }
+    &.after {
+      right: 0;
+    }
+    @media screen and (max-width: 480px) {
+      height: 120px;
+    }
   }
 
-  @media screen and (max-width: 600px) {
-    margin-bottom: 12.5px;
+  a {
+    text-decoration: none;
   }
 
-  @media screen and (max-width: 376px) {
-    text-align: center;
+  h2 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: left;
+
+    color: #ffffff;
+
+    margin-bottom: 50px;
+
+    @media screen and (max-width: 1200px) {
+      margin-bottom: 25px;
+    }
+
+    @media screen and (max-width: 600px) {
+      margin-bottom: 12.5px;
+    }
+
+    @media screen and (max-width: 376px) {
+      text-align: center;
+    }
   }
-}
 
-footer .contacts {
-  display: grid;
-  grid-template-columns: auto auto;
-  justify-content: center;
-  grid-gap: 50px 150px;
-  padding: 0px;
-  margin: auto;
+  .contacts {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    grid-gap: 50px 150px;
+    padding: 0px;
+    margin: auto;
 
-  @media screen and (max-width: 1200px) {
-    grid-gap: 25px 100px;
+    @media screen and (max-width: 1200px) {
+      grid-gap: 25px 100px;
+    }
+
+    @media screen and (max-width: 600px) {
+      grid-gap: 12.5px 50px;
+    }
+
+    @media screen and (max-width: 376px) {
+      grid-template-columns: auto;
+      text-align: center;
+    }
   }
 
-  @media screen and (max-width: 600px) {
-    grid-gap: 12.5px 50px;
+  .contact_items_header {
+    display: flex;
+    margin-bottom: 10px;
   }
 
-  @media screen and (max-width: 376px) {
-    grid-template-columns: auto;
-    text-align: center;
+  .contact_items_header svg {
+    height: 15px;
+
+    @media screen and (max-width: 376px) {
+      margin-left: auto;
+    }
   }
-}
 
-footer .contact_items_header {
-  display: flex;
-  margin-bottom: 10px;
-}
+  .contact_items_header h5 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
 
-footer .contact_items_header svg {
-  height: 15px;
+    color: #ffffff;
 
-  @media screen and (max-width: 376px) {
-    margin-left: auto;
+    margin-left: 10px;
+
+    @media screen and (max-width: 376px) {
+      margin-right: auto;
+    }
   }
-}
 
-footer .contact_items_header h5 {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
+  .contact_items_body p {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
 
-  color: #ffffff;
+    color: #ffffff;
 
-  margin-left: 10px;
-
-  @media screen and (max-width: 376px) {
-    margin-right: auto;
+    margin-left: 25px;
   }
-}
-
-footer .contact_items_body p {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 20px;
-
-  color: #ffffff;
-
-  margin-left: 25px;
 }
 </style>

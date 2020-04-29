@@ -14,8 +14,23 @@
       centered
       body-class="p-0 m-0 modal-box-shadow"
     >
-      <template v-slot:default>
+      <template v-slot:default="{ hide }">
         <div style="display: flex;">
+          <div class="close">
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              @click="hide"
+            >
+              <path
+                d="M50 2.94594L47.0541 0L25 22.0541L2.94594 0L0 2.94594L22.0541 25L0 47.0541L2.94594 50L25 27.9459L47.0541 50L50 47.0541L27.9459 25L50 2.94594Z"
+                fill="#666666"
+              />
+            </svg>
+          </div>
           <b-img
             src="~/assets/img/modal-demo-img.jpg"
             class="modalImg"
@@ -165,6 +180,16 @@ export default {
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
+.close {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+
+  svg {
+    cursor: pointer;
+  }
+}
+
 .modalImg {
   max-width: 600px;
   width: 100%;
@@ -190,6 +215,7 @@ export default {
   width: 100%;
   margin: auto;
   padding: 50px 50px;
+
   h3 {
     font-style: normal;
     font-weight: 600;
@@ -256,6 +282,7 @@ export default {
 
     &:disabled {
       background-color: rgba(89, 152, 187, 0.7);
+      cursor: not-allowed;
     }
   }
 }

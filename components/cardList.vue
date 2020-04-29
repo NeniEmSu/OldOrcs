@@ -170,16 +170,7 @@ export default {
   }
 }
 
-@media screen and (min-width: 1199.9px) {
-  .card-list-section .previous {
-    left: -15px !important;
-  }
-  .card-list-section .next {
-    right: -15px !important;
-  }
-}
-
-@media screen and (min-width: 1450px) {
+@media screen and (min-width: 1520.9px) {
   .display-xl-none {
     display: none;
   }

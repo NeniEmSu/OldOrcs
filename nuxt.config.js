@@ -31,7 +31,7 @@ module.exports = {
 
   loading: { color: '#fff' },
 
-  css: ['~/assets/scss/override.scss'],
+  css: ['normalize.css/normalize.css', '~/assets/scss/override.scss'],
 
   plugins: [
     '~/plugins/vue-scrollto',
