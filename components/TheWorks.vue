@@ -4,7 +4,7 @@
       Наші роботи
     </h2>
 
-    <div class="filter">
+    <div class="filter d-none">
       Mobile filter goes here
     </div>
 
