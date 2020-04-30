@@ -63,8 +63,8 @@ a,
 
 #hero {
   width: 100vw;
+  min-height: 480px;
   height: calc(100vh - 100px);
-  // height: 100vh;
 
   position: relative;
 
@@ -91,13 +91,8 @@ a,
   }
 }
 
-@font-face {
-  font-family: Gobold CYR-LAT;
-  src: url('~assets/fonts/GoboldCYR-LAT.otf') format('opentype');
-}
-
 #hero h1 {
-  font-family: Gobold CYR-LAT;
+  font-family: 'Gobold CYR-LAT';
   font-style: normal;
   font-weight: normal;
   font-size: 126px;
@@ -109,6 +104,7 @@ a,
 
   @media screen and (max-width: 600px) {
     font-size: 63px;
+    margin: 10px 0;
   }
 }
 

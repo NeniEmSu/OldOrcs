@@ -36,7 +36,8 @@
     "nuxt": "^2.12.2",
     "nuxt-i18n": "^6.10.1",
     "vue-scrollto": "^2.18.1",
-    "vue-sweetalert2": "^3.0.3"
+    "vue-sweetalert2": "^3.0.3",
+    "nuxt-rfg-icon": "^0.6.4"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.2",

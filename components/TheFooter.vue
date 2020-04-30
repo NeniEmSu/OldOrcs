@@ -130,7 +130,7 @@
         </a>
 
         <a
-          href="viber://contact?number=%2B+380972073030"
+          href="viber://contact?number=tel:+380972073030"
           target="_blank"
           class="contact_item"
         >
@@ -142,7 +142,7 @@
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <g clip-path="url(#clip0)">
+              <g clip-path="url(#clip00)">
                 <path
                   d="M5.88561 9.48789L5.63749 12.9779C5.99249 12.9779 6.14624 12.8254 6.33061 12.6423L7.99499 11.0516L11.4437 13.5773C12.0762 13.9298 12.5219 13.7441 12.6925 12.9954L14.9562 2.38789L14.9569 2.38727C15.1575 1.45227 14.6187 1.08664 14.0025 1.31602L0.696239 6.41039C-0.211886 6.76289 -0.198136 7.26914 0.541864 7.49852L3.94374 8.55664L11.8456 3.61227C12.2175 3.36602 12.5556 3.50227 12.2775 3.74852L5.88561 9.48789Z"
                   fill="white"
@@ -232,7 +232,7 @@ footer .container {
       margin-bottom: 12.5px;
     }
 
-    @media screen and (max-width: 376px) {
+    @media screen and (max-width: 390px) {
       text-align: center;
     }
   }
@@ -253,7 +253,7 @@ footer .container {
       grid-gap: 12.5px 50px;
     }
 
-    @media screen and (max-width: 376px) {
+    @media screen and (max-width: 390px) {
       grid-template-columns: auto;
       text-align: center;
     }
@@ -267,7 +267,7 @@ footer .container {
   .contact_items_header svg {
     height: 15px;
 
-    @media screen and (max-width: 376px) {
+    @media screen and (max-width: 390px) {
       margin-left: auto;
     }
   }
@@ -282,7 +282,7 @@ footer .container {
 
     margin-left: 10px;
 
-    @media screen and (max-width: 376px) {
+    @media screen and (max-width: 390px) {
       margin-right: auto;
     }
   }

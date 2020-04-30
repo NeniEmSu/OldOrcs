@@ -94,6 +94,14 @@ body {
   border-radius: 2.5px;
 }
 
+@font-face {
+  font-family: 'Gobold CYR-LAT';
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url('~assets/fonts/GoboldCYR-LAT.otf') format('opentype');
+}
+
 main {
   position: relative;
 }

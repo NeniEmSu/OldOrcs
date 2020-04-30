@@ -261,6 +261,7 @@
       <svg
         v-b-toggle.sidebar-right
         class="toggle-icon ml-auto d-lg-none d-flex"
+        name="toggle-icon"
         xmlns="http://www.w3.org/2000/svg"
         width="30"
         height="26"
