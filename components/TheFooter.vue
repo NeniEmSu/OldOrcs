@@ -18,7 +18,12 @@
 <template>
   <footer>
     <section id="contact" class="container footer_container">
-      <img src="~/assets/img/spikes-left.png" alt="" class="before" />
+      <img
+        loading="lazy"
+        src="~/assets/img/spikes-left.png"
+        alt=""
+        class="before"
+      />
       <div class="contacts">
         <h2>
           {{ $t('title') }}
@@ -161,7 +166,12 @@
           </div>
         </a>
       </div>
-      <img src="~/assets/img/spikes-right.png" alt="" class="after" />
+      <img
+        loading="lazy"
+        src="~/assets/img/spikes-right.png"
+        alt=""
+        class="after"
+      />
     </section>
   </footer>
 </template>

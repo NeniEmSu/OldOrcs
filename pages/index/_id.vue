@@ -12,7 +12,7 @@
 <template>
   <div class="layout">
     <div class="img">
-      <img src="~/assets/img/thumnail.jpg" alt="img1" />
+      <img loading="lazy" src="~/assets/img/thumnail.jpg" alt="img1" />
     </div>
 
     <div class="text">

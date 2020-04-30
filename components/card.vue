@@ -31,8 +31,8 @@
               />
             </svg>
           </div>
-          <b-img
-            src="~/assets/img/modal-demo-img.jpg"
+          <b-img-lazy
+            :src="require(`~/assets/img/${item.thumbnail}`)"
             class="modalImg"
             :alt="item.title"
           />

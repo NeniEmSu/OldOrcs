@@ -1,3 +1,4 @@
+const fs = require('fs')
 const Job = require('../models/jobs')
 exports.getAllJobs = async (req, res) => {
   try {
@@ -44,11 +45,63 @@ exports.updateJob = async (req, res) => {
   }
 }
 
-exports.deleteJob = async (req, res) => {
+// exports.deleteJob = async (req, res) => {
+//   try {
+//     const id = req.params.workId
+//     const result = await Job.deleteOne({ _id: id })
+//     res.status(200).json(result)
+//   } catch (err) {
+//     res.status(500).json(err)
+//   }
+// }
+
+// exports.deleteJob = (req, res, next) => {
+//   const id = req.params.workId
+//   Job.findOne({
+//     _id: id,
+//   }).then((work) => {
+//     const filePath = work.thumbnail.path
+//     fs.unlink(filePath, () => {
+//       const result = Job.deleteOne({
+//         _id: id,
+//       })
+//         .then(() => {
+//           res.status(200).json({
+//             message: 'Deleted',
+//             result,
+//           })
+//         })
+//         .catch((error) => {
+//           res.status(400).json({
+//             error,
+//           })
+//         })
+//     })
+//   })
+// }
+
+exports.deleteJob = async (req, res, next) => {
   try {
     const id = req.params.workId
+    const work = await Job.findOne({ _id: id })
+    const thumbnailPath = work.thumbnail[0].path
+
+    const imagesPaths = work.images.map((image) => {
+      return image.path
+    })
+
+    const concactinatedFilePathsToDelete = imagesPaths.concat(thumbnailPath)
+    const filePathsToDelete = concactinatedFilePathsToDelete
+
+    filePathsToDelete.map((filePath) => {
+      return fs.unlinkSync(filePath)
+    })
+
     const result = await Job.deleteOne({ _id: id })
-    res.status(200).json(result)
+    res.status(200).json({
+      message: 'Deleted',
+      result,
+    })
   } catch (err) {
     res.status(500).json(err)
   }

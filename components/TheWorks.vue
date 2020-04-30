@@ -4,6 +4,10 @@
       Наші роботи
     </h2>
 
+    <div class="filter">
+      Mobile filter goes here
+    </div>
+
     <section class="categories">
       <div class="category works-branding">
         <h3>Брендинг</h3>
@@ -77,13 +81,14 @@
         tag="div"
         appear
       >
-        <img
+        <b-img-lazy
           v-for="(work, index) in showWorks"
           :key="work.image + index"
           v-scroll-to="{
             el: '#work-group',
             offset: -200,
           }"
+          loading="lazy"
           class="block"
           :src="require(`~/assets/img/${work.image}`)"
           alt="we-are"
@@ -303,17 +308,18 @@ export default {
 }
 
 .works .categories {
-  display: flex;
+  display: grid;
   text-align: center;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
 
-  @media screen and (max-width: 1599px) {
-    justify-content: flex-start;
+  margin-bottom: 90px;
+  @media (max-width: 768px) {
+    display: none;
   }
 }
 
 .works .categories .category {
-  max-width: 205px;
-  min-width: 205px;
   width: 100%;
   height: 100px;
 
@@ -371,15 +377,12 @@ export default {
 }
 
 .works .sub_categories {
-  display: flex;
-  flex-wrap: wrap;
-  column-gap: 10px;
-  justify-content: space-between;
+  display: grid;
   text-align: center;
-
-  margin-top: 90px;
-
-  @media screen and (max-width: 1599px) {
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  @media (max-width: 768px) {
+    display: none;
   }
 }
 
@@ -399,22 +402,10 @@ export default {
   -o-transition: all 300ms linear;
 }
 
-.works .sub_categories .sub_category h4::before {
-  display: block;
-  content: attr(data-text);
-  font-weight: 600;
-  font-size: 24px;
-  height: 0;
-  overflow: hidden;
-  visibility: hidden;
-}
-
 .works .sub_categories .sub_category h4:hover,
 .works .sub_categories .sub_category h4.active {
-  content: '';
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 29px;
+  font-size: 20px;
+  line-height: 24px;
   color: #0084a1;
 }
 
