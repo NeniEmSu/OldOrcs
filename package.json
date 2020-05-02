@@ -14,9 +14,10 @@
   },
   "dependencies": {
     "@nuxtjs/auth": "^4.9.1",
-    "@nuxtjs/axios": "^5.10.2",
+    "@nuxtjs/axios": "^5.10.3",
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
+    "@nuxtjs/robots": "^2.4.2",
     "@nuxtjs/sitemap": "^2.2.1",
     "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
@@ -28,16 +29,16 @@
     "express": "^4.17.1",
     "gsap": "^3.2.6",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.10",
+    "mongoose": "^5.9.11",
     "mongoose-unique-validator": "^2.0.3",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "normalize.css": "^8.0.1",
     "nuxt": "^2.12.2",
-    "nuxt-i18n": "^6.10.1",
+    "nuxt-i18n": "^6.11.0",
+    "nuxt-rfg-icon": "^0.6.4",
     "vue-scrollto": "^2.18.1",
-    "vue-sweetalert2": "^3.0.3",
-    "nuxt-rfg-icon": "^0.6.4"
+    "vue-sweetalert2": "^3.0.3"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.2",

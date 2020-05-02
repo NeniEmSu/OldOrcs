@@ -235,6 +235,7 @@ export default {
   },
 
   methods: {
+    fetchWorks() {},
     updateDisplay() {
       this.loading = true
       const self = this

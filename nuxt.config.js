@@ -179,8 +179,9 @@ module.exports = {
           },
         ],
       },
-      '@nuxtjs/sitemap',
     ],
+    '@nuxtjs/robots',
+    '@nuxtjs/sitemap',
   ],
 
   // auth: {
@@ -203,11 +204,16 @@ module.exports = {
     proxy: true,
   },
 
+  robots: () => {
+    return {
+      UserAgent: '*',
+      Disallow: ['/admin', '/admin/**', '/ru/admin', '/ru/admin/**'],
+      Sitemap: '/sitemap.xml',
+    }
+  },
+
   sitemap: {
-    hostname: process.env.BASE_URL,
-    gzip: true,
-    exclude: ['/admin/**'],
-    routes: [],
+    exclude: ['/admin', '/admin/**', '/ru/admin', '/ru/admin/**'],
   },
 
   i18n: {
