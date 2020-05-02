@@ -22,14 +22,7 @@ export default {
     margin-bottom: 100px;
   }
 
-  h2 {
-    font-style: normal;
-    font-weight: bold;
-    font-size: 48px;
-    line-height: 59px;
-
-    color: #dc6d48;
-
+  @media (max-width: 500px) {
     margin-bottom: 50px;
   }
 }

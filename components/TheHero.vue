@@ -89,6 +89,10 @@ a,
     display: block;
     margin-top: 100px;
   }
+
+  @media (max-width: 500px) {
+    margin-bottom: 75px;
+  }
 }
 
 #hero h1 {

@@ -25,9 +25,9 @@
         class="before"
       />
       <div class="contacts">
-        <h2>
+        <h3>
           {{ $t('title') }}
-        </h2>
+        </h3>
         <div></div>
         <a
           href="https://www.google.com/maps/place/Henerala+Myrona+Tarnavs'koho+St,+36,+Ternopil,+Ternopil's'ka+oblast,+46024/@49.566604,25.6356834,17z/data=!3m1!4b1!4m5!3m4!1s0x473033dfc7ec2fb5:0x5eb16a8fb79c4e7e!8m2!3d49.566604!4d25.6378721"
@@ -213,11 +213,7 @@ footer .container {
     text-decoration: none;
   }
 
-  h2 {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 29px;
+  h3 {
     text-align: left;
 
     color: #ffffff;
@@ -253,7 +249,8 @@ footer .container {
       grid-gap: 12.5px 50px;
     }
 
-    @media screen and (max-width: 390px) {
+    @media screen and (max-width: 425px) {
+      grid-gap: 12.5px 25px;
       grid-template-columns: auto;
       text-align: center;
     }
@@ -273,11 +270,6 @@ footer .container {
   }
 
   .contact_items_header h5 {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 17px;
-
     color: #ffffff;
 
     margin-left: 10px;
@@ -288,11 +280,6 @@ footer .container {
   }
 
   .contact_items_body p {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 20px;
-
     color: #ffffff;
 
     margin-left: 25px;

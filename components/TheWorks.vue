@@ -10,63 +10,63 @@
 
     <section class="categories">
       <div class="category works-branding">
-        <h3>Брендинг</h3>
+        <h4>Брендинг</h4>
       </div>
       <div class="category Works-graphic-design">
-        <h3>Графічний дизайн реклами</h3>
+        <h4>Графічний дизайн реклами</h4>
       </div>
       <div class="category works-pofessional-printing">
-        <h3>Професійний друк</h3>
+        <h4>Професійний друк</h4>
       </div>
       <div class="category works-operative-polygraphy">
-        <h3>Оперативна поліграфія</h3>
+        <h4>Оперативна поліграфія</h4>
       </div>
       <div class="category works-smm-marketing">
-        <h3>СММ Маркетинг</h3>
+        <h4>СММ Маркетинг</h4>
       </div>
       <div class="category works-outdoor-advertising">
-        <h3>Зовнішня реклама</h3>
+        <h4>Зовнішня реклама</h4>
       </div>
       <div class="category works-object-photography">
-        <h3>Об’єктна фотографія</h3>
+        <h4>Об’єктна фотографія</h4>
       </div>
     </section>
 
     <div class="sub_categories">
       <div class="sub_category">
-        <h4 data-text="Логотипи">
+        <h5 data-text="Логотипи">
           Логотипи
-        </h4>
+        </h5>
       </div>
       <div class="sub_category">
-        <h4 class="active" data-text="Макети">
+        <h5 class="active" data-text="Макети">
           Макети
-        </h4>
+        </h5>
       </div>
       <div class="sub_category">
-        <h4 data-text="Іконки">
+        <h5 data-text="Іконки">
           Іконки
-        </h4>
+        </h5>
       </div>
       <div class="sub_category">
-        <h4 data-text="Кольори">
+        <h5 data-text="Кольори">
           Кольори
-        </h4>
+        </h5>
       </div>
       <div class="sub_category">
-        <h4 data-text="Торговамарка">
+        <h5 data-text="Торговамарка">
           Торговамарка
-        </h4>
+        </h5>
       </div>
       <div class="sub_category">
-        <h4 data-text="Товари">
+        <h5 data-text="Товари">
           Товари
-        </h4>
+        </h5>
       </div>
       <div class="sub_category">
-        <h4 data-text="Бренд-Буки">
+        <h5 data-text="Бренд-Буки">
           Бренд-Буки
-        </h4>
+        </h5>
       </div>
     </div>
     <section id="work-group" class="work-group">
@@ -101,8 +101,6 @@
         <p v-else class="show_more" @click="updateDisplay()">
           Показати ще
           <svg
-            width="16"
-            height="21"
             viewBox="0 0 16 21"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -296,30 +294,29 @@ export default {
   margin-bottom: 40px;
 }
 
-.works h2 {
-  font-style: normal;
-  font-weight: bold;
-  font-size: 48px;
-  line-height: 59px;
-
-  color: #dc6d48;
-
-  margin-bottom: 50px;
-}
-
 .works .categories {
-  display: grid;
-  text-align: center;
-  grid-gap: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
+  // display: grid;
+  // text-align: center;
+  // grid-gap: 10px;
+  // grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
 
   margin-bottom: 90px;
   @media (max-width: 768px) {
+    margin-bottom: 45px;
+  }
+
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  &::-webkit-scrollbar {
     display: none;
   }
 }
 
 .works .categories .category {
+  min-width: 120px;
+  max-width: 205px;
   width: 100%;
   height: 100px;
 
@@ -337,12 +334,7 @@ export default {
   border-radius: 1px;
 }
 
-.works .categories .category h3 {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 20px;
-
+.works .categories .category h4 {
   text-align: center;
 
   color: #ffffff;
@@ -377,20 +369,35 @@ export default {
 }
 
 .works .sub_categories {
-  display: grid;
-  text-align: center;
-  grid-gap: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  @media (max-width: 768px) {
+  // display: grid;
+  // text-align: center;
+  // grid-gap: 10px;
+  // grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  // @media (max-width: 768px) {
+  //   display: none;
+  // }
+
+  display: flex;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  &::-webkit-scrollbar {
     display: none;
   }
 }
 
-.works .sub_categories .sub_category h4 {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 20px;
+.works .sub_categories .sub_category {
+  min-width: 105px;
+  max-width: 205px;
+  width: 100%;
+  margin-right: 10px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.works .sub_categories .sub_category h5 {
   text-align: center;
   color: #666666;
   margin-bottom: 30px;
@@ -439,16 +446,29 @@ export default {
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
-  line-height: 20px;
+  line-height: 21px;
 
   text-align: center;
 
   color: #5998bb;
   cursor: pointer;
+
+  @media (max-width: 500px) {
+    font-size: 12px;
+    line-height: 16px;
+  }
 }
 
 .show_more svg {
+  width: 16px;
+  height: 21px;
   margin-left: 10px;
+
+  @media (max-width: 500px) {
+    margin-left: 5px;
+    width: 12px;
+    height: 16px;
+  }
 }
 
 .overlay-page {
@@ -458,13 +478,23 @@ export default {
 }
 
 .loader {
-  border: 6px solid #f3f3f3;
-  border-top: 6px solid #3498db;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   animation: spin 1500ms linear infinite;
   margin: auto;
+
+  @media (max-width: 500px) {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 1500ms linear infinite;
+    margin: auto;
+  }
 }
 
 @keyframes spin {

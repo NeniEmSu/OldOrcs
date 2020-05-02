@@ -102,6 +102,72 @@ body {
   src: url('~assets/fonts/GoboldCYR-LAT.otf') format('opentype');
 }
 
+h2 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 59px;
+
+  color: #dc6d48;
+
+  margin-bottom: 50px;
+
+  @media (max-width: 500px) {
+    font-size: 24px;
+    line-height: 29px;
+
+    margin-bottom: 25px;
+  }
+}
+
+h3 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+
+  @media (max-width: 500px) {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+h4 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+
+  @media (max-width: 500px) {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
+h5 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+
+  @media (max-width: 500px) {
+    font-size: 12px;
+    line-height: 120%;
+  }
+}
+
+p {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 120%;
+
+  @media (max-width: 500px) {
+    font-size: 12px;
+    line-height: 120%;
+  }
+}
+
 main {
   position: relative;
 }

@@ -126,12 +126,6 @@ img {
       margin-bottom: 10px;
     }
     p {
-      font-style: normal;
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 120%;
-      /* or 19px */
-
       color: #666666;
     }
   }

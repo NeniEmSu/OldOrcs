@@ -15,11 +15,11 @@
       body-class="p-0 m-0 modal-box-shadow"
     >
       <template v-slot:default="{ hide }">
-        <div style="display: flex;">
+        <div class="d-block d-sm-flex">
           <div class="close">
             <svg
-              width="50"
-              height="50"
+              width="35"
+              height="35"
               viewBox="0 0 50 50"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -182,8 +182,8 @@ export default {
 
 .close {
   position: absolute;
-  right: 30px;
-  top: 30px;
+  top: 50px;
+  right: 50px;
 
   svg {
     cursor: pointer;
@@ -195,6 +195,7 @@ export default {
   width: 100%;
   max-height: 600px;
   height: 100%;
+  object-fit: cover;
 
   @media screen and (max-width: 1440px) {
     max-width: 550px;
@@ -202,8 +203,12 @@ export default {
     max-height: 550px;
   }
 
-  @media screen and (max-width: 1200px) {
+  @media screen and (min-width: 575px) and (max-width: 1200px) {
     display: none;
+  }
+
+  @media screen and (max-width: 575px) {
+    height: 225px;
   }
 }
 
@@ -215,35 +220,18 @@ export default {
   width: 100%;
   margin: auto;
   padding: 50px 50px;
+  h2 {
+    color: #666666;
 
+    margin-bottom: 30px;
+  }
   h3 {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 29px;
-
     color: #666666;
 
     margin-bottom: 30px;
   }
 
   p {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 120%;
-
-    color: #666666;
-
-    margin-bottom: 30px;
-  }
-
-  h4 {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 29px;
-
     color: #666666;
 
     margin-bottom: 30px;
