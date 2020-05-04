@@ -1,7 +1,15 @@
 <template>
-  <nuxt />
+  <div>
+    <AdminHeader />
+    <nuxt />
+  </div>
 </template>
 
 <script>
-export default {}
+import AdminHeader from '~/components/admin/AdminHeader'
+export default {
+  components: {
+    AdminHeader,
+  },
+}
 </script>

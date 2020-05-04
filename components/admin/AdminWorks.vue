@@ -1,15 +1,14 @@
 <template>
-  <section class="mt-5 container">
-    <h1>Admin Dashboard</h1>
+  <section class="mt-5">
     <div class="container mb-4">
       <div class="row">
         <div class="col-md-12">
           <div v-if="addState" class="card">
             <div class="card-body">
               <div class="card-title mb-4">
-                <h4>Add Service</h4>
+                <h4>Add Work</h4>
               </div>
-              <form @submit.prevent="addNewMusic">
+              <form @submit.prevent="addNewService">
                 <div class="form-group">
                   <label for="title">Title</label>
                   <input
@@ -55,7 +54,7 @@
           <div class="card bg-light p-1 showdow-sm">
             <div class="card-title">
               <button class="btn btn-info m-3" @click="initForm">
-                {{ addState ? 'Cancel' : 'Add New Music' }}
+                {{ addState ? 'Cancel' : 'Add New Work' }}
               </button>
             </div>
             <div class="card-body">
@@ -63,11 +62,8 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Service</th>
-                    <th scope="col">Phone</th>
+                    <th scope="col">Title</th>
                     <th scope="col">Job Description</th>
-                    <th scope="col">Status</th>
                     <th scope="col">Created</th>
                     <th scope="col">At</th>
                     <th scope="col">Action</th>
@@ -75,29 +71,28 @@
                   </tr>
                 </thead>
                 <div
-                  v-if="serviceLoading"
+                  v-if="jobLoading"
                   class="spinner-border"
                   style="width: 3rem; height: 3rem;"
                   role="status"
                 ></div>
                 <tbody v-else>
-                  <tr v-for="(service, index) in allServices" :key="index">
+                  <tr v-for="(job, index) in allJobs" :key="index">
                     <td>{{ index + 1 }}</td>
-                    <td>{{ service.name }}</td>
-                    <td>{{ service.title }}</td>
-                    <td>{{ service.phone }}</td>
-                    <td>{{ service.description }}</td>
-                    <td>{{ service.status }}</td>
+                    <td>{{ job.title }}</td>
+
+                    <td>{{ job.description }}</td>
                     <td>
-                      {{ $moment(service.createdAt).format('DD/MM') }}
+                      {{ $moment(job.createdAt).format('DD/MM/YY') }}
                     </td>
                     <td>
-                      {{ $moment(service.createdAt).format('HH:mm') }}
+                      {{ $moment(job.createdAt).format('HH:mm') }}
                     </td>
+                    <td>{{ job.phone }}</td>
                     <td>
                       <button
                         class="btn btn-info"
-                        @click="editService(service._id)"
+                        @click="editService(job._id)"
                       >
                         Edit
                       </button>
@@ -105,7 +100,7 @@
                     <td>
                       <button
                         class="btn btn-danger"
-                        @click="deleteService(service._id)"
+                        @click="deleteService(job._id)"
                       >
                         Delete
                       </button>
@@ -118,18 +113,13 @@
         </div>
       </div>
     </div>
-    <AdminWorks />
   </section>
 </template>
 
 <script>
-import AdminWorks from '~/components/admin/AdminWorks'
 /* eslint-disable no-console */
 export default {
   layout: 'admin',
-  components: {
-    AdminWorks,
-  },
   data() {
     return {
       serviceDetails: {
@@ -139,8 +129,8 @@ export default {
         description: '',
         status: false,
       },
-      allServices: [],
-      serviceLoading: false,
+      allJobs: [],
+      jobLoading: false,
       isValid: false,
       addLoading: false,
       addState: false,
@@ -162,18 +152,18 @@ export default {
     },
   },
   created() {
-    this.getAllServices()
+    this.getAllJobs()
   },
   methods: {
-    async getAllServices() {
-      this.serviceLoading = true
+    async getAllJobs() {
+      this.jobLoading = true
       try {
-        const data = await this.$axios.$get('/api/service')
+        const data = await this.$axios.$get('/api/work')
         console.log(data)
-        this.allServices = data
-        this.serviceLoading = false
+        this.allJobs = data
+        this.jobLoading = false
       } catch (err) {
-        this.serviceLoading = false
+        this.jobLoading = false
         this.$swal('Error', 'Error Fetting Services', 'error')
       }
     },
@@ -181,7 +171,7 @@ export default {
       this.addState = !this.addState
     },
 
-    addNewMusic() {
+    addNewService() {
       const formData = new FormData()
       formData.append('title', this.serviceDetails.title)
       formData.append('name', this.serviceDetails.name)
@@ -200,7 +190,7 @@ export default {
             description: '',
             status: false,
           }
-          this.getAllServices()
+          this.getAllJobs()
           this.$swal('Success', 'New Service Added', 'success')
         })
         .catch((err) => {
@@ -220,7 +210,7 @@ export default {
           this.$axios
             .$delete(`'/api/service/'${id}`)
             .then((response) => {
-              this.getAllServices()
+              this.getAllJobs()
               this.$swal({
                 text: "Poof! You've sucessfully deleted that service request!",
                 icon: 'success',

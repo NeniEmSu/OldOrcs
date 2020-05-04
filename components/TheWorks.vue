@@ -92,7 +92,7 @@
           class="block"
           :src="require(`~/assets/img/${work.image}`)"
           alt="we-are"
-          @click="showOverlaPge"
+          @click="showOverlayPage()"
         />
       </transition-group>
       <transition name="fade" mode="out-in">
@@ -247,7 +247,7 @@ export default {
       }, 3500)
     },
 
-    showOverlaPge() {
+    showOverlayPage() {
       gsap
         .timeline({ paused: true })
         .fromTo(
