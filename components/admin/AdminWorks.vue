@@ -129,7 +129,40 @@ export default {
         description: '',
         status: false,
       },
-      allJobs: [],
+      allJobs: [
+        {
+          images: [
+            {
+              destination: 'server/images',
+
+              encoding: '7bit',
+              fieldname: 'images',
+              filename: '2020-05-04T12-51-46.262Zcycler1.jpg',
+              mimetype: 'image/jpeg',
+              originalname: 'cycler1.jpg',
+              path: 'server\\images\\2020-05-04T12-51-46.262Zcycler1.jpg',
+              size: 517273,
+            },
+          ],
+          thumbnail: [
+            {
+              destination: 'server/thumbnails',
+              encoding: '7bit',
+              fieldname: 'thumbnail',
+              filename: '2020-05-04T12-51-46.256Zaitchat.jpg',
+              mimetype: 'image/jpeg',
+              originalname: 'aitchat.jpg',
+              path: 'server\\thumbnails\\2020-05-04T12-51-46.256Zaitchat.jpg',
+              size: 34531,
+            },
+          ],
+
+          title: 'Заголовок',
+          updatedAt: '2020-05-04T12:51:46.687Z',
+          __v: 0,
+          _id: '5eb00fe23fd24318d097ac5d',
+        },
+      ],
       jobLoading: false,
       isValid: false,
       addLoading: false,

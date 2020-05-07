@@ -9,7 +9,7 @@
               <div class="card-title mb-4">
                 <h4>Add Service</h4>
               </div>
-              <form @submit.prevent="addNewMusic">
+              <form @submit.prevent="addNewService">
                 <div class="form-group">
                   <label for="title">Title</label>
                   <input
@@ -54,9 +54,10 @@
         <div class="col-md-12">
           <div class="card bg-light p-1 showdow-sm">
             <div class="card-title">
-              <button class="btn btn-info m-3" @click="initForm">
-                {{ addState ? 'Cancel' : 'Add New Music' }}
-              </button>
+              <!-- <button class="btn btn-info m-3" @click="initForm">
+                {{ addState ? 'Cancel' : 'Add New Service' }}
+              </button> -->
+              <h4>Запитані послуги</h4>
             </div>
             <div class="card-body">
               <table class="table">
@@ -139,7 +140,16 @@ export default {
         description: '',
         status: false,
       },
-      allServices: [],
+      allServices: [
+        {
+          createdAt: '2020-04-29T06:54:14.492Z',
+          phone: '+380932589266',
+          title: 'Оперативна поліграфія',
+          updated: '2020-04-29T06:54:14.492Z',
+          __v: 0,
+          _id: '5ea92620873bcd54bc17b7f2',
+        },
+      ],
       serviceLoading: false,
       isValid: false,
       addLoading: false,
@@ -181,7 +191,7 @@ export default {
       this.addState = !this.addState
     },
 
-    addNewMusic() {
+    addNewService() {
       const formData = new FormData()
       formData.append('title', this.serviceDetails.title)
       formData.append('name', this.serviceDetails.name)
@@ -247,5 +257,11 @@ img {
   width: 35px;
   height: 35px;
   border-radius: 50%;
+}
+
+.btn {
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 </style>

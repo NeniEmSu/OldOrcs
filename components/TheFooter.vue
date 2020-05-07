@@ -170,7 +170,7 @@
         href="https://www.instagram.com/oldorcs/"
         target="_blank"
         rel="noopener noreferrer"
-        class="mx-auto"
+        class="mx-auto text-center"
       >
         <svg
           width="25"
@@ -220,6 +220,16 @@ a {
   svg {
     width: 25px;
     height: 25px;
+
+    @media screen and (max-width: 480px) {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 14px;
+    line-height: 16px;
   }
 }
 
@@ -228,6 +238,8 @@ footer .container {
   bottom: 0;
   margin-bottom: 0;
   padding: 70px 15%;
+
+  text-align: center;
 
   img.before,
   img.after {
@@ -314,6 +326,7 @@ footer .container {
 
   .contact_items_body p {
     color: #ffffff;
+    text-align: left;
 
     margin-left: 25px;
   }
