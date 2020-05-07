@@ -81,7 +81,7 @@
         tag="div"
         appear
       >
-        <b-img-lazy
+        <img
           v-for="(work, index) in showWorks"
           :key="work.image + index"
           v-scroll-to="{
@@ -127,6 +127,8 @@ export default {
     return {
       displaying: 16,
       loading: false,
+      allJobs: [],
+      jobLoading: false,
       works: [
         {
           image: 'we-are.jpg',
@@ -235,7 +237,19 @@ export default {
   },
 
   methods: {
-    fetchWorks() {},
+    async getAllJobs() {
+      this.jobLoading = true
+      try {
+        const data = await this.$axios.$get('/api/work')
+        // eslint-disable-next-line no-console
+        console.log(data)
+        this.allJobs = data
+        this.jobLoading = false
+      } catch (err) {
+        this.jobLoading = false
+        this.$swal('Error', 'Error Fetting Services', 'error')
+      }
+    },
     updateDisplay() {
       this.loading = true
       const self = this
@@ -248,13 +262,15 @@ export default {
     },
 
     showOverlayPage() {
+      // eslint-disable-next-line no-console
+      console.log('clicked')
       gsap
         .timeline({ paused: true })
         .fromTo(
           '.overlay-page',
           animationSpeed,
-          { display: 'none', opacity: 0, ease: animationTimingIn },
-          { display: 'block', opacity: 1, ease: animationTimingOut }
+          { opacity: 0, display: 'none', ease: animationTimingIn },
+          { opacity: 1, display: 'block', ease: animationTimingOut }
         )
         .play()
     },
@@ -333,6 +349,10 @@ export default {
   margin: 0 10px 5px 0;
 
   border-radius: 1px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .works .categories .category h4 {
@@ -392,6 +412,10 @@ export default {
   max-width: 205px;
   width: 100%;
   margin-right: 10px;
+
+  &:hover {
+    cursor: pointer;
+  }
 
   &:last-child {
     margin-right: 0;

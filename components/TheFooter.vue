@@ -170,6 +170,7 @@
         href="https://www.instagram.com/oldorcs/"
         target="_blank"
         rel="noopener noreferrer"
+        class="mx-auto"
       >
         <svg
           width="25"

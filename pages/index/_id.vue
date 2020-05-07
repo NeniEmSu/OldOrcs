@@ -11,15 +11,9 @@
 
 <template>
   <div class="layout">
-    <div class="img">
-      <img loading="lazy" src="~/assets/img/thumnail.jpg" alt="img1" />
-    </div>
-
     <div class="text">
       <div class="close">
         <svg
-          width="50"
-          height="50"
           viewBox="0 0 50 50"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -42,6 +36,10 @@
         </p>
       </div>
     </div>
+    <div class="img img-1">
+      <img loading="lazy" src="~/assets/img/thumnail.jpg" alt="img1" />
+    </div>
+
     <div class="img">
       <img src="~/assets/img/cycler1.jpg" alt="cycler1" />
     </div>
@@ -98,29 +96,49 @@ export default {
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 5px;
   width: auto;
+
+  @media (max-width: 900px) {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
-img {
+img,
+text {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+.img-1 {
+  grid-column: 1/2;
+  grid-row: 1;
+
+  @media (max-width: 900px) {
+    grid-column: initial;
+    grid-row: initial;
+  }
+}
+
 .text {
+  grid-column: 2;
   display: flex;
   flex-direction: row;
   justify-content: center;
 
   align-items: center;
+  @media (max-width: 900px) {
+    grid-column: initial;
+    grid-row: initial;
+  }
 
   .content {
     padding: 50px;
-    h2 {
-      font-style: normal;
-      font-weight: bold;
-      font-size: 48px;
-      line-height: 59px;
 
+    @media (max-width: 900px) {
+      padding: 100px 25px;
+    }
+    h2 {
       color: #5998bb;
 
       margin-bottom: 10px;
@@ -136,6 +154,13 @@ img {
 
     svg {
       cursor: pointer;
+
+      width: 50px;
+      height: 50px;
+      @media (max-width: 900px) {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 }
@@ -166,6 +191,13 @@ img {
     font-size: 20px;
     line-height: 24px;
   }
+
+  @media screen and (max-width: 600px) {
+    width: 100px;
+    font-size: 14px;
+    bottom: 100px;
+    left: 75%;
+  }
 }
 
 .scrolldown {
@@ -177,6 +209,11 @@ img {
   right: 0;
   margin: 0 auto;
   overflow: hidden;
+
+  @media screen and (max-width: 600px) {
+    width: 3px;
+    left: 74.5%;
+  }
 }
 
 .line {

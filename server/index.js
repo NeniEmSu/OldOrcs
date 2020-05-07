@@ -11,6 +11,7 @@ const bodyParser = require('body-parser')
 const config = require('../nuxt.config.js')
 const workRoutes = require('./routes/work')
 const serviceRoutes = require('./routes/service')
+const userRoutes = require('./routes/user')
 require('dotenv').config()
 
 // Import and Set Nuxt.js options
@@ -68,6 +69,7 @@ async function start() {
 
   app.use('/api/work', workRoutes)
   app.use('/api/service', serviceRoutes)
+  // app.use('/api/auth', userRoutes)
 
   // Give nuxt middleware to express
   app.use(nuxt.render)
