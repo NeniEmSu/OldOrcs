@@ -184,7 +184,7 @@ export default {
         this.serviceLoading = false
       } catch (err) {
         this.serviceLoading = false
-        this.$swal('Error', 'Error Fetting Services', 'error')
+        this.$swal('Error', 'Error Fetching Services', 'error')
       }
     },
     initForm() {

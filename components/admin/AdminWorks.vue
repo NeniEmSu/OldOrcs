@@ -197,7 +197,7 @@ export default {
         this.jobLoading = false
       } catch (err) {
         this.jobLoading = false
-        this.$swal('Error', 'Error Fetting Services', 'error')
+        this.$swal('Error', 'Error Fetching Services', 'error')
       }
     },
     initForm() {
