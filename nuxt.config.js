@@ -213,6 +213,9 @@ module.exports = {
   },
 
   sitemap: {
+    path: '/sitemap.xml',
+    hostname: process.env.BASE_URL,
+    cacheTime: 1000 * 60 * 15,
     exclude: ['/admin', '/admin/**', '/ru/admin', '/ru/admin/**'],
   },
 
