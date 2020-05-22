@@ -1,117 +1,163 @@
 <template>
-  <section class="mt-5">
-    <div class="container mb-4">
+  <section class="mt-5 container">
+    <div class="mb-4">
       <div class="row">
         <div class="col-md-12">
           <div v-if="addState" class="card">
             <div class="card-body">
               <div class="card-title mb-4">
-                <h4>Add Work</h4>
+                <h3>Add Work</h3>
               </div>
-              <form @submit.prevent="addNewService">
-                <div class="form-group">
-                  <label for="title">Title</label>
-                  <input
-                    v-model="serviceDetails.title"
+              <form enctype="multipart/form-data" @submit.prevent="addNewWork">
+                <b-form-group label="Title:" label-for="title" class="col-12">
+                  <b-form-input
+                    id="title"
+                    v-model="workDetails.title"
                     type="text"
-                    placeholder="Title..."
-                    class="form-control"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="phone">Phone</label>
-                  <input
-                    v-model="serviceDetails.phone"
-                    type="tel"
-                    placeholder="Phone Number..."
-                    class="form-control"
-                  />
-                </div>
-                <div class="form-group">
+                    required
+                    placeholder="Enter title"
+                  ></b-form-input>
+                </b-form-group>
+                <b-form-group
+                  label="Description:"
+                  label-for="description"
+                  class="col-12"
+                >
+                  <b-form-textarea
+                    id="description"
+                    v-model="workDetails.description"
+                    multi-line
+                    required
+                    placeholder="Enter description"
+                    rows="3"
+                  ></b-form-textarea>
+                </b-form-group>
+                <b-form-group
+                  label="Category:"
+                  label-for="category"
+                  class="col-12"
+                >
+                  <b-form-select
+                    id="category"
+                    v-model="workDetails.category"
+                    :options="categoryOptions"
+                  ></b-form-select>
+                </b-form-group>
+                <b-form-group
+                  label="Subcategory:"
+                  label-for="subCategory"
+                  class="col-12"
+                >
+                  <b-form-select
+                    id="subCategory"
+                    v-model="workDetails.subCategory"
+                    :options="subCategoryOptions"
+                  ></b-form-select>
+                </b-form-group>
+                <b-form-group
+                  label="Thumbnail:"
+                  label-for="thumbnail"
+                  class="col-12"
+                >
+                  <b-form-file
+                    v-model="workDetails.thumbnail"
+                    placeholder="Choose a file or drop it here..."
+                    drop-placeholder="Drop file here..."
+                  ></b-form-file>
+                </b-form-group>
+
+                <b-form-group
+                  label="Images of the work:"
+                  label-for="images"
+                  class="col-12"
+                >
+                  <b-form-file v-model="workDetails.images" multiple>
+                    <template slot="file-name" slot-scope="{ names }">
+                      <b-badge variant="dark">{{ names[0] }}</b-badge>
+                      <b-badge
+                        v-if="names.length > 1"
+                        variant="dark"
+                        class="ml-1"
+                      >
+                        + {{ names.length - 1 }} More files
+                      </b-badge>
+                    </template>
+                  </b-form-file>
+                </b-form-group>
+                <b-form-group class="col-12">
                   <span
                     v-if="addLoading"
                     class="spinner-border spinner-border-sm"
                     role="status"
                     aria-hidden="true"
-                  ></span
-                  ><button
-                    v-else
-                    class="btn btn-primary"
-                    :disabled="isDisabled"
-                  >
+                  ></span>
+                  <button v-else class="btn btn-primary" :disabled="isDisabled">
                     Submit
                   </button>
-                </div>
+                </b-form-group>
               </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card bg-light p-1 showdow-sm">
-            <div class="card-title">
-              <button class="btn btn-info m-3" @click="initForm">
-                {{ addState ? 'Cancel' : 'Add New Work' }}
-              </button>
-            </div>
-            <div class="card-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Job Description</th>
-                    <th scope="col">Created</th>
-                    <th scope="col">At</th>
-                    <th scope="col">Action</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <div
-                  v-if="jobLoading"
-                  class="spinner-border"
-                  style="width: 3rem; height: 3rem;"
-                  role="status"
-                ></div>
-                <tbody v-else>
-                  <tr v-for="(job, index) in allJobs" :key="index">
-                    <td>{{ index + 1 }}</td>
-                    <td>{{ job.title }}</td>
-
-                    <td>{{ job.description }}</td>
-                    <td>
-                      {{ $moment(job.createdAt).format('DD/MM/YY') }}
-                    </td>
-                    <td>
-                      {{ $moment(job.createdAt).format('HH:mm') }}
-                    </td>
-                    <td>{{ job.phone }}</td>
-                    <td>
-                      <button
-                        class="btn btn-info"
-                        @click="editService(job._id)"
-                      >
-                        Edit
-                      </button>
-                    </td>
-                    <td>
-                      <button
-                        class="btn btn-danger"
-                        @click="deleteService(job._id)"
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="my-3">
+      <button class="btn btn-info my-3" @click="initForm">
+        {{ addState ? 'Cancel' : 'Add New Work' }}
+      </button>
+      <b-table
+        striped
+        hover
+        responsive
+        :fields="fields"
+        :sort-by.sync="sortBy"
+        :sort-desc.sync="sortDesc"
+        sticky-header="600px"
+        :items="items"
+      >
+        <template v-slot:thead-top="">
+          <b-tr>
+            <b-th colspan="1" variant="primary">Index</b-th>
+            <b-th colspan="3" variant="secondary">
+              Work Data
+            </b-th>
+            <b-th colspan="2" variant="success">
+              Action
+            </b-th>
+          </b-tr>
+        </template>
+        <template v-slot:cell(description)="data">
+          <p>{{ data.item.description }}</p>
+        </template>
+        <template v-slot:cell(edit)="data">
+          <b-button
+            class="ml-auto"
+            variant="light"
+            @click="editService(data.item._id)"
+          >
+            <b-icon
+              icon="pencil-square"
+              color="primary"
+              variant="primary"
+              font-scale="1.5"
+            ></b-icon>
+          </b-button>
+        </template>
+        <template v-slot:cell(delete)="data">
+          <b-button
+            class="ml-auto"
+            variant="light"
+            @click="deleteService(data.item._id)"
+          >
+            <b-icon
+              icon="trash-fill"
+              color="danger"
+              variant="danger"
+              font-scale="1.5"
+            ></b-icon>
+          </b-button>
+        </template>
+      </b-table>
     </div>
   </section>
 </template>
@@ -120,14 +166,73 @@
 /* eslint-disable no-console */
 export default {
   layout: 'admin',
+  filters: {
+    truncate(text, length, suffix) {
+      if (text.length > length) {
+        return text.substring(0, length) + suffix
+      } else {
+        return text
+      }
+    },
+  },
   data() {
     return {
-      serviceDetails: {
-        name: '',
+      sortBy: 'Total',
+      sortDesc: true,
+      fields: [
+        { key: 'No', stickyColumn: true, isRowHeader: true, sortable: false },
+        {
+          key: 'title',
+          sortable: false,
+        },
+        {
+          key: 'description',
+          sortable: false,
+        },
+        {
+          key: 'createdAt',
+          label: 'Created',
+          sortable: true,
+          formatter: (value) => {
+            return this.$moment(value).format('LL HH:mm')
+          },
+        },
+        {
+          key: 'Edit',
+          sortable: false,
+        },
+        {
+          key: 'delete',
+          sortable: false,
+        },
+      ],
+      categoryOptions: [
+        { value: null, text: 'Виберіть категорію, яка відповідає роботі.' },
+        { value: 'branding', text: 'Брендинг' },
+        { value: 'graphic-design', text: 'Графічний дизайн реклами' },
+        { value: 'pofessional-printing', text: 'Професійний друк' },
+        { value: 'operative-polygraphy', text: 'Оперативна поліграфія' },
+        { value: 'smm-marketing', text: 'СММ Маркетинг' },
+        { value: 'outdoor-advertising', text: 'Зовнішня реклама' },
+        { value: 'object-photography', text: 'Об’єктна фотографія' },
+      ],
+      subCategoryOptions: [
+        { value: null, text: 'Виберіть підкатегорію, яка відповідає роботі.' },
+        { value: 'logos', text: 'Логотипи' },
+        { value: 'models', text: 'Макети' },
+        { value: 'icons', text: 'Іконки' },
+        { value: 'colors', text: 'Кольори' },
+        { value: 'trademarks', text: 'Торгова Марка' },
+        { value: 'cargo', text: 'Товари' },
+        { value: 'brand-beeches', text: 'Бренд-Буки' },
+      ],
+      workDetails: {
         title: '',
-        phone: '',
         description: '',
-        status: false,
+        thumbnail: null,
+        images: null,
+        category: null,
+        subCategory: null,
       },
       allJobs: [
         {
@@ -173,15 +278,29 @@ export default {
   computed: {
     isDisabled() {
       if (
-        this.serviceDetails.name === '' ||
-        this.serviceDetails.title === '' ||
-        this.serviceDetails.phone === '' ||
-        this.serviceDetails.description === '' ||
-        this.serviceDetails.artist === ''
+        this.workDetails.title === '' ||
+        this.workDetails.description === '' ||
+        this.workDetails.thumbnail === null ||
+        this.workDetails.category === null ||
+        this.workDetails.subCategory === null ||
+        this.workDetails.images === null
       ) {
         return !this.isValid
       }
       return this.isValid
+    },
+    items() {
+      return this.allJobs.map((stat, index) => {
+        return {
+          No: index + 1,
+          _id: stat._id,
+          title: stat.title,
+          description: stat.description,
+          createdAt: stat.createdAt,
+          edit: '',
+          delete: '',
+        }
+      })
     },
   },
   created() {
@@ -204,24 +323,28 @@ export default {
       this.addState = !this.addState
     },
 
-    addNewService() {
+    addNewWork() {
       const formData = new FormData()
-      formData.append('title', this.serviceDetails.title)
-      formData.append('name', this.serviceDetails.name)
-      formData.append('phone', this.serviceDetails.phone)
-      formData.append('description', this.serviceDetails.description)
-      formData.append('status', this.serviceDetails.status)
+      formData.append('title', this.workDetails.title)
+      formData.append('description', this.workDetails.description)
+      formData.append('category', this.workDetails.category)
+      formData.append('subCategory', this.workDetails.subCategory)
+      formData.append('thumbnail', this.workDetails.thumbnail)
+      for (let index = 0; index < this.workDetails.images.length; index++) {
+        formData.append('images', this.workDetails.images[index])
+      }
       this.addLoading = true
       this.$axios
-        .$post('/api/service', formData)
+        .$post('/api/work', formData)
         .then((response) => {
           this.addLoading = false
-          this.serviceDetails = {
-            name: '',
+          this.workDetails = {
             title: '',
-            phone: '',
             description: '',
-            status: false,
+            thumbnail: null,
+            images: null,
+            category: null,
+            subCategory: null,
           }
           this.getAllJobs()
           this.$swal('Success', 'New Service Added', 'success')
@@ -234,18 +357,20 @@ export default {
     deleteService(id) {
       this.$swal({
         title: 'Are you sure?',
-        text: 'Once deleted, you will not be able to recover this Service!',
+        text: "You won't be able to revert this!",
         icon: 'warning',
-        buttons: true,
-        dangerMode: true,
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Yes, delete it!',
       }).then((willDelete) => {
-        if (willDelete) {
+        if (willDelete.value) {
           this.$axios
-            .$delete(`'/api/service/'${id}`)
+            .$delete(`/api/work/${id}`)
             .then((response) => {
               this.getAllJobs()
               this.$swal({
-                text: "Poof! You've sucessfully deleted that service request!",
+                text: "Poof! You've sucessfully deleted that work request!",
                 icon: 'success',
               })
             })
@@ -257,7 +382,7 @@ export default {
               )
             })
         } else {
-          this.$swal('Your service request is safe!')
+          this.$swal('Your work request is safe!')
         }
       })
     },
