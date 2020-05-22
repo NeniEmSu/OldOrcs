@@ -1,60 +1,131 @@
 <template>
-  <div class="container my-5">
-    <form @submit.prevent="performLogin()">
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input
-          id="username"
-          v-model="username"
-          type="text"
-          class="form-control"
-          name="username"
-          aria-describedby="username"
-          placeholder="Username"
-          required
-          autofocus
-        />
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input
-          id="password"
-          v-model="password"
-          type="password"
-          class="form-control"
-          name="password"
-          placeholder="Password"
-          required
-        />
-      </div>
-      <button type="submit" class="btn btn-primary">Login</button>
-    </form>
+  <div>
+    <h1 class="text-center">
+      Login
+    </h1>
+    <hr />
+    <b-alert v-if="error" show variant="danger">
+      <h4 class="alert-heading">
+        Error!
+      </h4>
+      {{ error.response.data.message || error.response.data.error.message }}
+    </b-alert>
+    <b-alert v-if="$auth.$state.redirect" show dismissible>
+      You have to login before accessing to
+      <strong>{{ $auth.$state.redirect }}</strong>
+    </b-alert>
+    <b-row align-h="center" class="pt-4">
+      <b-col lg="4" md="6">
+        <b-card bg-variant="light">
+          <busy-overlay />
+          <form>
+            <b-form-group label="Email">
+              <b-input
+                ref="email"
+                v-model="email"
+                autofocus
+                placeholder="Email address"
+              />
+            </b-form-group>
+
+            <b-form-group label="Password">
+              <b-input-group>
+                <b-input-group-prepend is-text class="clickable">
+                  <b-icon
+                    :icon="passwordIcon"
+                    font-scale="1.5"
+                    @click="hidePassword = !hidePassword"
+                  >
+                  </b-icon>
+                </b-input-group-prepend>
+                <b-input
+                  v-model="password"
+                  :type="passwordType"
+                  placeholder="password"
+                  required
+                  name="password"
+                />
+              </b-input-group>
+            </b-form-group>
+
+            <div class="text-center">
+              <b-btn variant="primary" block @click="login">
+                Login
+              </b-btn>
+            </div>
+          </form>
+        </b-card>
+      </b-col>
+    </b-row>
   </div>
 </template>
 
+<style scoped>
+.login-button {
+  border: 0;
+}
+</style>
+
 <script>
-/* eslint-disable no-console */
+import busyOverlay from '~/components/busy-overlay'
 export default {
+  layout: 'admin',
+  name: 'Login',
+  middleware: ['auth'],
+  components: { busyOverlay },
   data() {
     return {
-      username: '',
+      email: '',
       password: '',
+      error: null,
+      hidePassword: true,
     }
   },
+  computed: {
+    passwordType() {
+      return this.hidePassword ? 'password' : 'text'
+    },
+    passwordIcon() {
+      return this.hidePassword ? 'eye-fill' : 'eye-slash-fill'
+    },
+    redirect() {
+      return (
+        this.$route.query.redirect &&
+        decodeURIComponent(this.$route.query.redirect)
+      )
+    },
+    isCallback() {
+      return Boolean(this.$route.query.callback)
+    },
+  },
   methods: {
-    async performLogin() {
-      try {
-        const response = await this.$auth.loginWith('local', {
+    login() {
+      this.error = null
+      return this.$auth
+        .loginWith('local', {
           data: {
-            username: this.username,
+            email: this.email,
             password: this.password,
           },
         })
-        this.$swal('Success', `${response}`, 'success')
-      } catch (error) {
-        this.$swal('Error', `Something Went wrong, \n Error: ${error}`, 'error')
-      }
+        .then((response, append = false) => {
+          this.$store.dispatch('toast/setToast', {
+            title: response.data.message,
+            variant: response.data.type,
+            text: `Thanks for signing in, ${this.$auth.user.userName}`,
+            delay: 5000,
+          })
+        })
+        .catch((error) => {
+          this.error = error
+        })
     },
   },
 }
 </script>
+
+<style lang="scss">
+.clickable {
+  cursor: pointer;
+}
+</style>
