@@ -134,9 +134,14 @@ module.exports = {
     categories: ['productivity', 'education', 'portfolio'],
   },
 
-  css: ['normalize.css/normalize.css', '~/assets/scss/override.scss'],
+  css: [
+    'normalize.css/normalize.css',
+    '~/assets/scss/override.scss',
+    'sweetalert2/dist/sweetalert2.min.css',
+  ],
 
   plugins: [
+    '~/plugins/bootstrap-vue-icon',
     '~/plugins/vue-scrollto',
     '~/plugins/gsap',
     {
@@ -150,6 +155,11 @@ module.exports = {
     '@nuxtjs/stylelint-module',
     '@nuxtjs/moment',
   ],
+
+  moment: {
+    defaultLocale: 'uk',
+    locales: ['uk', 'ru'],
+  },
 
   modules: [
     'bootstrap-vue/nuxt',
@@ -184,21 +194,33 @@ module.exports = {
     '@nuxtjs/sitemap',
   ],
 
-  // auth: {
-  //   strategies: {
-  //     local: {
-  //       endpoints: {
-  //         login: {
-  //           url: '/api/auth/login',
-  //           method: 'post'
-  //         },
-  //         tokenRequired: false,
-  //         tokenType: false,
-  //         user: { url: '/api/user', method: 'get', propertyName: 'user' }
-  //       }
-  //     }
-  //   }
-  // },
+  auth: {
+    redirect: {
+      login: '/admin/login',
+      logout: '/',
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: '/api/auth/login',
+            method: 'post',
+            propertyName: 'token',
+          },
+          logout: { url: '/api/auth/logout', method: 'post' },
+          user: {
+            url: '/api/auth/user',
+            method: 'get',
+            propertyName: 'user',
+          },
+        },
+        tokenRequired: true,
+        tokenType: '',
+        globalToken: true,
+        autoFetchUser: true,
+      },
+    },
+  },
 
   axios: {
     proxy: true,
