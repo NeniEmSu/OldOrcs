@@ -50,14 +50,11 @@ Backend
 
 - [ ] Backend Testing
 - [ ] Inprove error handling responses
-- [ ] Create histories routes, model and controllers
-- [ ] Create tabs routes, model and controllers
-- [ ] create and use backend admin middleware
-- [ ] Set up mongodb mongoose one to many  relationship between songs and users
-- [x] search functionality
-- [x] protect routes with auth middleware
+- [ ] protect routes with auth middleware
 - [x] create and use backend auth middleware
 - [x] Req.body validation with @hapi/joi
+- [x] Create services routes, model and controllers
+- [x] Create works routes, model and controllers
 - [ ] Learn how to and improve auth security
 - [ ] add roles to users
 - [x] Create users routes, model and controllers
@@ -66,8 +63,8 @@ Backend
 Frontend
 
 - [ ] Frontend Testing
-- [ ] add animation
-- [ ] display correct application statuses (logged in, online, logged out, loading)
+- [x] add animation
+- [x] display correct application statuses (logged in, online, logged out, loading)
 - [ ] add full PWA support
 - [ ] generate routes
 - [ ] set up proper seo
@@ -75,20 +72,14 @@ Frontend
 - [ ] add sitemap
 - [ ] UX/UI logic refactor
 - [ ] add Skeleton loaders
-- [ ] Dynamic switch IOS and other platform config
 - [ ] Fixed safari issue and related issues on IOS platform
-- [ ] Fixed desktop safari playing issues
-- [ ] Home page restructure for desktop view
-- [ ] theme and color settings
+- [ ] Fixed carousel
 - [ ] animated transition
-- [ ] theme switch (dark and light)
 - [ ] responsive design improvements
-- [x] search functionality
 - [ ] frontend login & registration form validation
 - [x] use bootstrap icons opposed to fontawesome
 - [x] display logged in, signed in and out statuses globally
 - [x] improve error handling and display
-- [ ] create and use frontend admin middleware
 - [x] allow to review password
 - [x] frontend user Registration
 - [x] frontend user authentication (login, logout and fetchUser data)
@@ -268,7 +259,7 @@ No authentication required, returns a [success](callse the get users route)
 
 Required fields: `email`, `password`
 
-### Get Users
+### Get User
 
 `POST /api/auth/user`
 
