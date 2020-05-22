@@ -69,7 +69,7 @@ async function start() {
 
   app.use('/api/work', workRoutes)
   app.use('/api/service', serviceRoutes)
-  // app.use('/api/auth', userRoutes)
+  app.use('/api/auth', userRoutes)
 
   // Give nuxt middleware to express
   app.use(nuxt.render)
