@@ -137,19 +137,32 @@
       <b-collapse id="nav-collapse" is-nav>
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
-          <b-nav-item-dropdown text="Lang" right>
-            <b-dropdown-item to="#">UA</b-dropdown-item>
-            <b-dropdown-item to="#">RU</b-dropdown-item>
-          </b-nav-item-dropdown>
-
-          <b-nav-item-dropdown right>
-            <!-- Using 'button-content' slot -->
-            <template v-slot:button-content>
-              <em>User</em>
-            </template>
-            <b-dropdown-item href="#">Profile</b-dropdown-item>
-            <b-dropdown-item href="#">Sign Out</b-dropdown-item>
-          </b-nav-item-dropdown>
+          <template v-if="$auth.loggedIn">
+            <b-nav-item-dropdown
+              class="text-capitalize"
+              :text="$auth.user.userName"
+              right
+            >
+              <b-dropdown-item @click="$auth.logout()">
+                Logout
+              </b-dropdown-item>
+            </b-nav-item-dropdown>
+            <b-img
+              :src="picture"
+              class="mt-1"
+              rounded="circle"
+              width="30px"
+              height="30px"
+            />
+          </template>
+          <template v-else>
+            <b-dropdown-item to="/">
+              Site
+            </b-dropdown-item>
+            <b-dropdown-item to="/admin/login">
+              Login
+            </b-dropdown-item>
+          </template>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -157,7 +170,18 @@
 </template>
 
 <script>
-export default {}
+import get from 'lodash.get'
+export default {
+  computed: {
+    picture() {
+      return (
+        get(this.$auth.user, 'picture') || // OpenID
+        get(this.$auth.user, 'picture.data.url') || // Facebook graph API
+        get(this.$auth.user, 'avatar_url')
+      ) // GitHub
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>
