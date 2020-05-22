@@ -1,18 +1,26 @@
 const jwt = require('jsonwebtoken')
+const User = require('../models/usersModel')
 
-module.exports = (req, res, next) => {
+module.exports = async (req, res, next) => {
   try {
-    const token = req.headers.authorization.split(' ')[1]
-    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET')
-    const userId = decodedToken.userId
-    if (req.body.userId && req.body.userId !== userId) {
-      throw new Error('Invalid user ID')
+    const token = req.headers.authorization
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET)
+    const user = await User.findOne({ _id: decodedToken.userId })
+    if (!user) {
+      return res
+        .status(400)
+        .json({ type: 'error', error: 'Invalid user credentials' })
     } else {
+      res.locals._userId = decodedToken.userId
+      res.locals._userName = user.userName
       next()
     }
-  } catch {
+  } catch (error) {
     res.status(401).json({
-      error: new Error('Invalid request!'),
+      type: 'error',
+      error: 'Unauthorized request!',
+      message:
+        'All requests to route are protected, Sign up or In to gain access!',
     })
   }
 }
