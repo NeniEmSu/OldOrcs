@@ -55,7 +55,7 @@
       </div>
       <div class="sub_category">
         <h5 data-text="Торговамарка">
-          Торговамарка
+          Торгова Марка
         </h5>
       </div>
       <div class="sub_category">
