@@ -24,7 +24,13 @@ exports.addNewJob = async (req, res) => {
       description: req.body.description,
       thumbnail: req.files.thumbnail,
       images: req.files.images,
+      category: req.body.category,
+      subCategory: req.body.subCategory,
     })
+    // eslint-disable-next-line no-console
+    console.log(work)
+    // eslint-disable-next-line no-debugger
+    debugger
 
     const newJob = await work.save()
     res.status(201).json({ data: newJob })
