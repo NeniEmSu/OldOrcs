@@ -1,7 +1,7 @@
 <template>
   <section class="mt-5 container">
     <h1>Admin Dashboard</h1>
-    <div class="container mb-4">
+    <div class="mb-4">
       <div class="row">
         <div class="col-md-12">
           <div v-if="addState" class="card">
@@ -95,21 +95,34 @@
                     <td>
                       {{ $moment(service.createdAt).format('HH:mm') }}
                     </td>
+
                     <td>
-                      <button
-                        class="btn btn-info"
+                      <b-button
+                        class="ml-auto"
+                        variant="light"
                         @click="editService(service._id)"
                       >
-                        Edit
-                      </button>
+                        <b-icon
+                          icon="pencil-square"
+                          color="danger"
+                          variant="primary"
+                          font-scale="1.5"
+                        ></b-icon>
+                      </b-button>
                     </td>
                     <td>
-                      <button
-                        class="btn btn-danger"
+                      <b-button
+                        class="ml-auto"
+                        variant="light"
                         @click="deleteService(service._id)"
                       >
-                        Delete
-                      </button>
+                        <b-icon
+                          icon="trash-fill"
+                          color="danger"
+                          variant="danger"
+                          font-scale="1.5"
+                        ></b-icon>
+                      </b-button>
                     </td>
                   </tr>
                 </tbody>
@@ -128,8 +141,18 @@ import AdminWorks from '~/components/admin/AdminWorks'
 /* eslint-disable no-console */
 export default {
   layout: 'admin',
+  middleware: ['auth'],
   components: {
     AdminWorks,
+  },
+  filters: {
+    truncate(text, length, suffix) {
+      if (text.length > length) {
+        return text.substring(0, length) + suffix
+      } else {
+        return text
+      }
+    },
   },
   data() {
     return {
@@ -221,12 +244,14 @@ export default {
     deleteService(id) {
       this.$swal({
         title: 'Are you sure?',
-        text: 'Once deleted, you will not be able to recover this Service!',
+        text: "You won't be able to revert this!",
         icon: 'warning',
-        buttons: true,
-        dangerMode: true,
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Yes, delete it!',
       }).then((willDelete) => {
-        if (willDelete) {
+        if (willDelete.value) {
           this.$axios
             .$delete(`'/api/service/'${id}`)
             .then((response) => {
